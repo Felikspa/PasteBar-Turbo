@@ -140,13 +140,9 @@ unsafe extern "system" fn keybd_proc(code: c_int, w_param: WPARAM, l_param: LPAR
     };
 
     if let Some(binds) = binds {
-      if let Some(bind) = binds
-        .lock()
-        .unwrap()
-        .get_mut(&KeybdKey::from(u64::from(
-          (*(l_param as *const KBDLLHOOKSTRUCT)).vkCode,
-        )))
-      {
+      if let Some(bind) = binds.lock().unwrap().get_mut(&KeybdKey::from(u64::from(
+        (*(l_param as *const KBDLLHOOKSTRUCT)).vkCode,
+      ))) {
         match bind {
           Bind::NormalBind(cb) => {
             let cb = Arc::clone(cb);

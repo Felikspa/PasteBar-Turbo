@@ -4,19 +4,19 @@ use inputbot::{KeybdKey, MouseButton};
 /// simple function. The function prints the key or button name that was pressed.
 
 fn main() {
-    // Bind all keys to a common callback event.
-    KeybdKey::bind_all(|event| {
-        match inputbot::from_keybd_key(event) {
-            Some(c) => println!("{c}"),
-            None => println!("Unregistered Key"),
-        };
-    });
+  // Bind all keys to a common callback event.
+  KeybdKey::bind_all(|event| {
+    match inputbot::from_keybd_key(event) {
+      Some(c) => println!("{c}"),
+      None => println!("Unregistered Key"),
+    };
+  });
 
-    // Bind all mouse buttons to a common callback event.
-    MouseButton::bind_all(|event| {
-        println!("{:?}", event);
-    });
+  // Bind all mouse buttons to a common callback event.
+  MouseButton::bind_all(|event| {
+    println!("{:?}", event);
+  });
 
-    // Call this to start listening for bound inputs.
-    inputbot::handle_input_events();
+  // Call this to start listening for bound inputs.
+  inputbot::handle_input_events();
 }

@@ -158,8 +158,8 @@ input[type='number']::-webkit-inner-spin-button {
 }
 
 .flow-launcher-result-item {
-  min-height: 58px;
-  height: 58px;
+  min-height: 52px;
+  height: 52px;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
@@ -169,11 +169,29 @@ input[type='number']::-webkit-inner-spin-button {
 }
 
 .flow-launcher-result-item[data-keyboard-selected='true'] {
-  background: rgb(201 201 201 / 10%);
+  background: #19c9c9c9;
+}
+
+.flow-launcher-result-item--selected {
+  background: #19c9c9c9;
 }
 
 .flow-launcher-result-item-image {
   height: 224px;
+}
+
+.flow-launcher-result-item--selected .flow-launcher-result-title {
+  color: #fffff8;
+}
+
+.flow-launcher-result-item--selected .flow-launcher-result-subtitle {
+  color: #fffff8;
+  opacity: 0.92;
+}
+
+.flow-launcher-result-item--selected .flow-launcher-hotkey {
+  background: rgb(138 138 138 / 18%);
+  color: #fffff8;
 }
 
 .flow-launcher-result-content {

@@ -94,7 +94,8 @@ use window_state::StateFlags;
 static QUICKPASTE_SEARCH_ACTIVE: Lazy<Mutex<bool>> = Lazy::new(|| Mutex::new(false));
 static QUICKPASTE_PREVIOUS_FOREGROUND_WINDOW: Lazy<Mutex<isize>> = Lazy::new(|| Mutex::new(0));
 #[cfg(target_os = "windows")]
-static QUICKPASTE_HELD_NUMBER_INDEXES: Lazy<Mutex<Vec<usize>>> = Lazy::new(|| Mutex::new(Vec::new()));
+static QUICKPASTE_HELD_NUMBER_INDEXES: Lazy<Mutex<Vec<usize>>> =
+  Lazy::new(|| Mutex::new(Vec::new()));
 #[cfg(target_os = "windows")]
 static QUICKPASTE_SELECTED_NUMBER_INDEXES: Lazy<Mutex<Vec<usize>>> =
   Lazy::new(|| Mutex::new(Vec::new()));
@@ -119,6 +120,7 @@ use winapi::um::winuser::{GetForegroundWindow, SetForegroundWindow};
 #[cfg(target_os = "windows")]
 fn apply_quickpaste_windows_backdrop(window: &tauri::Window, is_dark: bool) -> Result<(), String> {
   use windows_sys::Win32::Graphics::Dwm::DwmSetWindowAttribute;
+  use windows_sys::Win32::System::LibraryLoader::{GetProcAddress, LoadLibraryA};
 
   fn check_dwm_result(result: i32, attribute_name: &str) -> Result<(), String> {
     if result < 0 {
@@ -131,16 +133,41 @@ fn apply_quickpaste_windows_backdrop(window: &tauri::Window, is_dark: bool) -> R
     Ok(())
   }
 
+  #[repr(C)]
+  struct AccentPolicy {
+    accent_state: u32,
+    accent_flags: u32,
+    gradient_color: u32,
+    animation_id: u32,
+  }
+
+  #[repr(C)]
+  struct WindowCompositionAttribData {
+    attrib: u32,
+    data: *mut std::ffi::c_void,
+    size_of_data: usize,
+  }
+
+  type SetWindowCompositionAttributeFn =
+    unsafe extern "system" fn(isize, *mut WindowCompositionAttribData) -> i32;
+
+  const WCA_ACCENT_POLICY: u32 = 19;
+  const ACCENT_ENABLE_ACRYLICBLURBEHIND: u32 = 4;
   const DWMWA_USE_IMMERSIVE_DARK_MODE: u32 = 20;
   const DWMWA_WINDOW_CORNER_PREFERENCE: u32 = 33;
   const DWMWA_SYSTEMBACKDROP_TYPE: u32 = 38;
   const DWMWCP_ROUND: u32 = 2;
-  const DWMSBT_TRANSIENTWINDOW: u32 = 3;
+  const DWMSBT_DISABLE: u32 = 1;
 
   let hwnd = window.hwnd().map_err(|e| e.to_string())?;
   let immersive_dark_mode = if is_dark { 1u32 } else { 0u32 };
   let corner_preference = DWMWCP_ROUND;
-  let backdrop_type = DWMSBT_TRANSIENTWINDOW;
+  let backdrop_type = DWMSBT_DISABLE;
+  let accent_tint = if is_dark {
+    0xBB111111u32
+  } else {
+    0xBBF9F9F9u32
+  };
 
   unsafe {
     check_dwm_result(
@@ -172,6 +199,38 @@ fn apply_quickpaste_windows_backdrop(window: &tauri::Window, is_dark: bool) -> R
       ),
       "DWMWA_SYSTEMBACKDROP_TYPE",
     )?;
+
+    let user32 = LoadLibraryA("user32.dll\0".as_ptr());
+    if user32 == 0 {
+      return Err("Failed to load user32.dll for Quick Paste acrylic".to_string());
+    }
+
+    let Some(set_window_composition_attribute_proc) =
+      GetProcAddress(user32, "SetWindowCompositionAttribute\0".as_ptr())
+    else {
+      return Err(
+        "Failed to load SetWindowCompositionAttribute for Quick Paste acrylic".to_string(),
+      );
+    };
+
+    let set_window_composition_attribute: SetWindowCompositionAttributeFn =
+      std::mem::transmute(set_window_composition_attribute_proc);
+
+    let mut accent = AccentPolicy {
+      accent_state: ACCENT_ENABLE_ACRYLICBLURBEHIND,
+      accent_flags: 2,
+      gradient_color: accent_tint,
+      animation_id: 0,
+    };
+    let mut data = WindowCompositionAttribData {
+      attrib: WCA_ACCENT_POLICY,
+      data: &mut accent as *mut _ as *mut std::ffi::c_void,
+      size_of_data: std::mem::size_of::<AccentPolicy>(),
+    };
+
+    if set_window_composition_attribute(hwnd.0 as _, &mut data) == 0 {
+      return Err("Failed to apply Quick Paste acrylic accent".to_string());
+    }
   }
 
   Ok(())
@@ -562,6 +621,16 @@ fn has_quickpaste_modifier_pressed() -> bool {
 }
 
 #[cfg(target_os = "windows")]
+fn has_quickpaste_non_alt_modifier_pressed() -> bool {
+  LControlKey.is_pressed()
+    || RControlKey.is_pressed()
+    || LShiftKey.is_pressed()
+    || RShiftKey.is_pressed()
+    || LSuper.is_pressed()
+    || RSuper.is_pressed()
+}
+
+#[cfg(target_os = "windows")]
 fn is_quickpaste_alt_pressed() -> bool {
   LAltKey.is_pressed() || RAltKey.is_pressed()
 }
@@ -569,6 +638,13 @@ fn is_quickpaste_alt_pressed() -> bool {
 #[cfg(target_os = "windows")]
 fn should_capture_quickpaste_key(app_handle: &tauri::AppHandle) -> bool {
   !has_quickpaste_modifier_pressed()
+    && !is_quickpaste_search_active()
+    && is_quickpaste_visible(app_handle)
+}
+
+#[cfg(target_os = "windows")]
+fn should_capture_quickpaste_number_key(app_handle: &tauri::AppHandle) -> bool {
+  !has_quickpaste_non_alt_modifier_pressed()
     && !is_quickpaste_search_active()
     && is_quickpaste_visible(app_handle)
 }
@@ -604,7 +680,7 @@ fn quickpaste_number_key_index(key: KeybdKey) -> Option<usize> {
 
 #[cfg(target_os = "windows")]
 fn press_quickpaste_number_key(key: KeybdKey, app_handle: &tauri::AppHandle) -> BlockInput {
-  if should_capture_quickpaste_key(app_handle) {
+  if should_capture_quickpaste_number_key(app_handle) {
     if let Some(index) = quickpaste_number_key_index(key) {
       let mut held_indexes = QUICKPASTE_HELD_NUMBER_INDEXES
         .lock()
@@ -658,6 +734,32 @@ fn release_quickpaste_number_key(key: KeybdKey, app_handle: &tauri::AppHandle) -
   }
 
   BlockInput::DontBlock
+}
+
+#[cfg(target_os = "windows")]
+fn release_quickpaste_alt_key(_key: KeybdKey, app_handle: &tauri::AppHandle) -> BlockInput {
+  if !is_quickpaste_visible(app_handle) || is_quickpaste_search_active() {
+    return BlockInput::DontBlock;
+  }
+
+  let held_is_empty = QUICKPASTE_HELD_NUMBER_INDEXES
+    .lock()
+    .expect("Failed to lock quickpaste held number indexes")
+    .is_empty();
+
+  if held_is_empty {
+    let mut selected_indexes = QUICKPASTE_SELECTED_NUMBER_INDEXES
+      .lock()
+      .expect("Failed to lock quickpaste selected number indexes");
+    if !selected_indexes.is_empty() {
+      selected_indexes.clear();
+      app_handle
+        .emit_all("quickpaste-selected-results", Vec::<usize>::new())
+        .expect("Failed to emit quickpaste selected results");
+    }
+  }
+
+  BlockInput::Block
 }
 
 #[cfg(target_os = "windows")]
@@ -758,6 +860,12 @@ fn register_quickpaste_number_key_hooks(key: KeybdKey, app_handle: &tauri::AppHa
 }
 
 #[cfg(target_os = "windows")]
+fn register_quickpaste_alt_key_hooks(key: KeybdKey, app_handle: &tauri::AppHandle) {
+  let app_handle_for_release = app_handle.clone();
+  key.release_blockable_bind(move || release_quickpaste_alt_key(key, &app_handle_for_release));
+}
+
+#[cfg(target_os = "windows")]
 fn register_quickpaste_keyboard_hooks(app_handle: tauri::AppHandle) {
   let app_handle_for_text_keys = app_handle.clone();
   KeybdKey::bind_all(move |key| {
@@ -799,6 +907,8 @@ fn register_quickpaste_keyboard_hooks(app_handle: tauri::AppHandle) {
   register_quickpaste_number_key_hooks(Numpad7Key, &app_handle);
   register_quickpaste_number_key_hooks(Numpad8Key, &app_handle);
   register_quickpaste_number_key_hooks(Numpad9Key, &app_handle);
+  register_quickpaste_alt_key_hooks(LAltKey, &app_handle);
+  register_quickpaste_alt_key_hooks(RAltKey, &app_handle);
 
   let app_handle_for_escape = app_handle.clone();
   EscapeKey.blockable_bind(move || {
@@ -1280,8 +1390,8 @@ async fn open_quickpaste_window(
       .expect("Failed to lock quickpaste previous foreground window") = previous_foreground_window;
   }
 
-  let window_width = 500.0;
-  let window_height = 660.0;
+  let window_width = 440.0;
+  let window_height = 760.0;
   let _ = app_settings;
   let main_window = app_handle.get_window("main").unwrap();
   let is_main_window_visible = main_window.is_visible().unwrap();
@@ -2167,7 +2277,11 @@ async fn main() {
       set_icon
     ])
     .plugin(clipboard::init())
-    .plugin(window_state::Builder::default().skip_initial_state("quickpaste").build())
+    .plugin(
+      window_state::Builder::default()
+        .skip_initial_state("quickpaste")
+        .build(),
+    )
     .plugin(tauri_plugin_single_instance::init(|app, argv, cwd| {
       debug_output(|| {
         println!("{}, {argv:?}, {cwd}", app.package_info().name);

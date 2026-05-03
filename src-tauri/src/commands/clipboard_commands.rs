@@ -228,7 +228,7 @@ pub fn quickpaste_copy_history_items(
     };
 
     if let Some(true) = history_item.is_image {
-      return "Quick Paste multi-item copy supports text items only".to_string();
+      return "Quick Paste multi-item paste supports text items only".to_string();
     }
 
     let value = match history_item.value {
@@ -279,7 +279,50 @@ pub fn copy_paste_history_items(
   delay_between_ms: u64,
 ) -> String {
   let mut manager = app_handle.clipboard_manager();
-  let mut values: Vec<String> = Vec::with_capacity(history_ids.len());
+  let has_image = history_ids.iter().any(|history_id| {
+    history_service::get_clipboard_history_by_id(history_id)
+      .and_then(|history_item| history_item.is_image)
+      .unwrap_or(false)
+  });
+
+  if has_image {
+    for history_id in history_ids.into_iter() {
+      let history_item = match history_service::get_clipboard_history_by_id(&history_id) {
+        Some(item) => item,
+        None => return "History item not found".to_string(),
+      };
+
+      if let Some(true) = history_item.is_image {
+        mark_internal_clipboard_write();
+        let result = copy_history_item(app_handle.clone(), history_id);
+        if result != "ok" {
+          return result;
+        }
+      } else {
+        let value = match history_item.value {
+          Some(val) => val,
+          None => return "History item value is missing".to_string(),
+        };
+
+        mark_internal_clipboard_write();
+        if let Err(e) = manager.write_text(value) {
+          eprintln!("Failed to write to clipboard: {}", e);
+          return "Failed to write to clipboard".to_string();
+        }
+      }
+
+      thread::sleep(Duration::from_millis(QUICKPASTE_CLIPBOARD_SETTLE_DELAY_MS));
+      paste_clipboard(0);
+      thread::sleep(Duration::from_millis(QUICKPASTE_CLIPBOARD_SETTLE_DELAY_MS));
+      if delay_between_ms > 0 {
+        thread::sleep(Duration::from_millis(delay_between_ms));
+      }
+    }
+
+    return "ok".to_string();
+  }
+
+  let mut text_values: Vec<String> = Vec::with_capacity(history_ids.len());
 
   for history_id in history_ids.into_iter() {
     let history_item = match history_service::get_clipboard_history_by_id(&history_id) {
@@ -287,19 +330,15 @@ pub fn copy_paste_history_items(
       None => return "History item not found".to_string(),
     };
 
-    if let Some(true) = history_item.is_image {
-      return "Quick Paste multi-item paste supports text items only".to_string();
-    }
-
     let value = match history_item.value {
       Some(val) => val,
       None => return "History item value is missing".to_string(),
     };
 
-    values.push(value);
+    text_values.push(value);
   }
 
-  let mut combined_value = values.join(&separator);
+  let mut combined_value = text_values.join(&separator);
   if prefix_separator && !separator.is_empty() {
     combined_value = format!("{}{}", separator, combined_value);
   }

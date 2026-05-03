@@ -22,10 +22,13 @@ export default function FlowLauncherQuickPasteTestPage() {
   }, [clipboardHistory])
 
   useEffect(() => {
+    let isDisposed = false
+
     const unlisten = listen<number[]>('quickpaste-selected-results', event => {
       const previousIndexes = selectedIndexesRef.current
+      const nextIndexes = event.payload
 
-      if (previousIndexes.length > 0 && event.payload.length === 0) {
+      if (previousIndexes.length > 0 && nextIndexes.length === 0) {
         const historyIds = previousIndexes
           .sort((a, b) => a - b)
           .map(index => String(clipboardHistoryRef.current[index].historyId))
@@ -36,15 +39,25 @@ export default function FlowLauncherQuickPasteTestPage() {
             separator: '\n',
             prefixSeparator: false,
             closeAfter: false,
+          }).finally(() => {
+            if (isDisposed) {
+              return
+            }
+
+            selectedIndexesRef.current = []
+            setSelectedIndexes([])
           })
+
+          return
         }
       }
 
-      selectedIndexesRef.current = event.payload
-      setSelectedIndexes(event.payload)
+      selectedIndexesRef.current = nextIndexes
+      setSelectedIndexes(nextIndexes)
     })
 
     return () => {
+      isDisposed = true
       unlisten.then(stopListening => stopListening())
     }
   }, [])
@@ -77,13 +90,14 @@ export default function FlowLauncherQuickPasteTestPage() {
           const imageSrc = clipboard.imagePathFullRes
             ? convertFileSrc(clipboard.imagePathFullRes)
             : clipboard.imageDataUrl
+          const isSelected = selectedIndexes.includes(index)
 
           return (
             <div
               className={`flow-launcher-result-item ${
                 clipboard.isImage && imageSrc ? 'flow-launcher-result-item-image' : ''
-              }`}
-              data-keyboard-selected={selectedIndexes.includes(index)}
+              } ${isSelected ? 'flow-launcher-result-item--selected' : ''}`}
+              data-keyboard-selected={isSelected ? 'true' : 'false'}
               key={clipboard.historyId}
             >
               <div className="flow-launcher-result-content">
