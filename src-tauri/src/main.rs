@@ -157,12 +157,12 @@ fn apply_quickpaste_windows_backdrop(window: &tauri::Window, is_dark: bool) -> R
   const DWMWA_WINDOW_CORNER_PREFERENCE: u32 = 33;
   const DWMWA_SYSTEMBACKDROP_TYPE: u32 = 38;
   const DWMWCP_ROUND: u32 = 2;
-  const DWMSBT_DISABLE: u32 = 1;
+  const DWMSBT_TRANSIENTWINDOW: u32 = 3;
 
   let hwnd = window.hwnd().map_err(|e| e.to_string())?;
   let immersive_dark_mode = if is_dark { 1u32 } else { 0u32 };
   let corner_preference = DWMWCP_ROUND;
-  let backdrop_type = DWMSBT_DISABLE;
+  let backdrop_type = DWMSBT_TRANSIENTWINDOW;
   let accent_tint = if is_dark {
     0xAA111111u32
   } else {
@@ -1497,7 +1497,7 @@ async fn open_quickpaste_window(
     let monitor_bottom = monitor_top + monitor_size.height as i32;
     let window_width_physical = (window_width * scale_factor).round() as i32;
     let window_height_physical = (window_height * scale_factor).round() as i32;
-    let cursor_inset = (12.0 * scale_factor).round() as i32;
+    let cursor_inset = (24.0 * scale_factor).round() as i32;
     let max_window_x = (monitor_right - window_width_physical).max(monitor_left);
     let max_window_y = (monitor_bottom - window_height_physical).max(monitor_top);
     let preferred_window_x = cursor_x - cursor_inset;

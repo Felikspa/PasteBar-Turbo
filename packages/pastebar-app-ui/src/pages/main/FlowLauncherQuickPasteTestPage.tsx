@@ -184,6 +184,15 @@ export default function FlowLauncherQuickPasteTestPage() {
     invoke('set_quickpaste_search_active', { isActive: false })
   }
 
+  const handleSearchKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key !== 'Enter') {
+      return
+    }
+
+    event.preventDefault()
+    searchInputRef.current?.blur()
+  }
+
   const handleResultMouseDown = (index: number) => {
     isMouseSelectingRef.current = true
     updateSelectedIndexes([index])
@@ -206,6 +215,7 @@ export default function FlowLauncherQuickPasteTestPage() {
           onBlur={handleSearchBlur}
           onChange={handleSearchChange}
           onFocus={handleSearchFocus}
+          onKeyDown={handleSearchKeyDown}
           placeholder="在此处输入以搜索"
           ref={searchInputRef}
           type="search"
