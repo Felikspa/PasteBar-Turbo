@@ -759,7 +759,7 @@ fn release_quickpaste_alt_key(_key: KeybdKey, app_handle: &tauri::AppHandle) -> 
     }
   }
 
-  BlockInput::Block
+  BlockInput::DontBlock
 }
 
 #[cfg(target_os = "windows")]
@@ -1391,7 +1391,7 @@ async fn open_quickpaste_window(
   }
 
   let window_width = 440.0;
-  let window_height = 760.0;
+  let window_height = 720.0;
   let _ = app_settings;
   let main_window = app_handle.get_window("main").unwrap();
   let is_main_window_visible = main_window.is_visible().unwrap();
@@ -1437,62 +1437,73 @@ async fn open_quickpaste_window(
     }
   };
 
-  // Get all monitors
   let monitors = quickpaste_window
     .available_monitors()
     .map_err(|e| e.to_string())?;
 
-  // Calculate global screen size
-  let mut global_width = 0;
-  let mut global_height = 0;
-  let mut scale_factor = 1.0;
+  #[cfg(target_os = "windows")]
+  {
+    let cursor_monitor = monitors
+      .iter()
+      .find(|monitor| {
+        let monitor_position = monitor.position();
+        let monitor_size = monitor.size();
+        let monitor_left = monitor_position.x;
+        let monitor_top = monitor_position.y;
+        let monitor_right = monitor_left + monitor_size.width as i32;
+        let monitor_bottom = monitor_top + monitor_size.height as i32;
 
-  for monitor in &monitors {
-    scale_factor = monitor.scale_factor(); // Use the scale factor of the primary monitor
-    println!("Monitor scale factor: {}", scale_factor);
-    let monitor_size = monitor.size();
+        cursor_x >= monitor_left
+          && cursor_x < monitor_right
+          && cursor_y >= monitor_top
+          && cursor_y < monitor_bottom
+      })
+      .ok_or_else(|| "Failed to find monitor containing Quick Paste cursor".to_string())?;
 
-    println!(
-      "Monitor size: {}x{}",
-      monitor_size.width, monitor_size.height
-    );
+    let monitor_position = cursor_monitor.position();
+    let monitor_size = cursor_monitor.size();
+    let scale_factor = cursor_monitor.scale_factor();
+    let monitor_left = monitor_position.x;
+    let monitor_top = monitor_position.y;
+    let monitor_right = monitor_left + monitor_size.width as i32;
+    let monitor_bottom = monitor_top + monitor_size.height as i32;
+    let window_width_physical = (window_width * scale_factor).round() as i32;
+    let window_height_physical = (window_height * scale_factor).round() as i32;
+    let margin = (50.0 * scale_factor).round() as i32;
+    let max_window_x = (monitor_right - window_width_physical).max(monitor_left);
+    let max_window_y = (monitor_bottom - window_height_physical).max(monitor_top);
+    let preferred_window_x = if cursor_x + window_width_physical + margin > monitor_right {
+      cursor_x - window_width_physical - margin
+    } else {
+      cursor_x + margin
+    };
+    let preferred_window_y = if cursor_y + window_height_physical > monitor_bottom {
+      cursor_y - window_height_physical - margin
+    } else {
+      cursor_y - margin
+    };
+    let window_x = preferred_window_x.clamp(monitor_left, max_window_x);
+    let window_y = preferred_window_y.clamp(monitor_top, max_window_y);
 
-    let actual_width = (monitor_size.width as f64 / scale_factor).round() as i32;
-    let actual_height = (monitor_size.height as f64 / scale_factor).round() as i32;
-
-    global_width += actual_width;
-    global_height = global_height.max(actual_height);
+    quickpaste_window
+      .set_position(tauri::PhysicalPosition {
+        x: window_x,
+        y: window_y,
+      })
+      .map_err(|e| e.to_string())?;
   }
 
   #[cfg(target_os = "macos")]
-  let cursor_x_scale = (cursor_x as f64).round() as i32;
-  #[cfg(target_os = "macos")]
-  let cursor_y_scale = (cursor_y as f64).round() as i32;
-
-  #[cfg(target_os = "windows")]
-  let cursor_x_scale = (cursor_x as f64 / scale_factor).round() as i32;
-  #[cfg(target_os = "windows")]
-  let cursor_y_scale = (cursor_y as f64 / scale_factor).round() as i32;
-
-  // Calculate the window position in logical coordinates
-  let window_x = if cursor_x_scale + window_width as i32 + 50 > global_width {
-    cursor_x_scale - window_width as i32 - 50 // Place to the left if not enough space on the right
-  } else {
-    cursor_x_scale + 50
-  };
-
-  let window_y = if cursor_y_scale + window_height as i32 > global_height {
-    cursor_y_scale - window_height as i32 - 50
-  } else {
-    cursor_y_scale - 50
-  };
-
-  quickpaste_window
-    .set_position(tauri::LogicalPosition {
-      x: window_x,
-      y: window_y,
-    })
-    .map_err(|e| e.to_string())?;
+  {
+    let cursor_x_scale = (cursor_x as f64).round() as i32;
+    let cursor_y_scale = (cursor_y as f64).round() as i32;
+    quickpaste_window
+      .set_position(tauri::LogicalPosition {
+        x: cursor_x_scale + 50,
+        y: cursor_y_scale - 50,
+      })
+      .map_err(|e| e.to_string())?;
+  }
 
   {
     let app_handle_clone = app_handle.clone();
