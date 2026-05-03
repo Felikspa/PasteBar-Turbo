@@ -20,7 +20,7 @@ import { useDebounce } from '~/hooks/use-debounce'
 
 import { clipboardHistoryStoreAtom } from '~/store/clipboardHistoryStore'
 
-export default function FlowLauncherQuickPasteTestPage() {
+export default function QuickPastePage() {
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedIndexes, setSelectedIndexes] = useState<number[]>([])
   const searchInputRef = useRef<HTMLInputElement>(null)
@@ -190,7 +190,9 @@ export default function FlowLauncherQuickPasteTestPage() {
     }
 
     event.preventDefault()
+    void invoke('set_quickpaste_search_active', { isActive: false })
     searchInputRef.current?.blur()
+    void invoke('restore_quickpaste_previous_focus')
   }
 
   const handleResultMouseDown = (index: number) => {

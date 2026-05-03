@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-import FlowLauncherQuickPasteTestPage from './pages/main/FlowLauncherQuickPasteTestPage'
+import QuickPastePage from './pages/main/QuickPastePage'
 
 function QuickPasteApp() {
   useEffect(() => {
@@ -22,7 +22,7 @@ function QuickPasteApp() {
     }
   }, [])
 
-  return <FlowLauncherQuickPasteTestPage />
+  return <QuickPastePage />
 }
 
 export default QuickPasteApp

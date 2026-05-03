@@ -55,7 +55,6 @@ use crate::services::utils::{apply_global_templates, ensure_url_or_email_prefix}
 use commands::backup_restore_commands;
 use commands::clipboard_commands;
 use commands::collections_commands;
-use commands::download_update;
 use commands::format_converter_commands;
 use commands::history_commands;
 use commands::items_commands;
@@ -588,6 +587,16 @@ fn set_quickpaste_search_active(is_active: bool) {
   *QUICKPASTE_SEARCH_ACTIVE
     .lock()
     .expect("Failed to lock quickpaste search state") = is_active;
+}
+
+#[tauri::command]
+fn restore_quickpaste_previous_focus() {
+  *QUICKPASTE_SEARCH_ACTIVE
+    .lock()
+    .expect("Failed to lock quickpaste search state") = false;
+
+  #[cfg(target_os = "windows")]
+  restore_quickpaste_previous_foreground_window();
 }
 
 #[cfg(target_os = "windows")]
@@ -2243,7 +2252,6 @@ async fn main() {
       collections_commands::update_collection_by_id,
       collections_commands::select_collection_by_id,
       collections_commands::update_moved_clips_in_collection,
-      download_update::download_and_execute,
       history_commands::get_clipboard_history,
       history_commands::get_clipboard_history_pinned,
       history_commands::get_clipboard_history_by_id,
@@ -2305,6 +2313,7 @@ async fn main() {
       quickpaste_paste_many,
       close_quickpaste_restore_focus,
       set_quickpaste_search_active,
+      restore_quickpaste_previous_focus,
       set_icon
     ])
     .plugin(clipboard::init())
