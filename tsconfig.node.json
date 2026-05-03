@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "allowSyntheticDefaultImports": true
+  },
+  "include": [
+    "vite.config.mts",
+    "packages/pastebar-ui/src/lib/i18n-vite-loaded/loader.ts"
+  ]
+}

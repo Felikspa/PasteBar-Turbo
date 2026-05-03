@@ -1,0 +1,14 @@
+pub(crate) mod backup_restore_commands;
+pub(crate) mod clipboard_commands;
+pub(crate) mod collections_commands;
+pub(crate) mod download_update;
+pub(crate) mod format_converter_commands;
+pub(crate) mod history_commands;
+pub(crate) mod items_commands;
+pub(crate) mod link_metadata_commands;
+pub(crate) mod request_commands;
+pub(crate) mod security_commands;
+pub(crate) mod shell_commands;
+pub(crate) mod tabs_commands;
+pub(crate) mod translations_commands;
+pub(crate) mod user_settings_command;

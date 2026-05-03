@@ -1,0 +1,112 @@
+{
+  "build": {
+    "beforeBuildCommand": "cd ./packages/pastebar-app-ui && npm run build",
+    "distDir": "../packages/pastebar-app-ui/dist-ui",
+    "beforeDevCommand": "cd packages/pastebar-app-ui && npm run dev",
+    "devPath": "http://localhost:4422/",
+    "withGlobalTauri": false
+  },
+  "package": {
+    "productName": "PasteBar",
+    "version": "../package.json"
+  },
+  "tauri": {
+    "systemTray": {
+      "iconPath": "icons/tray128x128.png",
+      "iconAsTemplate": true
+    },
+    "allowlist": {
+      "window": {
+        "all": true
+      },
+      "shell": {
+        "open": true
+      },
+      "dialog": {
+        "all": true
+      },
+      "http": {
+        "all": true,
+        "request": true,
+        "scope": [
+          "http://localhost:8788/api/user/*",
+          "http://localhost:8788/api/error-report",
+          "https://contact.pastebar.app/api/error-report"
+        ]
+      },
+      "protocol": {
+        "asset": true,
+        "assetScope": ["**"]
+      },
+      "clipboard": {
+        "all": true
+      },
+      "globalShortcut": {
+        "all": true
+      },
+      "all": true,
+      "path": {
+        "all": true
+      }
+    },
+    "bundle": {
+      "active": true,
+      "category": "Productivity",
+      "copyright": "",
+      "deb": {
+        "depends": []
+      },
+      "externalBin": [],
+      "icon": [
+        "icons/32x32.png",
+        "icons/128x128.png",
+        "icons/128x128@2x.png",
+        "icons/icon.icns",
+        "icons/icon.ico"
+      ],
+      "identifier": "app.anothervision.pasteBar",
+      "longDescription": "",
+      "macOS": {
+        "entitlements": null,
+        "exceptionDomain": "",
+        "frameworks": [],
+        "providerShortName": null,
+        "signingIdentity": null
+      },
+      "resources": [],
+      "shortDescription": "",
+      "targets": ["appimage", "nsis", "app", "dmg", "updater"],
+      "windows": {
+        "nsis": {
+          "installerIcon": "./icons/icon.ico"
+        },
+        "webviewInstallMode": {
+          "type": "embedBootstrapper"
+        }
+      }
+    },
+    "security": {
+      "csp": {
+        "default-src": "'self' customprotocol: asset: pastebar.app *.pastebar.app pastebar.ru *.pastebar.ru",
+        "connect-src": "ipc: https://ipc.localhost asset: https://*.pastebar.app https://*.pastebar.ru tauri://localhost https://tauri.localhost",
+        "frame-src": "'self' https://*.pastebar.app https://*.youtube.com https://*.youtube-nocookie.com https://*.x.com https://*.twitter.com https://*.instagram.com",
+        "img-src": "'self' asset: https://asset.localhost blob: data: *",
+        "img-srcset": "'self' asset: https://asset.localhost blob: data:",
+        "media-src": "'self' asset: https://asset.localhost blob: data: *",
+        "style-src": "'unsafe-inline' 'self' asset: https://asset.localhost",
+        "script-src": "'self' 'wasm-unsafe-eval' asset: https://*.pastebar.app https://*.x.com https://*.twitter.com https://*.instagram.com"
+      }
+    },
+    "updater": {
+      "active": true,
+      "endpoints": [
+        "https://updater.pastebar.app/check/{{target}}/{{arch}}/{{current_version}}"
+      ],
+      "windows": {
+        "installMode": "passive"
+      },
+      "dialog": false,
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDk3RjEzQzA5RDMyRTg0OTEKUldTUmhDN1RDVHp4bHhHN3AwMVU5SVFIZ3VCT0l3aGRTUkRsOXUzdkREalU5MHMyOElTdU5EMTMK1"
+    }
+  }
+}
