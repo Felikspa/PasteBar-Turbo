@@ -1,66 +1,161 @@
-import { UIEvent, useEffect, useRef, useState } from 'react'
+import {
+  ChangeEvent,
+  UIEvent,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import { listen } from '@tauri-apps/api/event'
 import { convertFileSrc, invoke } from '@tauri-apps/api/tauri'
+import { appWindow } from '@tauri-apps/api/window'
 import { useAtomValue } from 'jotai'
 
-import { useInfiniteClipboardHistory } from '~/hooks/queries/use-history-items'
+import {
+  useFindClipboardHistory,
+  useInfiniteClipboardHistory,
+} from '~/hooks/queries/use-history-items'
+import { useDebounce } from '~/hooks/use-debounce'
 
 import { clipboardHistoryStoreAtom } from '~/store/clipboardHistoryStore'
 
 export default function FlowLauncherQuickPasteTestPage() {
+  const [searchTerm, setSearchTerm] = useState('')
   const [selectedIndexes, setSelectedIndexes] = useState<number[]>([])
+  const searchInputRef = useRef<HTMLInputElement>(null)
+  const isMouseSelectingRef = useRef(false)
   const selectedIndexesRef = useRef<number[]>([])
+  const debouncedSearchTerm = useDebounce(searchTerm, 300)
+  const hasSearch = debouncedSearchTerm.length > 1
 
   const { fetchNextClipboardHistoryPage, isClipboardHistoryFetchingNextPage } =
     useInfiniteClipboardHistory()
 
-  const { clipboardHistory } = useAtomValue(clipboardHistoryStoreAtom)
-  const clipboardHistoryRef = useRef(clipboardHistory)
+  const { clipboardHistory, foundClipboardHistory } = useAtomValue(
+    clipboardHistoryStoreAtom
+  )
+  const visibleClipboardHistory = hasSearch ? foundClipboardHistory : clipboardHistory
+  const visibleClipboardHistoryRef = useRef(visibleClipboardHistory)
+
+  const { refetchFindClipboardHistory } = useFindClipboardHistory({
+    query: debouncedSearchTerm,
+    filters: [],
+    codeFilters: [],
+    appFilters: [],
+  })
+
+  const selectedIndexSet = useMemo(() => new Set(selectedIndexes), [selectedIndexes])
+
+  const updateSelectedIndexes = useCallback((nextIndexes: number[]) => {
+    const previousIndexes = selectedIndexesRef.current
+
+    if (previousIndexes.length > 0 && nextIndexes.length === 0) {
+      const historyIds = previousIndexes
+        .sort((a, b) => a - b)
+        .map(index => visibleClipboardHistoryRef.current[index])
+        .filter(Boolean)
+        .map(clipboard => String(clipboard.historyId))
+
+      if (historyIds.length > 0) {
+        invoke('quickpaste_paste_many', {
+          historyIds,
+          separator: '\n',
+          prefixSeparator: false,
+          closeAfter: false,
+        }).finally(() => {
+          selectedIndexesRef.current = []
+          setSelectedIndexes([])
+        })
+
+        return
+      }
+    }
+
+    selectedIndexesRef.current = nextIndexes
+    setSelectedIndexes(nextIndexes)
+  }, [])
+
+  const toggleSearchFocus = useCallback(async () => {
+    if (document.activeElement === searchInputRef.current) {
+      searchInputRef.current?.blur()
+      invoke('set_quickpaste_search_active', { isActive: false })
+      return
+    }
+
+    await appWindow.setFocus()
+    searchInputRef.current?.focus()
+  }, [])
 
   useEffect(() => {
-    clipboardHistoryRef.current = clipboardHistory
-  }, [clipboardHistory])
+    visibleClipboardHistoryRef.current = visibleClipboardHistory
+  }, [visibleClipboardHistory])
+
+  useEffect(() => {
+    if (hasSearch) {
+      refetchFindClipboardHistory()
+    }
+  }, [hasSearch, debouncedSearchTerm, refetchFindClipboardHistory])
+
+  useEffect(() => {
+    const unlisten = listen('quickpaste-show-search', () => {
+      toggleSearchFocus()
+    })
+
+    return () => {
+      unlisten.then(stopListening => stopListening())
+    }
+  }, [toggleSearchFocus])
+
+  useEffect(() => {
+    const handleHotkey = (event: KeyboardEvent) => {
+      const key = event.key.toLowerCase()
+      if ((event.ctrlKey || event.metaKey) && (key === 'f' || key === 'k')) {
+        event.preventDefault()
+        toggleSearchFocus()
+      }
+    }
+
+    window.addEventListener('keydown', handleHotkey)
+
+    return () => {
+      window.removeEventListener('keydown', handleHotkey)
+    }
+  }, [toggleSearchFocus])
+
+  useEffect(() => {
+    const handleMouseUp = () => {
+      if (!isMouseSelectingRef.current) {
+        return
+      }
+
+      isMouseSelectingRef.current = false
+      updateSelectedIndexes([])
+    }
+
+    window.addEventListener('mouseup', handleMouseUp)
+
+    return () => {
+      window.removeEventListener('mouseup', handleMouseUp)
+    }
+  }, [updateSelectedIndexes])
 
   useEffect(() => {
     let isDisposed = false
 
     const unlisten = listen<number[]>('quickpaste-selected-results', event => {
-      const previousIndexes = selectedIndexesRef.current
-      const nextIndexes = event.payload
-
-      if (previousIndexes.length > 0 && nextIndexes.length === 0) {
-        const historyIds = previousIndexes
-          .sort((a, b) => a - b)
-          .map(index => String(clipboardHistoryRef.current[index].historyId))
-
-        if (historyIds.length > 0) {
-          invoke('quickpaste_paste_many', {
-            historyIds,
-            separator: '\n',
-            prefixSeparator: false,
-            closeAfter: false,
-          }).finally(() => {
-            if (isDisposed) {
-              return
-            }
-
-            selectedIndexesRef.current = []
-            setSelectedIndexes([])
-          })
-
-          return
-        }
+      if (isDisposed) {
+        return
       }
 
-      selectedIndexesRef.current = nextIndexes
-      setSelectedIndexes(nextIndexes)
+      updateSelectedIndexes(event.payload)
     })
 
     return () => {
       isDisposed = true
       unlisten.then(stopListening => stopListening())
     }
-  }, [])
+  }, [updateSelectedIndexes])
 
   const loadMoreOnScroll = (event: UIEvent<HTMLElement>) => {
     if (isClipboardHistoryFetchingNextPage) {
@@ -73,24 +168,59 @@ export default function FlowLauncherQuickPasteTestPage() {
     }
   }
 
+  const focusSearchInput = () => {
+    searchInputRef.current?.focus()
+  }
+
+  const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(event.target.value)
+  }
+
+  const handleSearchFocus = () => {
+    invoke('set_quickpaste_search_active', { isActive: true })
+  }
+
+  const handleSearchBlur = () => {
+    invoke('set_quickpaste_search_active', { isActive: false })
+  }
+
+  const handleResultMouseDown = (index: number) => {
+    isMouseSelectingRef.current = true
+    updateSelectedIndexes([index])
+  }
+
+  const handleResultMouseUp = () => {
+    if (!isMouseSelectingRef.current) {
+      return
+    }
+
+    isMouseSelectingRef.current = false
+    updateSelectedIndexes([])
+  }
+
   return (
     <main className="flow-launcher-shell">
-      <section className="flow-launcher-query-area">
+      <section className="flow-launcher-query-area" onMouseDown={focusSearchInput}>
         <input
           className="flow-launcher-query-input"
+          onBlur={handleSearchBlur}
+          onChange={handleSearchChange}
+          onFocus={handleSearchFocus}
           placeholder="在此处输入以搜索"
+          ref={searchInputRef}
           type="search"
+          value={searchTerm}
         />
       </section>
 
       <div className="flow-launcher-separator" />
 
       <section className="flow-launcher-results" onScroll={loadMoreOnScroll}>
-        {clipboardHistory.map((clipboard, index) => {
+        {visibleClipboardHistory.map((clipboard, index) => {
           const imageSrc = clipboard.imagePathFullRes
             ? convertFileSrc(clipboard.imagePathFullRes)
             : clipboard.imageDataUrl
-          const isSelected = selectedIndexes.includes(index)
+          const isSelected = selectedIndexSet.has(index)
 
           return (
             <div
@@ -99,6 +229,8 @@ export default function FlowLauncherQuickPasteTestPage() {
               } ${isSelected ? 'flow-launcher-result-item--selected' : ''}`}
               data-keyboard-selected={isSelected ? 'true' : 'false'}
               key={clipboard.historyId}
+              onMouseDown={() => handleResultMouseDown(index)}
+              onMouseUp={handleResultMouseUp}
             >
               <div className="flow-launcher-result-content">
                 {clipboard.isImage && imageSrc ? (

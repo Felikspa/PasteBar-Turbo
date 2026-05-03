@@ -164,9 +164,9 @@ fn apply_quickpaste_windows_backdrop(window: &tauri::Window, is_dark: bool) -> R
   let corner_preference = DWMWCP_ROUND;
   let backdrop_type = DWMSBT_DISABLE;
   let accent_tint = if is_dark {
-    0xBB111111u32
+    0xAA111111u32
   } else {
-    0xBBF9F9F9u32
+    0xAAF9F9F9u32
   };
 
   unsafe {
@@ -637,8 +637,19 @@ fn is_quickpaste_alt_pressed() -> bool {
 
 #[cfg(target_os = "windows")]
 fn should_capture_quickpaste_key(app_handle: &tauri::AppHandle) -> bool {
-  !has_quickpaste_modifier_pressed()
-    && !is_quickpaste_search_active()
+  !has_quickpaste_modifier_pressed() && is_quickpaste_visible(app_handle)
+}
+
+#[cfg(target_os = "windows")]
+fn should_capture_quickpaste_search_chord(app_handle: &tauri::AppHandle) -> bool {
+  (LControlKey.is_pressed()
+    || RControlKey.is_pressed()
+    || LSuper.is_pressed()
+    || RSuper.is_pressed())
+    && !LAltKey.is_pressed()
+    && !RAltKey.is_pressed()
+    && !LShiftKey.is_pressed()
+    && !RShiftKey.is_pressed()
     && is_quickpaste_visible(app_handle)
 }
 
@@ -866,6 +877,21 @@ fn register_quickpaste_alt_key_hooks(key: KeybdKey, app_handle: &tauri::AppHandl
 }
 
 #[cfg(target_os = "windows")]
+fn register_quickpaste_search_chord_hook(key: KeybdKey, app_handle: &tauri::AppHandle) {
+  let app_handle_for_search = app_handle.clone();
+  key.blockable_bind(move || {
+    if should_capture_quickpaste_search_chord(&app_handle_for_search) {
+      app_handle_for_search
+        .emit_all("quickpaste-show-search", ())
+        .expect("Failed to emit quickpaste search chord");
+      return BlockInput::Block;
+    }
+
+    BlockInput::DontBlock
+  });
+}
+
+#[cfg(target_os = "windows")]
 fn register_quickpaste_keyboard_hooks(app_handle: tauri::AppHandle) {
   let app_handle_for_text_keys = app_handle.clone();
   KeybdKey::bind_all(move |key| {
@@ -888,6 +914,8 @@ fn register_quickpaste_keyboard_hooks(app_handle: tauri::AppHandle) {
 
     BlockInput::DontBlock
   });
+  register_quickpaste_search_chord_hook(FKey, &app_handle);
+  register_quickpaste_search_chord_hook(KKey, &app_handle);
 
   register_quickpaste_number_key_hooks(Numrow1Key, &app_handle);
   register_quickpaste_number_key_hooks(Numrow2Key, &app_handle);
@@ -1390,7 +1418,7 @@ async fn open_quickpaste_window(
       .expect("Failed to lock quickpaste previous foreground window") = previous_foreground_window;
   }
 
-  let window_width = 440.0;
+  let window_width = 410.0;
   let window_height = 720.0;
   let _ = app_settings;
   let main_window = app_handle.get_window("main").unwrap();
@@ -1469,19 +1497,11 @@ async fn open_quickpaste_window(
     let monitor_bottom = monitor_top + monitor_size.height as i32;
     let window_width_physical = (window_width * scale_factor).round() as i32;
     let window_height_physical = (window_height * scale_factor).round() as i32;
-    let margin = (50.0 * scale_factor).round() as i32;
+    let cursor_inset = (12.0 * scale_factor).round() as i32;
     let max_window_x = (monitor_right - window_width_physical).max(monitor_left);
     let max_window_y = (monitor_bottom - window_height_physical).max(monitor_top);
-    let preferred_window_x = if cursor_x + window_width_physical + margin > monitor_right {
-      cursor_x - window_width_physical - margin
-    } else {
-      cursor_x + margin
-    };
-    let preferred_window_y = if cursor_y + window_height_physical > monitor_bottom {
-      cursor_y - window_height_physical - margin
-    } else {
-      cursor_y - margin
-    };
+    let preferred_window_x = cursor_x - cursor_inset;
+    let preferred_window_y = cursor_y - window_height_physical + cursor_inset;
     let window_x = preferred_window_x.clamp(monitor_left, max_window_x);
     let window_y = preferred_window_y.clamp(monitor_top, max_window_y);
 
