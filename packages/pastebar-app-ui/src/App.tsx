@@ -242,7 +242,7 @@ function App() {
           copyPasteSequenceIsReversOrder:
             settings.copyPasteSequenceIsReversOrder?.valueBool,
           pasteSequenceEachSeparator:
-            settings.pasteSequenceEachSeparator?.valueText ?? '\n',
+            settings.pasteSequenceEachSeparator?.valueText || '\n',
           isAutoCloseOnCopyPaste: settings.isAutoCloseOnCopyPaste?.valueBool,
           isAutoPreviewLinkCardsEnabled:
             settings.isAutoPreviewLinkCardsEnabled?.valueBool,

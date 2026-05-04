@@ -145,10 +145,12 @@ input[type='number']::-webkit-inner-spin-button {
   overscroll-behavior: contain;
   padding: 0 0 8px;
   background: transparent;
+  scrollbar-color: transparent transparent;
+  scrollbar-width: thin;
 }
 
 .flow-launcher-results::-webkit-scrollbar {
-  width: 5px;
+  width: 6px;
 }
 
 .flow-launcher-results::-webkit-scrollbar-track {
@@ -156,8 +158,16 @@ input[type='number']::-webkit-inner-spin-button {
 }
 
 .flow-launcher-results::-webkit-scrollbar-thumb {
-  background: rgb(255 255 255 / 50%);
-  border-radius: 2px;
+  background: transparent;
+  border-radius: 0;
+}
+
+.flow-launcher-results--scrolling {
+  scrollbar-color: #6c6c6c transparent;
+}
+
+.flow-launcher-results--scrolling::-webkit-scrollbar-thumb {
+  background: #6c6c6c;
 }
 
 .flow-launcher-result-item {

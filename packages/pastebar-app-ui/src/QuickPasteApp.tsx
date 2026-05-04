@@ -16,6 +16,8 @@ function QuickPasteApp() {
   const [appearance, setAppearance] = useState<QuickPasteAppearance>(
     defaultQuickPasteAppearance
   )
+  const [pasteSequenceEachSeparator, setPasteSequenceEachSeparator] =
+    useState('\n')
 
   useEffect(() => {
     document.documentElement.classList.add('quick-paste-document')
@@ -41,6 +43,7 @@ function QuickPasteApp() {
       const maskStrength = settings.quickPasteMaskStrength?.valueInt ?? 72
       const fontSize = settings.quickPasteFontSize?.valueInt ?? 16
       const highlightColor = settings.quickPasteHighlightColor?.valueText ?? '#2563eb'
+      const separator = settings.pasteSequenceEachSeparator?.valueText || '\n'
       const nextAppearance = {
         acrylicColorDepth: colorDepth,
         acrylicOpacity: opacity,
@@ -51,6 +54,7 @@ function QuickPasteApp() {
       }
 
       setAppearance(nextAppearance)
+      setPasteSequenceEachSeparator(separator)
 
       document.documentElement.style.setProperty(
         '--quick-paste-acrylic-opacity',
@@ -81,7 +85,12 @@ function QuickPasteApp() {
     }
   }, [])
 
-  return <QuickPastePage appearance={appearance} />
+  return (
+    <QuickPastePage
+      appearance={appearance}
+      pasteSequenceEachSeparator={pasteSequenceEachSeparator}
+    />
+  )
 }
 
 export default QuickPasteApp

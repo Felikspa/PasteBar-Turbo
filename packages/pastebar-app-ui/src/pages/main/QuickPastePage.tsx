@@ -32,13 +32,20 @@ export type QuickPasteAppearance = {
 
 type QuickPastePageProps = {
   appearance?: QuickPasteAppearance
+  pasteSequenceEachSeparator?: string
 }
 
-export default function QuickPastePage({ appearance }: QuickPastePageProps) {
+export default function QuickPastePage({
+  appearance,
+  pasteSequenceEachSeparator: loadedPasteSequenceEachSeparator,
+}: QuickPastePageProps) {
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedIndexes, setSelectedIndexes] = useState<number[]>([])
+  const [isResultsScrolling, setIsResultsScrolling] = useState(false)
   const searchInputRef = useRef<HTMLInputElement>(null)
   const isMouseSelectingRef = useRef(false)
+  const pasteQueueRef = useRef<Promise<unknown>>(Promise.resolve())
+  const scrollIdleTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const selectedIndexesRef = useRef<number[]>([])
   const debouncedSearchTerm = useDebounce(searchTerm, 300)
   const hasSearch = debouncedSearchTerm.length > 1
@@ -58,6 +65,8 @@ export default function QuickPastePage({ appearance }: QuickPastePageProps) {
     quickPasteMaskStrength,
     pasteSequenceEachSeparator,
   } = useAtomValue(settingsStoreAtom)
+  const activePasteSequenceEachSeparator =
+    loadedPasteSequenceEachSeparator || pasteSequenceEachSeparator || '\n'
   const activeAppearance = appearance ?? {
     acrylicColorDepth: quickPasteAcrylicColorDepth,
     acrylicOpacity: quickPasteAcrylicOpacity,
@@ -89,15 +98,19 @@ export default function QuickPastePage({ appearance }: QuickPastePageProps) {
         .map(clipboard => String(clipboard.historyId))
 
       if (historyIds.length > 0) {
-        invoke('quickpaste_paste_many', {
-          historyIds,
-          separator: pasteSequenceEachSeparator,
-          prefixSeparator: false,
-          closeAfter: false,
-        }).finally(() => {
-          selectedIndexesRef.current = []
-          setSelectedIndexes([])
-        })
+        selectedIndexesRef.current = []
+        setSelectedIndexes([])
+
+        pasteQueueRef.current = pasteQueueRef.current
+          .catch(() => undefined)
+          .then(() =>
+            invoke('quickpaste_paste_many', {
+              historyIds,
+              separator: activePasteSequenceEachSeparator,
+              prefixSeparator: false,
+              closeAfter: false,
+            })
+          )
 
         return
       }
@@ -105,7 +118,7 @@ export default function QuickPastePage({ appearance }: QuickPastePageProps) {
 
     selectedIndexesRef.current = nextIndexes
     setSelectedIndexes(nextIndexes)
-  }, [pasteSequenceEachSeparator])
+  }, [activePasteSequenceEachSeparator])
 
   const toggleSearchFocus = useCallback(async () => {
     if (document.activeElement === searchInputRef.current) {
@@ -189,6 +202,15 @@ export default function QuickPastePage({ appearance }: QuickPastePageProps) {
   }, [updateSelectedIndexes])
 
   const loadMoreOnScroll = (event: UIEvent<HTMLElement>) => {
+    setIsResultsScrolling(true)
+    if (scrollIdleTimerRef.current) {
+      clearTimeout(scrollIdleTimerRef.current)
+    }
+    scrollIdleTimerRef.current = setTimeout(() => {
+      setIsResultsScrolling(false)
+      scrollIdleTimerRef.current = null
+    }, 650)
+
     if (isClipboardHistoryFetchingNextPage) {
       return
     }
@@ -198,6 +220,14 @@ export default function QuickPastePage({ appearance }: QuickPastePageProps) {
       fetchNextClipboardHistoryPage()
     }
   }
+
+  useEffect(() => {
+    return () => {
+      if (scrollIdleTimerRef.current) {
+        clearTimeout(scrollIdleTimerRef.current)
+      }
+    }
+  }, [])
 
   const focusSearchInput = () => {
     searchInputRef.current?.focus()
@@ -288,7 +318,12 @@ export default function QuickPastePage({ appearance }: QuickPastePageProps) {
 
       <div className="flow-launcher-separator" />
 
-      <section className="flow-launcher-results" onScroll={loadMoreOnScroll}>
+      <section
+        className={`flow-launcher-results ${
+          isResultsScrolling ? 'flow-launcher-results--scrolling' : ''
+        }`}
+        onScroll={loadMoreOnScroll}
+      >
         {visibleClipboardHistory.map((clipboard, index) => {
           const imageSrc = clipboard.imagePathFullRes
             ? convertFileSrc(clipboard.imagePathFullRes)

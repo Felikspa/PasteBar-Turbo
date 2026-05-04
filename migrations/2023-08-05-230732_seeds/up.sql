@@ -58,7 +58,7 @@ INSERT INTO settings (name, value_text, value_bool, value_int)
 VALUES ('copyPasteSequenceIsReversOrder', NULL, true, NULL);
 
 INSERT INTO settings (name, value_text, value_bool, value_int)
-VALUES ('pasteSequenceEachSeparator', '', NULL, NULL);
+VALUES ('pasteSequenceEachSeparator', char(10), NULL, NULL);
 
 INSERT INTO settings (name, value_text, value_bool, value_int)
 VALUES ('historyDetectLanguagesEnabledList', 'javascript,css,jsx,json,rust,html,markdown', NULL, NULL);
