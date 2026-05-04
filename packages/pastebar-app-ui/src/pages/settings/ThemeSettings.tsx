@@ -417,144 +417,157 @@ export default function ThemeSettings() {
                           onCheckedChange={setQuickPasteMaskEnabled}
                         />
                       </div>
-                      <div className="flex items-start justify-between gap-4">
-                        <div>
-                          <Text className="text-[15px] font-semibold">
-                            {t('Light mask color', { ns: 'settings2' })}
-                          </Text>
-                          <Text className="text-xs text-muted-foreground">
-                            {t('Set the Quick Paste mask color in light mode.', {
-                              ns: 'settings2',
-                            })}
-                          </Text>
-                        </div>
-                        <div className="flex w-44 items-center gap-2">
+                      {quickPasteMaskEnabled && (
+                        <>
+                          <div className="flex items-start justify-between gap-4">
+                            <div>
+                              <Text className="text-[15px] font-semibold">
+                                {t('Light mask color', { ns: 'settings2' })}
+                              </Text>
+                              <Text className="text-xs text-muted-foreground">
+                                {t('Set the Quick Paste mask color in light mode.', {
+                                  ns: 'settings2',
+                                })}
+                              </Text>
+                            </div>
+                            <div className="flex w-44 items-center gap-2">
+                              <input
+                                aria-label={t('Light mask color', { ns: 'settings2' })}
+                                className="h-8 w-8 shrink-0 rounded border border-slate-300 bg-transparent p-0 dark:border-slate-700"
+                                type="color"
+                                value={quickPasteLightMaskColor}
+                                onChange={e =>
+                                  setQuickPasteLightMaskColor(e.target.value)
+                                }
+                              />
+                              <InputField
+                                className="text-md"
+                                small
+                                value={quickPasteLightMaskColor}
+                                onChange={e =>
+                                  setQuickPasteLightMaskColor(e.target.value)
+                                }
+                              />
+                            </div>
+                          </div>
+                          <div className="flex items-start justify-between gap-4">
+                            <div>
+                              <Text className="text-[15px] font-semibold">
+                                {t('Light mask strength', { ns: 'settings2' })}
+                              </Text>
+                              <Text className="text-xs text-muted-foreground">
+                                {t(
+                                  'Adjust the Quick Paste mask strength in light mode.',
+                                  {
+                                    ns: 'settings2',
+                                  }
+                                )}
+                              </Text>
+                            </div>
+                            <InputField
+                              className="text-md !w-20"
+                              type="number"
+                              step="1"
+                              min={0}
+                              max={100}
+                              small
+                              value={quickPasteLightMaskStrength}
+                              onBlur={() =>
+                                setQuickPasteLightMaskStrength(
+                                  quickPasteLightMaskStrength
+                                )
+                              }
+                              onChange={e => {
+                                const value = e.target.value
+                                setQuickPasteLightMaskStrength(
+                                  value === '' ? 72 : parseInt(value, 10)
+                                )
+                              }}
+                            />
+                          </div>
                           <input
-                            aria-label={t('Light mask color', { ns: 'settings2' })}
-                            className="h-8 w-8 shrink-0 rounded border border-slate-300 bg-transparent p-0 dark:border-slate-700"
-                            type="color"
-                            value={quickPasteLightMaskColor}
-                            onChange={e => setQuickPasteLightMaskColor(e.target.value)}
+                            aria-label={t('Light mask strength', { ns: 'settings2' })}
+                            className="w-full accent-sky-600"
+                            type="range"
+                            min={0}
+                            max={100}
+                            step={1}
+                            value={quickPasteLightMaskStrength}
+                            onChange={e =>
+                              setQuickPasteLightMaskStrength(parseInt(e.target.value, 10))
+                            }
                           />
-                          <InputField
-                            className="text-md"
-                            small
-                            value={quickPasteLightMaskColor}
-                            onChange={e => setQuickPasteLightMaskColor(e.target.value)}
-                          />
-                        </div>
-                      </div>
-                      <div className="flex items-start justify-between gap-4">
-                        <div>
-                          <Text className="text-[15px] font-semibold">
-                            {t('Light mask strength', { ns: 'settings2' })}
-                          </Text>
-                          <Text className="text-xs text-muted-foreground">
-                            {t('Adjust the Quick Paste mask strength in light mode.', {
-                              ns: 'settings2',
-                            })}
-                          </Text>
-                        </div>
-                        <InputField
-                          className="text-md !w-20"
-                          type="number"
-                          step="1"
-                          min={0}
-                          max={100}
-                          small
-                          value={quickPasteLightMaskStrength}
-                          onBlur={() =>
-                            setQuickPasteLightMaskStrength(quickPasteLightMaskStrength)
-                          }
-                          onChange={e => {
-                            const value = e.target.value
-                            setQuickPasteLightMaskStrength(
-                              value === '' ? 72 : parseInt(value, 10)
-                            )
-                          }}
-                        />
-                      </div>
-                      <input
-                        aria-label={t('Light mask strength', { ns: 'settings2' })}
-                        className="w-full accent-sky-600"
-                        type="range"
-                        min={0}
-                        max={100}
-                        step={1}
-                        value={quickPasteLightMaskStrength}
-                        onChange={e =>
-                          setQuickPasteLightMaskStrength(parseInt(e.target.value, 10))
-                        }
-                      />
-                      <div className="flex items-start justify-between gap-4">
-                        <div>
-                          <Text className="text-[15px] font-semibold">
-                            {t('Dark mask color', { ns: 'settings2' })}
-                          </Text>
-                          <Text className="text-xs text-muted-foreground">
-                            {t('Set the Quick Paste mask color in dark mode.', {
-                              ns: 'settings2',
-                            })}
-                          </Text>
-                        </div>
-                        <div className="flex w-44 items-center gap-2">
+                          <div className="flex items-start justify-between gap-4">
+                            <div>
+                              <Text className="text-[15px] font-semibold">
+                                {t('Dark mask color', { ns: 'settings2' })}
+                              </Text>
+                              <Text className="text-xs text-muted-foreground">
+                                {t('Set the Quick Paste mask color in dark mode.', {
+                                  ns: 'settings2',
+                                })}
+                              </Text>
+                            </div>
+                            <div className="flex w-44 items-center gap-2">
+                              <input
+                                aria-label={t('Dark mask color', { ns: 'settings2' })}
+                                className="h-8 w-8 shrink-0 rounded border border-slate-300 bg-transparent p-0 dark:border-slate-700"
+                                type="color"
+                                value={quickPasteDarkMaskColor}
+                                onChange={e => setQuickPasteDarkMaskColor(e.target.value)}
+                              />
+                              <InputField
+                                className="text-md"
+                                small
+                                value={quickPasteDarkMaskColor}
+                                onChange={e => setQuickPasteDarkMaskColor(e.target.value)}
+                              />
+                            </div>
+                          </div>
+                          <div className="flex items-start justify-between gap-4">
+                            <div>
+                              <Text className="text-[15px] font-semibold">
+                                {t('Dark mask strength', { ns: 'settings2' })}
+                              </Text>
+                              <Text className="text-xs text-muted-foreground">
+                                {t('Adjust the Quick Paste mask strength in dark mode.', {
+                                  ns: 'settings2',
+                                })}
+                              </Text>
+                            </div>
+                            <InputField
+                              className="text-md !w-20"
+                              type="number"
+                              step="1"
+                              min={0}
+                              max={100}
+                              small
+                              value={quickPasteDarkMaskStrength}
+                              onBlur={() =>
+                                setQuickPasteDarkMaskStrength(quickPasteDarkMaskStrength)
+                              }
+                              onChange={e => {
+                                const value = e.target.value
+                                setQuickPasteDarkMaskStrength(
+                                  value === '' ? 72 : parseInt(value, 10)
+                                )
+                              }}
+                            />
+                          </div>
                           <input
-                            aria-label={t('Dark mask color', { ns: 'settings2' })}
-                            className="h-8 w-8 shrink-0 rounded border border-slate-300 bg-transparent p-0 dark:border-slate-700"
-                            type="color"
-                            value={quickPasteDarkMaskColor}
-                            onChange={e => setQuickPasteDarkMaskColor(e.target.value)}
+                            aria-label={t('Dark mask strength', { ns: 'settings2' })}
+                            className="w-full accent-sky-600"
+                            type="range"
+                            min={0}
+                            max={100}
+                            step={1}
+                            value={quickPasteDarkMaskStrength}
+                            onChange={e =>
+                              setQuickPasteDarkMaskStrength(parseInt(e.target.value, 10))
+                            }
                           />
-                          <InputField
-                            className="text-md"
-                            small
-                            value={quickPasteDarkMaskColor}
-                            onChange={e => setQuickPasteDarkMaskColor(e.target.value)}
-                          />
-                        </div>
-                      </div>
-                      <div className="flex items-start justify-between gap-4">
-                        <div>
-                          <Text className="text-[15px] font-semibold">
-                            {t('Dark mask strength', { ns: 'settings2' })}
-                          </Text>
-                          <Text className="text-xs text-muted-foreground">
-                            {t('Adjust the Quick Paste mask strength in dark mode.', {
-                              ns: 'settings2',
-                            })}
-                          </Text>
-                        </div>
-                        <InputField
-                          className="text-md !w-20"
-                          type="number"
-                          step="1"
-                          min={0}
-                          max={100}
-                          small
-                          value={quickPasteDarkMaskStrength}
-                          onBlur={() =>
-                            setQuickPasteDarkMaskStrength(quickPasteDarkMaskStrength)
-                          }
-                          onChange={e => {
-                            const value = e.target.value
-                            setQuickPasteDarkMaskStrength(
-                              value === '' ? 72 : parseInt(value, 10)
-                            )
-                          }}
-                        />
-                      </div>
-                      <input
-                        aria-label={t('Dark mask strength', { ns: 'settings2' })}
-                        className="w-full accent-sky-600"
-                        type="range"
-                        min={0}
-                        max={100}
-                        step={1}
-                        value={quickPasteDarkMaskStrength}
-                        onChange={e =>
-                          setQuickPasteDarkMaskStrength(parseInt(e.target.value, 10))
-                        }
-                      />
+                        </>
+                      )}
                       <div className="space-y-2">
                         <Text className="text-[15px] font-semibold">
                           {t('Material preview', { ns: 'settings2' })}
@@ -785,7 +798,7 @@ export default function ThemeSettings() {
                       !item.checked && 'opacity-80 bg-gray-100 dark:bg-gray-900/80'
                     }`}
                   >
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-1">
+                    <CardHeader className="flex flex-row items-center justify-between space-y-0 p-4">
                       <CardTitle className="animate-in fade-in text-md font-medium w-full">
                         {item.title}
                       </CardTitle>
