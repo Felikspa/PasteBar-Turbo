@@ -753,9 +753,13 @@ function App() {
   return (
     <>
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-        <div className={`bg-transparent ${uiStore.isMacOSX ? 'p-0' : 'p-1'} rounded-md`}>
+        <div
+          className={`flowpaster-main-frame bg-transparent ${
+            uiStore.isMacOSX ? 'p-0' : 'p-1'
+          } rounded-md`}
+        >
           <div
-            className={`border overflow-hidden ${
+            className={`flowpaster-main-window border overflow-hidden ${
               uiStore.isMacOSX
                 ? 'rounded-lg shadow-window _border-gray-100 _dark:border-gray-800'
                 : 'rounded-md _shadow-window _border-gray-300 _dark:border-gray-800 '

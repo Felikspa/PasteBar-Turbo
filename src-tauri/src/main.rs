@@ -82,6 +82,7 @@ use fns::debounce;
 use inputbot::{BlockInput, KeybdKey, KeybdKey::*, MouseButton};
 use once_cell::sync::Lazy;
 use std::ptr;
+use std::sync::atomic::{AtomicUsize, Ordering};
 use std::sync::Arc;
 use std::sync::Mutex;
 use std::time::Duration as StdDuration;
@@ -99,8 +100,9 @@ static QUICKPASTE_HELD_NUMBER_INDEXES: Lazy<Mutex<Vec<usize>>> =
 static QUICKPASTE_SELECTED_NUMBER_INDEXES: Lazy<Mutex<Vec<usize>>> =
   Lazy::new(|| Mutex::new(Vec::new()));
 #[cfg(target_os = "windows")]
-static QUICKPASTE_CONTINUOUS_TEXT_PASTE_READY: Lazy<Mutex<bool>> =
-  Lazy::new(|| Mutex::new(false));
+static QUICKPASTE_CONTINUOUS_TEXT_PASTE_READY: Lazy<Mutex<bool>> = Lazy::new(|| Mutex::new(false));
+#[cfg(target_os = "windows")]
+static QUICKPASTE_INTERNAL_PASTE_KEYPRESS_DEPTH: AtomicUsize = AtomicUsize::new(0);
 
 const QUICKPASTE_FOCUS_RESTORE_DELAY_MS: u64 = 35;
 const QUICKPASTE_SEQUENCE_PASTE_DELAY_MS: u64 = 25;
@@ -145,12 +147,8 @@ fn quickpaste_windows_material_from_settings(
   QuickPasteWindowsMaterial {
     acrylic_opacity: quickpaste_setting_int(settings_map, "quickPasteAcrylicOpacity", 86)
       .clamp(25, 100),
-    acrylic_color_depth: quickpaste_setting_int(
-      settings_map,
-      "quickPasteAcrylicColorDepth",
-      100,
-    )
-    .clamp(0, 100),
+    acrylic_color_depth: quickpaste_setting_int(settings_map, "quickPasteAcrylicColorDepth", 100)
+      .clamp(0, 100),
   }
 }
 
@@ -616,6 +614,8 @@ async fn quickpaste_paste_many(
 
   sleep(StdDuration::from_millis(QUICKPASTE_FOCUS_RESTORE_DELAY_MS)).await;
 
+  #[cfg(target_os = "windows")]
+  begin_quickpaste_internal_paste_keypress();
   let paste_result = clipboard_commands::copy_paste_history_items(
     app_handle.clone(),
     history_ids,
@@ -623,6 +623,8 @@ async fn quickpaste_paste_many(
     effective_prefix_separator,
     QUICKPASTE_SEQUENCE_PASTE_DELAY_MS,
   );
+  #[cfg(target_os = "windows")]
+  end_quickpaste_internal_paste_keypress();
 
   if paste_result != "ok" {
     #[cfg(target_os = "windows")]
@@ -770,6 +772,21 @@ fn is_quickpaste_continuous_text_paste_ready() -> bool {
 #[cfg(target_os = "windows")]
 fn reset_quickpaste_continuous_text_paste() {
   set_quickpaste_continuous_text_paste_ready(false);
+}
+
+#[cfg(target_os = "windows")]
+fn begin_quickpaste_internal_paste_keypress() {
+  QUICKPASTE_INTERNAL_PASTE_KEYPRESS_DEPTH.fetch_add(1, Ordering::SeqCst);
+}
+
+#[cfg(target_os = "windows")]
+fn end_quickpaste_internal_paste_keypress() {
+  QUICKPASTE_INTERNAL_PASTE_KEYPRESS_DEPTH.fetch_sub(1, Ordering::SeqCst);
+}
+
+#[cfg(target_os = "windows")]
+fn is_quickpaste_internal_paste_keypress() -> bool {
+  QUICKPASTE_INTERNAL_PASTE_KEYPRESS_DEPTH.load(Ordering::SeqCst) > 0
 }
 
 fn quickpaste_history_ids_are_text(history_ids: &[String]) -> Result<bool, String> {
@@ -968,6 +985,10 @@ fn is_quickpaste_continuity_break_key(key: KeybdKey) -> bool {
 
 #[cfg(target_os = "windows")]
 fn close_quickpaste_on_text_key(key: KeybdKey, app_handle: &tauri::AppHandle) {
+  if is_quickpaste_internal_paste_keypress() {
+    return;
+  }
+
   let should_handle_key = is_quickpaste_continuity_break_key(key)
     && !has_quickpaste_modifier_pressed()
     && !is_quickpaste_search_active()

@@ -66,7 +66,7 @@ export default function QuickPastePage({
     pasteSequenceEachSeparator,
   } = useAtomValue(settingsStoreAtom)
   const activePasteSequenceEachSeparator =
-    loadedPasteSequenceEachSeparator || pasteSequenceEachSeparator || '\n'
+    loadedPasteSequenceEachSeparator ?? pasteSequenceEachSeparator
   const activeAppearance = appearance ?? {
     acrylicColorDepth: quickPasteAcrylicColorDepth,
     acrylicOpacity: quickPasteAcrylicOpacity,

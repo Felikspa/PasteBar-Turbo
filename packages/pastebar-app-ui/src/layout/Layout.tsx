@@ -652,7 +652,7 @@ export const Component = () => {
 
   return (
     <div
-      className={`flex flex-col bg-white dark:bg-[#0f0f11] overflow-hidden ${
+      className={`flowpaster-main-content flex flex-col bg-white dark:bg-[#0f0f11] overflow-hidden ${
         !hasSplitViewLayout && !isSimplifiedLayout ? 'rounded-b-md' : ''
       } mt-[40px] ${isSimplifiedLayout ? 'simplified-layout' : ''} ${
         isSwapPanels ? 'swaped-panels' : ''

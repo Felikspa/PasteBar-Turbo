@@ -969,34 +969,34 @@ body .simplified-layout .history-box {
   }
 
   .dark {
-    --background: 217 18.41% 8.5%;
-    --foreground: 213 31% 91%;
+    --background: 0 0% 4%;
+    --foreground: 60 100% 99%;
 
-    --muted: 223 47% 11%;
-    --muted-foreground: 215.4 16.3% 56.9%;
+    --muted: 0 0% 9%;
+    --muted-foreground: 0 0% 42%;
 
-    --accent: 216 34% 17%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 0 0% 16%;
+    --accent-foreground: 60 100% 99%;
 
-    --popover: 224 71% 4%;
-    --popover-foreground: 215 20.2% 65.1%;
+    --popover: 0 0% 5%;
+    --popover-foreground: 60 100% 99%;
 
-    --border: 216 34% 17%;
-    --input: 216 34% 17%;
+    --border: 0 0% 27%;
+    --input: 0 0% 27%;
 
-    --card: 213.91, 16.28%, 9.46%;
-    --card-foreground: 213 31% 91%;
+    --card: 0 0% 7%;
+    --card-foreground: 60 100% 99%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 1.2%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 60 100% 99%;
 
-    --secondary: 222.2 47.4% 11.2%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 0 0% 13%;
+    --secondary-foreground: 60 100% 99%;
 
     --destructive: 0 63% 31%;
     --destructive-foreground: 210 40% 98%;
 
-    --ring: 216 34% 17%;
+    --ring: 0 0% 42%;
 
     --radius: 0.5rem;
   }
@@ -1059,6 +1059,93 @@ code {
     @apply ml-[-41px];
     content: counter(step);
   }
+}
+
+.flowpaster-main-frame {
+  --flowpaster-surface: #070707;
+  --flowpaster-panel: #101010;
+  --flowpaster-panel-soft: #151515;
+  --flowpaster-panel-hover: #1b1b1b;
+  --flowpaster-border: #444444;
+  --flowpaster-text: #fffff8;
+  --flowpaster-muted: #6c6c6c;
+  --flowpaster-highlight: #2563eb;
+  color: var(--flowpaster-text);
+  font-family: 'Segoe UI', 'Microsoft YaHei UI', 'Microsoft YaHei', system-ui, sans-serif;
+}
+
+.flowpaster-main-window {
+  background: var(--flowpaster-surface) !important;
+  border-color: var(--flowpaster-border) !important;
+  box-shadow: 0 18px 40px rgb(0 0 0 / 32%);
+}
+
+.flowpaster-main-window [role='menubar'] {
+  background: var(--flowpaster-surface) !important;
+  border-color: var(--flowpaster-border) !important;
+  color: var(--flowpaster-text);
+}
+
+.flowpaster-main-content {
+  background: var(--flowpaster-surface) !important;
+  color: var(--flowpaster-text);
+}
+
+.flowpaster-main-content :where(.bg-white, .dark\:bg-\[\#0f0f11\]) {
+  background-color: var(--flowpaster-surface) !important;
+}
+
+.flowpaster-main-content :where(.bg-gray-50, .bg-gray-100, .bg-slate-50, .bg-slate-100, .bg-grey-0, .bg-grey-5, .bg-grey-10),
+.dark .flowpaster-main-content :where(.dark\:bg-gray-700, .dark\:bg-gray-800, .dark\:bg-slate-700, .dark\:bg-slate-800, .dark\:bg-slate-900) {
+  background-color: var(--flowpaster-panel) !important;
+}
+
+.flowpaster-main-content :where(.border, .border-t, .border-b, .border-l, .border-r),
+.flowpaster-main-window :where(.border, .border-t, .border-b, .border-l, .border-r) {
+  border-color: var(--flowpaster-border) !important;
+}
+
+.flowpaster-main-content :where(input, textarea, select) {
+  background-color: var(--flowpaster-panel) !important;
+  border-color: var(--flowpaster-border) !important;
+  color: var(--flowpaster-text) !important;
+}
+
+.flowpaster-main-content :where(input, textarea)::placeholder {
+  color: var(--flowpaster-muted) !important;
+}
+
+.flowpaster-main-content :where(.text-slate-400, .text-slate-500, .text-gray-400, .text-gray-500, .text-grey-40, .text-grey-50),
+.flowpaster-main-window :where(.text-slate-400, .text-slate-500, .text-gray-400, .text-gray-500, .text-grey-40, .text-grey-50) {
+  color: var(--flowpaster-muted) !important;
+}
+
+.flowpaster-main-content :where(.text-slate-700, .text-slate-800, .text-slate-900, .text-gray-700, .text-gray-800, .text-gray-900, .text-grey-80, .text-grey-90),
+.dark .flowpaster-main-content :where(.dark\:text-slate-200, .dark\:text-slate-300, .dark\:text-gray-200, .dark\:text-gray-300) {
+  color: var(--flowpaster-text) !important;
+}
+
+.flowpaster-main-content :where(button, [role='button'], [role='tab'], [role='menuitem']) {
+  border-radius: 4px;
+}
+
+.flowpaster-main-content :where(button:hover, [role='button']:hover, [role='tab']:hover, [role='menuitem']:hover) {
+  background-color: var(--flowpaster-panel-hover) !important;
+}
+
+.flowpaster-main-content :where([aria-selected='true'], [data-state='active']) {
+  background-color: var(--flowpaster-highlight) !important;
+  color: var(--flowpaster-text) !important;
+}
+
+.flowpaster-main-content .simplebar-scrollbar:before,
+.flowpaster-main-window .simplebar-scrollbar:before {
+  background-color: var(--flowpaster-muted) !important;
+}
+
+.flowpaster-main-content ::-webkit-scrollbar-thumb,
+.flowpaster-main-window ::-webkit-scrollbar-thumb {
+  background-color: var(--flowpaster-muted) !important;
 }
 
 /** Prevent scrolling on body when modal is open */
