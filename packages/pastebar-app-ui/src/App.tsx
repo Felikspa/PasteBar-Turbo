@@ -760,12 +760,12 @@ function App() {
     <>
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
         <div
-          className={`flowpaster-main-frame bg-transparent ${
+          className={`bg-transparent text-foreground ${
             uiStore.isMacOSX ? 'p-0' : 'p-1'
           } rounded-md`}
         >
           <div
-            className={`flowpaster-main-window border overflow-hidden ${
+            className={`border border-border bg-background overflow-hidden ${
               uiStore.isMacOSX
                 ? 'rounded-lg shadow-window _border-gray-100 _dark:border-gray-800'
                 : 'rounded-md _shadow-window _border-gray-300 _dark:border-gray-800 '
