@@ -77,6 +77,14 @@ Set the border color for pressed Quick Paste items.: 设置快速粘贴项目按
 Configure the behavior of the Quick Paste window when selecting items: 配置选择项目时快速粘贴窗口的行为
 Acrylic opacity: 亚克力不透明度
 Adjust the transparency of the Quick Paste acrylic surface.: 调整快速粘贴亚克力窗口表面的不透明度。
+Acrylic color depth: 亚克力颜色深度
+Adjust the tint depth of the Quick Paste acrylic.: 调整快速粘贴亚克力的颜色深度。
+Enable mask overlay: 启用颜色遮罩
+Show the Quick Paste page color mask.: 显示快速粘贴页面颜色遮罩。
+Mask strength: 遮罩强度
+Adjust the page overlay strength behind the list.: 调整列表背后的页面遮罩强度。
+Material preview: 材质预览
+Reset Quick Paste style: 重置快速粘贴样式
 Configure how the system tray icon responds to mouse clicks: 配置系统托盘图标如何响应鼠标点击
 Disable left-click context menu: 禁用左键点击时的上下文菜单
 Hide tray icon: 隐藏托盘图标

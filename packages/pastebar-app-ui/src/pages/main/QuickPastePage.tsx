@@ -26,6 +26,7 @@ export type QuickPasteAppearance = {
   acrylicOpacity: number
   fontSize: number
   highlightColor: string
+  maskEnabled: boolean
   maskStrength: number
 }
 
@@ -53,13 +54,16 @@ export default function QuickPastePage({ appearance }: QuickPastePageProps) {
     quickPasteAcrylicColorDepth,
     quickPasteAcrylicOpacity,
     quickPasteFontSize,
+    quickPasteMaskEnabled,
     quickPasteMaskStrength,
+    pasteSequenceEachSeparator,
   } = useAtomValue(settingsStoreAtom)
   const activeAppearance = appearance ?? {
     acrylicColorDepth: quickPasteAcrylicColorDepth,
     acrylicOpacity: quickPasteAcrylicOpacity,
     fontSize: quickPasteFontSize,
     highlightColor: quickPasteHighlightColor,
+    maskEnabled: quickPasteMaskEnabled,
     maskStrength: quickPasteMaskStrength,
   }
   const visibleClipboardHistory = hasSearch ? foundClipboardHistory : clipboardHistory
@@ -87,7 +91,7 @@ export default function QuickPastePage({ appearance }: QuickPastePageProps) {
       if (historyIds.length > 0) {
         invoke('quickpaste_paste_many', {
           historyIds,
-          separator: '\n',
+          separator: pasteSequenceEachSeparator,
           prefixSeparator: false,
           closeAfter: false,
         }).finally(() => {
@@ -101,7 +105,7 @@ export default function QuickPastePage({ appearance }: QuickPastePageProps) {
 
     selectedIndexesRef.current = nextIndexes
     setSelectedIndexes(nextIndexes)
-  }, [])
+  }, [pasteSequenceEachSeparator])
 
   const toggleSearchFocus = useCallback(async () => {
     if (document.activeElement === searchInputRef.current) {
@@ -210,7 +214,7 @@ export default function QuickPastePage({ appearance }: QuickPastePageProps) {
     )
     document.documentElement.style.setProperty(
       '--quick-paste-mask-strength',
-      String(activeAppearance.maskStrength)
+      activeAppearance.maskEnabled ? String(activeAppearance.maskStrength) : '0'
     )
     document.documentElement.style.setProperty(
       '--quick-paste-acrylic-opacity',
@@ -225,6 +229,7 @@ export default function QuickPastePage({ appearance }: QuickPastePageProps) {
     activeAppearance.acrylicOpacity,
     activeAppearance.fontSize,
     activeAppearance.highlightColor,
+    activeAppearance.maskEnabled,
     activeAppearance.maskStrength,
   ])
 

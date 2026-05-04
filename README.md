@@ -1,164 +1,67 @@
-# 📋 PasteBar - Limitless, Free Clipboard Manager for Mac and Windows
+# FlowPaster
 
-[![Version](https://img.shields.io/badge/version-0.7.0-blue.svg)](https://github.com/PasteBar/PasteBarApp/releases)
-[![License](https://img.shields.io/badge/license-Open%20Source-green.svg)](LICENSE)
-[![Platform](https://img.shields.io/badge/platform-macOS%20|%20Windows-lightgrey.svg)](https://www.pastebar.app)
+FlowPaster 是一个基于 PasteBar 二次开发的 Windows 剪贴板与 Quick Paste 工具。项目在组件体验上参考 Flow Launcher，重点重写了 Quick Paste 页面与交互逻辑，让快速粘贴窗口在视觉、操作方式和系统融合度上更贴近原生 Windows。
 
-<a href="https://www.pastebar.app"><img width="1144" alt="Screenshot 2024-07-25 at 14 11 09" src="https://github.com/user-attachments/assets/ce861bdb-d7df-4944-885e-12d37177e56d"></a>
+核心目标是让常用剪贴板内容可以用最少按键完成调用、选择和粘贴，同时保留足够高的主题、热键与界面自定义能力。
 
-![pastebar-screenshot-main-split](https://github.com/user-attachments/assets/c3024edb-67ae-4e92-a02f-a0957fb153a2)
+## 新特性
 
-## 🚀 Effortless Management Of Everything You Copy and Paste
+- 全新 Quick Paste 页面：重新设计快速粘贴窗口布局、视觉风格和键盘交互。
+- 原生 Windows 风格：默认采用半透明亚克力材质，窗口观感更贴近系统弹层。
+- 数字键快速粘贴：按下 `Alt+V` 唤出 Quick Paste 后，直接按数字键即可粘贴对应项目。
+- 多项目一次粘贴：连续或同时输入多个数字，例如 `123`，会一次性粘贴第 1、2、3 项，并在项目之间插入分隔符。
+- 文本与图片剪贴板：Quick Paste 同时支持文字内容和图片内容。
+- 搜索模式：按 `/` 进入搜索状态，焦点自动转移到搜索栏；搜索完成后按 `Enter` 退回列表操作状态。
+- 高度可配置：重构设置页，扩展主题设置、热键设置等原先缺失或较弱的配置项。
+- 独立设置菜单：主题设置与热键设置抽离为独立页面，配置入口更清晰。
 
-**Free and open-source clipboard manager** that revolutionizes your copy-paste workflow with unlimited history, advanced organization, and powerful features.
+## Quick Paste 上手
 
-## What's New in Version 0.7.0
+1. 使用 `Alt+V` 唤出 Quick Paste。
+2. 查看列表中每个剪贴板项目右侧的数字编号。
+3. 按下对应数字键，例如 `1`，立即粘贴第 1 项。
+4. 需要一次粘贴多个项目时，同时按下多个数字键，例如 `123`，按列表顺序粘贴第 1、2、3 项。
+5. 多项目粘贴时，项目之间会自动应用已配置的分隔符。
 
-### 🔐 **Protected Collections**
-Secure your sensitive clips with PIN-protected collections. Keep confidential information safe while maintaining quick access.
+## 搜索与粘贴
 
-### 📁 **Custom Data Location**
-Choose where to store your clipboard data. Perfect for syncing across devices using cloud storage or shared network drives.
+在 Quick Paste 窗口中按 `/` 可进入搜索状态：
 
-### ⌨️ **Advanced Keyboard Shortcuts**
-Navigate faster with enhanced keyboard shortcuts and support for up to 3-key combinations. Streamline your workflow without touching the mouse.
+1. 按 `/` 后，焦点会进入搜索栏。
+2. 输入关键词筛选剪贴板项目。
+3. 按 `Enter` 退出搜索输入，焦点回到列表操作状态。
+4. 继续使用数字键选择并粘贴搜索结果。
 
-### 💾 **Backup & Restore**
-Export and import your entire clipboard database and images. Never lose your valuable clips again with comprehensive backup functionality.
+这个流程适合在大量剪贴板记录中快速定位目标内容，并继续保持纯键盘操作。
 
-### 🎯 **Special Copy/Paste Operations for Different Workflows**
-Over 30 specialized copy/paste operations for different workflows. Enhanced clipboard operations with context-aware options.
+## 自定义设置
 
-### 🔍 **Smart Auto-Search**
-Quick Paste window automatically activates search when you start typing. Find what you need instantly without manual search activation.
+设置项大幅扩展与重新整理：
 
-### 📖 **[View Complete Release Notes](WHATS_NEW_0.7.0.md)** 
-See all features, improvements, and bug fixes in detail.
+- 主题设置：设置外观、透明度、视觉风格等显示相关选项。
+- 热键设置：自定义全部应用内快捷键及全局热键。
+- 粘贴行为设置：配置多项目粘贴时的分隔符与粘贴方式。
 
----
+## 开发
 
-## Core Features
-
-### 📋 **Clipboard Management**
-- Unlimited clipboard history
-- Searchable copy history with notes support
-- Custom saved clips with organization
-- Quick-access paste menus
-- Collections, tabs, and boards for organization
-
-### 🛡️ **Privacy & Security**
-- Local storage for privacy and security
-- Lock screen and passcode protection
-- Custom data location support
-- PIN-protected collections
-
-### 💡 **Smart Features**
-- Support for text, images, files, links, and code snippets
-- Automatic programming language detection and syntax highlighting
-- Markdown support in notes and descriptions
-- Instant pasting from system menu
-- Dark theme support
-- Global search functionality across all content
-
-### ⚙️ **Customization**
-- Customizable clips and menus
-- Support for forms and global templates
-- Advanced hotkey configuration (up to 3-key combinations)
-- Customizable tray icon behavior
-- Auto-trim spaces and text length filtering
-
-### 🌍 **Cross-Platform & Integration**
-- Available for macOS and Windows (Apple Silicon M1, Intel, AMD, and ARM)
-- Web scraping and API data extraction capabilities
-- Backup and restore functionality
-- Multi-language support (**English**, **Chinese**, **Ukrainian**, **Spanish**, **Italian**, **French**, **Russian**, **Turkish**, **German**)
-
-Help to improve translations quality: https://github.com/PasteBar/pastebar-localization
-
----
-
-## 🌐 Download & Links
-
-**Official Website:** https://www.pastebar.app
-
----
-
-## 🛠️ Technology Stack
-
-- **Rust**: Tauri Apps, Diesel ORM, Reqwest, Anyhow, Serde, Tokio
-- **JavaScript**: TypeScript, React 19, React Query, Vite, TailwindCSS, Signals, Jotai, Zustand
-
----
-
-## 🚀 Quick Start
-
-### Build Local PasteBar App
+安装依赖：
 
 ```bash
 npm install
+```
+
+启动开发环境：
+
+```bash
+npm run dev
+```
+
+构建应用：
+
+```bash
 npm run build
 ```
 
-### Development Setup
+## 项目来源
 
-After cloning the repository:
-
-```bash
-# Install Diesel CLI for database management
-cargo install diesel_cli --no-default-features --features sqlite
-
-# Install dependencies and start development server
-npm install
-npm start
-```
-
----
-
-## 🤝 Contributing
-
-We welcome contributions! PasteBar is open-source and community-driven. Feel free to:
-- Report bugs
-- Suggest new features  
-- Help with translations
-- Improve documentation
-
----
-
-## 📄 License
-
-Open Source, Creative Commons Attribution-NonCommercial (CC BY-NC) License with Limited Commercial Use Exception. See the [LICENSE](LICENSE) file for details.
-
----
-
-## 👍 UI Videos 
-
-<details open>
-<summary>Copy/Paste and Create Clip</summary>
-
-https://github.com/user-attachments/assets/33a1cd09-0865-42d0-acc8-14376d8e675b
-
-</details>
-
-<details>
-<summary>Create Board Clip with Image</summary>
-
-https://github.com/user-attachments/assets/a95bebec-d7a8-499a-9a43-69e2fba7a04a
-
-</details>
-
-<details>
-<summary>Panel and board resize</summary>
-
-https://github.com/user-attachments/assets/d336498d-f430-43b8-9e87-a4fedeee1fae
-
-</details>
-
-<div align="center">
-
-For more videos and information visit https://www.pastebar.app
-
-<br/>
-
-**⭐ Star this repository if you find PasteBar useful!**
-
-</div>
+本项目主要基于 PasteBar 进行二次开发，并在 Quick Paste 的交互和组件体验上参考了 Flow Launcher。当前开发重点集中在 Windows 平台下的快速粘贴体验、键盘优先操作和更细粒度的个性化配置。

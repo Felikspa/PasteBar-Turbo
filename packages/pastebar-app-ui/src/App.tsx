@@ -197,9 +197,10 @@ function App() {
           appLastUpdateDate: settings.appLastUpdateDate?.valueText,
           isHideMacOSDockIcon: settings.isHideMacOSDockIcon?.valueBool,
           isTrayIconHidden: settings.isTrayIconHidden?.valueBool ?? false,
-          hotKeysShowHideMainAppWindow: settings.hotKeysShowHideMainAppWindow?.valueText,
+          hotKeysShowHideMainAppWindow:
+            settings.hotKeysShowHideMainAppWindow?.valueText ?? 'Alt+M',
           hotKeysShowHideQuickPasteWindow:
-            settings.hotKeysShowHideQuickPasteWindow?.valueText,
+            settings.hotKeysShowHideQuickPasteWindow?.valueText ?? 'Alt+V',
           appHotkeys: settings.appHotkeys?.valueText
             ? JSON.parse(settings.appHotkeys.valueText)
             : {},
@@ -241,7 +242,7 @@ function App() {
           copyPasteSequenceIsReversOrder:
             settings.copyPasteSequenceIsReversOrder?.valueBool,
           pasteSequenceEachSeparator:
-            settings.pasteSequenceEachSeparator?.valueText || '\n',
+            settings.pasteSequenceEachSeparator?.valueText ?? '\n',
           isAutoCloseOnCopyPaste: settings.isAutoCloseOnCopyPaste?.valueBool,
           isAutoPreviewLinkCardsEnabled:
             settings.isAutoPreviewLinkCardsEnabled?.valueBool,
@@ -287,6 +288,7 @@ function App() {
           quickPasteAcrylicOpacity: settings.quickPasteAcrylicOpacity?.valueInt ?? 86,
           quickPasteAcrylicColorDepth:
             settings.quickPasteAcrylicColorDepth?.valueInt ?? 100,
+          quickPasteMaskEnabled: settings.quickPasteMaskEnabled?.valueBool ?? true,
           quickPasteMaskStrength: settings.quickPasteMaskStrength?.valueInt ?? 72,
           quickPasteFontSize: settings.quickPasteFontSize?.valueInt ?? 16,
           quickPasteHighlightColor:

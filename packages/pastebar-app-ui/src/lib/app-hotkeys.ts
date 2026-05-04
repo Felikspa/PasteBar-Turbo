@@ -1,6 +1,6 @@
 export const APP_HOTKEY_DEFAULTS = {
   navHistory: ['alt+b', 'ctrl+b', 'meta+b'],
-  navMenu: ['alt+m', 'ctrl+m', 'meta+m'],
+  navMenu: ['alt+m'],
   lockApp: ['alt+l', 'ctrl+l', 'meta+l'],
   swapPanels: ['ctrl+alt+p', 'ctrl+meta+p'],
   mediaPlayPause: ['alt+p', 'ctrl+p', 'meta+p'],
@@ -11,7 +11,7 @@ export const APP_HOTKEY_DEFAULTS = {
   settingsPreferences: ['alt+u'],
   closeApp: ['ctrl+q', 'meta+q'],
   toggleSplitView: ['alt+n', 'ctrl+n', 'meta+n'],
-  showQuickPaste: ['alt+p', 'ctrl+p', 'meta+p'],
+  showQuickPaste: ['alt+v'],
   hideWindow: ['ctrl+w'],
   quickPasteSearch: ['ctrl+f', 'meta+f', 'ctrl+k', 'meta+k', '/'],
 }

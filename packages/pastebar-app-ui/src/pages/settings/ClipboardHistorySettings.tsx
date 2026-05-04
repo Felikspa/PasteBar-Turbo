@@ -819,20 +819,11 @@ export default function ClipboardHistorySettings() {
                             small
                             label={t('Separator', { ns: 'common' })}
                             value={displaySeparatorValue(
-                              pasteSequenceEachSeparator ||
-                                DEFAULT_PASTE_SEQUENCE_SEPARATOR
+                              pasteSequenceEachSeparator
                             )}
-                            onBlur={() => {
-                              if (!pasteSequenceEachSeparator) {
-                                setPasteSequenceEachSeparator(
-                                  DEFAULT_PASTE_SEQUENCE_SEPARATOR
-                                )
-                              }
-                            }}
                             onChange={e => {
                               setPasteSequenceEachSeparator(
-                                parseSeparatorValue(e.target.value) ||
-                                  DEFAULT_PASTE_SEQUENCE_SEPARATOR
+                                parseSeparatorValue(e.target.value)
                               )
                             }}
                           />

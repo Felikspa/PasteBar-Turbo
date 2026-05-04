@@ -6,6 +6,7 @@ import QuickPastePage, { QuickPasteAppearance } from './pages/main/QuickPastePag
 const defaultQuickPasteAppearance: QuickPasteAppearance = {
   acrylicColorDepth: 100,
   acrylicOpacity: 86,
+  maskEnabled: true,
   fontSize: 16,
   highlightColor: '#2563eb',
   maskStrength: 72,
@@ -36,12 +37,14 @@ function QuickPasteApp() {
       const { settings } = JSON.parse(res)
       const opacity = settings.quickPasteAcrylicOpacity?.valueInt ?? 86
       const colorDepth = settings.quickPasteAcrylicColorDepth?.valueInt ?? 100
+      const maskEnabled = settings.quickPasteMaskEnabled?.valueBool ?? true
       const maskStrength = settings.quickPasteMaskStrength?.valueInt ?? 72
       const fontSize = settings.quickPasteFontSize?.valueInt ?? 16
       const highlightColor = settings.quickPasteHighlightColor?.valueText ?? '#2563eb'
       const nextAppearance = {
         acrylicColorDepth: colorDepth,
         acrylicOpacity: opacity,
+        maskEnabled,
         fontSize,
         highlightColor,
         maskStrength,
@@ -59,7 +62,7 @@ function QuickPasteApp() {
       )
       document.documentElement.style.setProperty(
         '--quick-paste-mask-strength',
-        String(nextAppearance.maskStrength)
+        nextAppearance.maskEnabled ? String(nextAppearance.maskStrength) : '0'
       )
       document.documentElement.style.setProperty(
         '--quick-paste-font-size',

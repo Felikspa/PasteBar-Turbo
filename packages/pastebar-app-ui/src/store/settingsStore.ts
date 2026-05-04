@@ -112,6 +112,7 @@ type Settings = {
   isQuickPasteAutoClose: boolean
   quickPasteAcrylicOpacity: number
   quickPasteAcrylicColorDepth: number
+  quickPasteMaskEnabled: boolean
   quickPasteMaskStrength: number
   quickPasteFontSize: number
   quickPasteHighlightColor: string
@@ -217,6 +218,7 @@ export interface SettingsStoreState {
   setIsQuickPasteAutoClose: (isEnabled: boolean) => void
   setQuickPasteAcrylicOpacity: (opacity: number) => void
   setQuickPasteAcrylicColorDepth: (depth: number) => void
+  setQuickPasteMaskEnabled: (isEnabled: boolean) => void
   setQuickPasteMaskStrength: (strength: number) => void
   setQuickPasteFontSize: (fontSize: number) => void
   setQuickPasteHighlightColor: (color: string) => void
@@ -291,8 +293,8 @@ const initialState: SettingsStoreState & Settings = {
   isHideMacOSDockIcon: false,
   isTrayIconHidden: false,
   isNotTourCompletedOrSkipped: () => false,
-  hotKeysShowHideMainAppWindow: '',
-  hotKeysShowHideQuickPasteWindow: '',
+  hotKeysShowHideMainAppWindow: 'Alt+M',
+  hotKeysShowHideQuickPasteWindow: 'Alt+V',
   appHotkeys: {},
   autoMaskWordsList: '',
   isHistoryDetectLanguageEnabled: true,
@@ -345,6 +347,7 @@ const initialState: SettingsStoreState & Settings = {
   isQuickPasteAutoClose: true,
   quickPasteAcrylicOpacity: 86,
   quickPasteAcrylicColorDepth: 100,
+  quickPasteMaskEnabled: true,
   quickPasteMaskStrength: 72,
   quickPasteFontSize: 16,
   quickPasteHighlightColor: '#2563eb',
@@ -442,6 +445,7 @@ const initialState: SettingsStoreState & Settings = {
   setIsQuickPasteAutoClose: () => {},
   setQuickPasteAcrylicOpacity: () => {},
   setQuickPasteAcrylicColorDepth: () => {},
+  setQuickPasteMaskEnabled: () => {},
   setQuickPasteMaskStrength: () => {},
   setQuickPasteFontSize: () => {},
   setQuickPasteHighlightColor: () => {},
@@ -918,6 +922,10 @@ export const settingsStore = createStore<SettingsStoreState & Settings>()((set, 
     const normalizedDepth = Math.min(100, Math.max(0, Math.round(depth)))
     get().syncStateUpdate('quickPasteAcrylicColorDepth', normalizedDepth)
     return get().updateSetting('quickPasteAcrylicColorDepth', normalizedDepth)
+  },
+  setQuickPasteMaskEnabled: async (isEnabled: boolean) => {
+    get().syncStateUpdate('quickPasteMaskEnabled', isEnabled)
+    return get().updateSetting('quickPasteMaskEnabled', isEnabled)
   },
   setQuickPasteMaskStrength: async (strength: number) => {
     const normalizedStrength = Math.min(100, Math.max(0, Math.round(strength)))
@@ -1419,6 +1427,14 @@ export const listenToSettingsStoreEvents = listen('settings-store-sync', async e
       typeof value === 'number'
     ) {
       settingsStore.setState({ quickPasteAcrylicColorDepth: value })
+      return
+    }
+    if (
+      setting === 'quickPasteMaskEnabled' &&
+      settingsStore.getState().quickPasteMaskEnabled !== value &&
+      typeof value === 'boolean'
+    ) {
+      settingsStore.setState({ quickPasteMaskEnabled: value })
       return
     }
     if (

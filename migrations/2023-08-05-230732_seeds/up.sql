@@ -82,10 +82,10 @@ INSERT INTO settings (name, value_text, value_bool, value_int)
 VALUES ('isHideMacOSDockIcon', NULL, false, NULL);
 
 INSERT INTO settings (name, value_text, value_bool, value_int)
-VALUES ('hotKeysShowHideMainAppWindow', '', NULL, NULL);
+VALUES ('hotKeysShowHideMainAppWindow', 'Alt+M', NULL, NULL);
 
 INSERT INTO settings (name, value_text, value_bool, value_int)
-VALUES ('hotKeysShowHideQuickPasteWindow', '', NULL, NULL);
+VALUES ('hotKeysShowHideQuickPasteWindow', 'Alt+V', NULL, NULL);
 
 INSERT INTO settings (name, value_text, value_bool, value_int)
 VALUES ('isAutoFavoriteOnDoubleCopyEnabled', NULL, true, NULL);

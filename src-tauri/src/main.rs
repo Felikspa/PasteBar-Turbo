@@ -98,6 +98,9 @@ static QUICKPASTE_HELD_NUMBER_INDEXES: Lazy<Mutex<Vec<usize>>> =
 #[cfg(target_os = "windows")]
 static QUICKPASTE_SELECTED_NUMBER_INDEXES: Lazy<Mutex<Vec<usize>>> =
   Lazy::new(|| Mutex::new(Vec::new()));
+#[cfg(target_os = "windows")]
+static QUICKPASTE_CONTINUOUS_TEXT_PASTE_READY: Lazy<Mutex<bool>> =
+  Lazy::new(|| Mutex::new(false));
 
 const QUICKPASTE_FOCUS_RESTORE_DELAY_MS: u64 = 35;
 const QUICKPASTE_SEQUENCE_PASTE_DELAY_MS: u64 = 25;
@@ -546,6 +549,8 @@ async fn quickpaste_hide_paste_close(
   sleep(StdDuration::from_millis(QUICKPASTE_FOCUS_RESTORE_DELAY_MS)).await;
 
   clipboard_commands::copy_paste_history_item_internal(app_handle.clone(), history_id, 0);
+  #[cfg(target_os = "windows")]
+  reset_quickpaste_continuous_text_paste();
 
   window
     .close()
@@ -572,6 +577,8 @@ async fn quickpaste_hide_paste(
   sleep(StdDuration::from_millis(QUICKPASTE_FOCUS_RESTORE_DELAY_MS)).await;
 
   clipboard_commands::copy_paste_history_item_internal(app_handle.clone(), history_id, 0);
+  #[cfg(target_os = "windows")]
+  reset_quickpaste_continuous_text_paste();
 
   let _ = window.is_visible();
 
@@ -590,6 +597,13 @@ async fn quickpaste_paste_many(
     return Ok(());
   }
 
+  let is_text_paste = quickpaste_history_ids_are_text(&history_ids)?;
+  #[cfg(target_os = "windows")]
+  let effective_prefix_separator =
+    prefix_separator || (is_text_paste && is_quickpaste_continuous_text_paste_ready());
+  #[cfg(not(target_os = "windows"))]
+  let effective_prefix_separator = prefix_separator;
+
   let window = app_handle
     .get_window("quickpaste")
     .ok_or_else(|| "Failed to get quickpaste window".to_string())?;
@@ -606,15 +620,22 @@ async fn quickpaste_paste_many(
     app_handle.clone(),
     history_ids,
     separator,
-    prefix_separator,
+    effective_prefix_separator,
     QUICKPASTE_SEQUENCE_PASTE_DELAY_MS,
   );
 
   if paste_result != "ok" {
+    #[cfg(target_os = "windows")]
+    reset_quickpaste_continuous_text_paste();
     return Err(paste_result);
   }
 
+  #[cfg(target_os = "windows")]
+  set_quickpaste_continuous_text_paste_ready(is_text_paste);
+
   if close_after {
+    #[cfg(target_os = "windows")]
+    reset_quickpaste_continuous_text_paste();
     window
       .close()
       .map_err(|e| format!("Failed to close quickpaste window: {}", e))?;
@@ -625,6 +646,9 @@ async fn quickpaste_paste_many(
 
 #[tauri::command]
 fn close_quickpaste_restore_focus(app_handle: tauri::AppHandle) -> Result<(), String> {
+  #[cfg(target_os = "windows")]
+  reset_quickpaste_continuous_text_paste();
+
   if let Some(window) = app_handle.get_window("quickpaste") {
     window
       .close()
@@ -639,6 +663,11 @@ fn set_quickpaste_search_active(is_active: bool) {
   *QUICKPASTE_SEARCH_ACTIVE
     .lock()
     .expect("Failed to lock quickpaste search state") = is_active;
+
+  #[cfg(target_os = "windows")]
+  if is_active {
+    reset_quickpaste_continuous_text_paste();
+  }
 }
 
 #[tauri::command]
@@ -646,6 +675,9 @@ fn restore_quickpaste_previous_focus() {
   *QUICKPASTE_SEARCH_ACTIVE
     .lock()
     .expect("Failed to lock quickpaste search state") = false;
+
+  #[cfg(target_os = "windows")]
+  reset_quickpaste_continuous_text_paste();
 
   #[cfg(target_os = "windows")]
   restore_quickpaste_previous_foreground_window();
@@ -719,6 +751,42 @@ fn should_capture_quickpaste_number_key(app_handle: &tauri::AppHandle) -> bool {
   !has_quickpaste_non_alt_modifier_pressed()
     && !is_quickpaste_search_active()
     && is_quickpaste_visible(app_handle)
+}
+
+#[cfg(target_os = "windows")]
+fn set_quickpaste_continuous_text_paste_ready(is_ready: bool) {
+  *QUICKPASTE_CONTINUOUS_TEXT_PASTE_READY
+    .lock()
+    .expect("Failed to lock quickpaste continuous text paste state") = is_ready;
+}
+
+#[cfg(target_os = "windows")]
+fn is_quickpaste_continuous_text_paste_ready() -> bool {
+  *QUICKPASTE_CONTINUOUS_TEXT_PASTE_READY
+    .lock()
+    .expect("Failed to lock quickpaste continuous text paste state")
+}
+
+#[cfg(target_os = "windows")]
+fn reset_quickpaste_continuous_text_paste() {
+  set_quickpaste_continuous_text_paste_ready(false);
+}
+
+fn quickpaste_history_ids_are_text(history_ids: &[String]) -> Result<bool, String> {
+  for history_id in history_ids {
+    let history_item = history_service::get_clipboard_history_by_id(history_id)
+      .ok_or_else(|| "History item not found".to_string())?;
+
+    if history_item.is_image == Some(true) {
+      return Ok(false);
+    }
+
+    if history_item.value.is_none() {
+      return Err("History item value is missing".to_string());
+    }
+  }
+
+  Ok(true)
 }
 
 #[cfg(target_os = "windows")]
@@ -879,13 +947,38 @@ fn is_quickpaste_text_key(key: KeybdKey) -> bool {
 }
 
 #[cfg(target_os = "windows")]
+fn is_quickpaste_continuity_break_key(key: KeybdKey) -> bool {
+  is_quickpaste_text_key(key)
+    || matches!(
+      key,
+      BackspaceKey
+        | TabKey
+        | EnterKey
+        | LeftKey
+        | UpKey
+        | RightKey
+        | DownKey
+        | DeleteKey
+        | HomeKey
+        | EndKey
+        | PageUpKey
+        | PageDownKey
+    )
+}
+
+#[cfg(target_os = "windows")]
 fn close_quickpaste_on_text_key(key: KeybdKey, app_handle: &tauri::AppHandle) {
-  if is_quickpaste_text_key(key)
+  let should_handle_key = is_quickpaste_continuity_break_key(key)
     && !has_quickpaste_modifier_pressed()
     && !is_quickpaste_search_active()
-    && is_quickpaste_visible(app_handle)
-  {
-    let _ = close_quickpaste_restore_focus(app_handle.clone());
+    && is_quickpaste_visible(app_handle);
+
+  if should_handle_key {
+    reset_quickpaste_continuous_text_paste();
+
+    if is_quickpaste_text_key(key) {
+      let _ = close_quickpaste_restore_focus(app_handle.clone());
+    }
   }
 }
 
@@ -918,6 +1011,7 @@ fn is_cursor_inside_quickpaste_window(app_handle: &tauri::AppHandle) -> bool {
 #[cfg(target_os = "windows")]
 fn close_quickpaste_on_outside_click(app_handle: &tauri::AppHandle) {
   if is_quickpaste_visible(app_handle) && !is_cursor_inside_quickpaste_window(app_handle) {
+    reset_quickpaste_continuous_text_paste();
     let _ = close_quickpaste_restore_focus(app_handle.clone());
   }
 }
@@ -1461,6 +1555,8 @@ async fn open_quickpaste_window(
       .expect("Failed to lock quickpaste search state") = false;
     #[cfg(target_os = "windows")]
     reset_quickpaste_number_selection(&app_handle);
+    #[cfg(target_os = "windows")]
+    reset_quickpaste_continuous_text_paste();
     window.close().map_err(|e| e.to_string())?;
     return Ok(());
   }
@@ -1470,6 +1566,8 @@ async fn open_quickpaste_window(
     .expect("Failed to lock quickpaste search state") = false;
   #[cfg(target_os = "windows")]
   reset_quickpaste_number_selection(&app_handle);
+  #[cfg(target_os = "windows")]
+  reset_quickpaste_continuous_text_paste();
   #[cfg(target_os = "windows")]
   let previous_foreground_window = get_foreground_window_handle();
   #[cfg(target_os = "windows")]
@@ -1606,6 +1704,8 @@ async fn open_quickpaste_window(
           .expect("Failed to lock quickpaste search state") = false;
         #[cfg(target_os = "windows")]
         reset_quickpaste_number_selection(&app_handle_clone);
+        #[cfg(target_os = "windows")]
+        reset_quickpaste_continuous_text_paste();
         #[cfg(target_os = "macos")]
         {
           return_focus_to_previous_window();

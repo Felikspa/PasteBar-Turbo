@@ -52,6 +52,8 @@ export default function ThemeSettings() {
     setQuickPasteAcrylicOpacity,
     quickPasteAcrylicColorDepth,
     setQuickPasteAcrylicColorDepth,
+    quickPasteMaskEnabled,
+    setQuickPasteMaskEnabled,
     quickPasteMaskStrength,
     setQuickPasteMaskStrength,
     quickPasteFontSize,
@@ -386,6 +388,22 @@ export default function ThemeSettings() {
                           setQuickPasteAcrylicColorDepth(parseInt(e.target.value, 10))
                         }
                       />
+                      <div className="flex items-center justify-between gap-4">
+                        <div>
+                          <Text className="text-[15px] font-semibold">
+                            {t('Enable mask overlay', { ns: 'settings2' })}
+                          </Text>
+                          <Text className="text-xs text-muted-foreground">
+                            {t('Show the Quick Paste page color mask.', {
+                              ns: 'settings2',
+                            })}
+                          </Text>
+                        </div>
+                        <Switch
+                          checked={quickPasteMaskEnabled}
+                          onCheckedChange={setQuickPasteMaskEnabled}
+                        />
+                      </div>
                       <div className="flex items-start justify-between gap-4">
                         <div>
                           <Text className="text-[15px] font-semibold">
@@ -454,7 +472,9 @@ export default function ThemeSettings() {
                               <div
                                 className="overflow-hidden border border-[#444444] text-[#fffff8]"
                                 style={{
-                                  backgroundColor: `rgb(0 0 0 / ${quickPasteMaskStrength}%)`,
+                                  backgroundColor: quickPasteMaskEnabled
+                                    ? `rgb(0 0 0 / ${quickPasteMaskStrength}%)`
+                                    : 'transparent',
                                 }}
                               >
                                 <div className="flex h-10 items-center px-3 text-white">
@@ -483,6 +503,7 @@ export default function ThemeSettings() {
                         onClick={() => {
                           setQuickPasteAcrylicOpacity(86)
                           setQuickPasteAcrylicColorDepth(100)
+                          setQuickPasteMaskEnabled(true)
                           setQuickPasteMaskStrength(72)
                           setQuickPasteFontSize(16)
                           setQuickPasteHighlightColor('#2563eb')
