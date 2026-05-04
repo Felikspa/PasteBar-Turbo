@@ -12,14 +12,14 @@ import { convertFileSrc, invoke } from '@tauri-apps/api/tauri'
 import { appWindow } from '@tauri-apps/api/window'
 import { useAtomValue } from 'jotai'
 
+import { clipboardHistoryStoreAtom } from '~/store/clipboardHistoryStore'
+import { settingsStoreAtom } from '~/store/settingsStore'
+
 import {
   useFindClipboardHistory,
   useInfiniteClipboardHistory,
 } from '~/hooks/queries/use-history-items'
 import { useDebounce } from '~/hooks/use-debounce'
-
-import { clipboardHistoryStoreAtom } from '~/store/clipboardHistoryStore'
-import { settingsStoreAtom } from '~/store/settingsStore'
 
 export type QuickPasteAppearance = {
   acrylicColorDepth: number
@@ -27,7 +27,10 @@ export type QuickPasteAppearance = {
   fontSize: number
   highlightColor: string
   maskEnabled: boolean
-  maskStrength: number
+  lightMaskColor: string
+  lightMaskStrength: number
+  darkMaskColor: string
+  darkMaskStrength: number
 }
 
 type QuickPastePageProps = {
@@ -62,7 +65,10 @@ export default function QuickPastePage({
     quickPasteAcrylicOpacity,
     quickPasteFontSize,
     quickPasteMaskEnabled,
-    quickPasteMaskStrength,
+    quickPasteLightMaskColor,
+    quickPasteLightMaskStrength,
+    quickPasteDarkMaskColor,
+    quickPasteDarkMaskStrength,
     pasteSequenceEachSeparator,
   } = useAtomValue(settingsStoreAtom)
   const activePasteSequenceEachSeparator =
@@ -73,7 +79,10 @@ export default function QuickPastePage({
     fontSize: quickPasteFontSize,
     highlightColor: quickPasteHighlightColor,
     maskEnabled: quickPasteMaskEnabled,
-    maskStrength: quickPasteMaskStrength,
+    lightMaskColor: quickPasteLightMaskColor,
+    lightMaskStrength: quickPasteLightMaskStrength,
+    darkMaskColor: quickPasteDarkMaskColor,
+    darkMaskStrength: quickPasteDarkMaskStrength,
   }
   const visibleClipboardHistory = hasSearch ? foundClipboardHistory : clipboardHistory
   const visibleClipboardHistoryRef = useRef(visibleClipboardHistory)
@@ -87,38 +96,41 @@ export default function QuickPastePage({
 
   const selectedIndexSet = useMemo(() => new Set(selectedIndexes), [selectedIndexes])
 
-  const updateSelectedIndexes = useCallback((nextIndexes: number[]) => {
-    const previousIndexes = selectedIndexesRef.current
+  const updateSelectedIndexes = useCallback(
+    (nextIndexes: number[]) => {
+      const previousIndexes = selectedIndexesRef.current
 
-    if (previousIndexes.length > 0 && nextIndexes.length === 0) {
-      const historyIds = previousIndexes
-        .sort((a, b) => a - b)
-        .map(index => visibleClipboardHistoryRef.current[index])
-        .filter(Boolean)
-        .map(clipboard => String(clipboard.historyId))
+      if (previousIndexes.length > 0 && nextIndexes.length === 0) {
+        const historyIds = previousIndexes
+          .sort((a, b) => a - b)
+          .map(index => visibleClipboardHistoryRef.current[index])
+          .filter(Boolean)
+          .map(clipboard => String(clipboard.historyId))
 
-      if (historyIds.length > 0) {
-        selectedIndexesRef.current = []
-        setSelectedIndexes([])
+        if (historyIds.length > 0) {
+          selectedIndexesRef.current = []
+          setSelectedIndexes([])
 
-        pasteQueueRef.current = pasteQueueRef.current
-          .catch(() => undefined)
-          .then(() =>
-            invoke('quickpaste_paste_many', {
-              historyIds,
-              separator: activePasteSequenceEachSeparator,
-              prefixSeparator: false,
-              closeAfter: false,
-            })
-          )
+          pasteQueueRef.current = pasteQueueRef.current
+            .catch(() => undefined)
+            .then(() =>
+              invoke('quickpaste_paste_many', {
+                historyIds,
+                separator: activePasteSequenceEachSeparator,
+                prefixSeparator: false,
+                closeAfter: false,
+              })
+            )
 
-        return
+          return
+        }
       }
-    }
 
-    selectedIndexesRef.current = nextIndexes
-    setSelectedIndexes(nextIndexes)
-  }, [activePasteSequenceEachSeparator])
+      selectedIndexesRef.current = nextIndexes
+      setSelectedIndexes(nextIndexes)
+    },
+    [activePasteSequenceEachSeparator]
+  )
 
   const toggleSearchFocus = useCallback(async () => {
     if (document.activeElement === searchInputRef.current) {
@@ -243,8 +255,20 @@ export default function QuickPastePage({
       String(activeAppearance.acrylicColorDepth)
     )
     document.documentElement.style.setProperty(
-      '--quick-paste-mask-strength',
-      activeAppearance.maskEnabled ? String(activeAppearance.maskStrength) : '0'
+      '--quick-paste-light-mask-color',
+      activeAppearance.lightMaskColor
+    )
+    document.documentElement.style.setProperty(
+      '--quick-paste-light-mask-strength',
+      activeAppearance.maskEnabled ? String(activeAppearance.lightMaskStrength) : '0'
+    )
+    document.documentElement.style.setProperty(
+      '--quick-paste-dark-mask-color',
+      activeAppearance.darkMaskColor
+    )
+    document.documentElement.style.setProperty(
+      '--quick-paste-dark-mask-strength',
+      activeAppearance.maskEnabled ? String(activeAppearance.darkMaskStrength) : '0'
     )
     document.documentElement.style.setProperty(
       '--quick-paste-acrylic-opacity',
@@ -259,8 +283,11 @@ export default function QuickPastePage({
     activeAppearance.acrylicOpacity,
     activeAppearance.fontSize,
     activeAppearance.highlightColor,
+    activeAppearance.lightMaskColor,
+    activeAppearance.lightMaskStrength,
+    activeAppearance.darkMaskColor,
+    activeAppearance.darkMaskStrength,
     activeAppearance.maskEnabled,
-    activeAppearance.maskStrength,
   ])
 
   const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -352,18 +379,14 @@ export default function QuickPastePage({
                   </div>
                 ) : (
                   <>
-                    <div className="flow-launcher-result-title">
-                      {clipboard.value}
-                    </div>
+                    <div className="flow-launcher-result-title">{clipboard.value}</div>
                     <div className="flow-launcher-result-subtitle">
                       {clipboard.copiedFromApp}
                     </div>
                   </>
                 )}
               </div>
-              <div className="flow-launcher-hotkey">
-                {index + 1}
-              </div>
+              <div className="flow-launcher-hotkey">{index + 1}</div>
             </div>
           )
         })}

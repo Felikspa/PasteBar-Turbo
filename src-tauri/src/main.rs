@@ -145,9 +145,9 @@ fn quickpaste_windows_material_from_settings(
   settings_map: &HashMap<String, Setting>,
 ) -> QuickPasteWindowsMaterial {
   QuickPasteWindowsMaterial {
-    acrylic_opacity: quickpaste_setting_int(settings_map, "quickPasteAcrylicOpacity", 86)
+    acrylic_opacity: quickpaste_setting_int(settings_map, "quickPasteAcrylicOpacity", 25)
       .clamp(25, 100),
-    acrylic_color_depth: quickpaste_setting_int(settings_map, "quickPasteAcrylicColorDepth", 100)
+    acrylic_color_depth: quickpaste_setting_int(settings_map, "quickPasteAcrylicColorDepth", 95)
       .clamp(0, 100),
   }
 }

@@ -4,20 +4,24 @@ import { appSettings } from './lib/commands'
 import QuickPastePage, { QuickPasteAppearance } from './pages/main/QuickPastePage'
 
 const defaultQuickPasteAppearance: QuickPasteAppearance = {
-  acrylicColorDepth: 100,
-  acrylicOpacity: 86,
-  maskEnabled: true,
+  acrylicColorDepth: 95,
+  acrylicOpacity: 25,
+  maskEnabled: false,
   fontSize: 16,
   highlightColor: '#2563eb',
-  maskStrength: 72,
+  lightMaskColor: '#ffffff',
+  lightMaskStrength: 72,
+  darkMaskColor: '#000000',
+  darkMaskStrength: 72,
 }
 
 function QuickPasteApp() {
   const [appearance, setAppearance] = useState<QuickPasteAppearance>(
     defaultQuickPasteAppearance
   )
-  const [pasteSequenceEachSeparator, setPasteSequenceEachSeparator] =
-    useState<string | null>(null)
+  const [pasteSequenceEachSeparator, setPasteSequenceEachSeparator] = useState<
+    string | null
+  >(null)
 
   useEffect(() => {
     document.documentElement.classList.add('quick-paste-document')
@@ -37,10 +41,13 @@ function QuickPasteApp() {
       }
 
       const { settings } = JSON.parse(res)
-      const opacity = settings.quickPasteAcrylicOpacity?.valueInt ?? 86
-      const colorDepth = settings.quickPasteAcrylicColorDepth?.valueInt ?? 100
-      const maskEnabled = settings.quickPasteMaskEnabled?.valueBool ?? true
-      const maskStrength = settings.quickPasteMaskStrength?.valueInt ?? 72
+      const opacity = settings.quickPasteAcrylicOpacity?.valueInt ?? 25
+      const colorDepth = settings.quickPasteAcrylicColorDepth?.valueInt ?? 95
+      const maskEnabled = settings.quickPasteMaskEnabled?.valueBool ?? false
+      const lightMaskColor = settings.quickPasteLightMaskColor?.valueText ?? '#ffffff'
+      const lightMaskStrength = settings.quickPasteLightMaskStrength?.valueInt ?? 72
+      const darkMaskColor = settings.quickPasteDarkMaskColor?.valueText ?? '#000000'
+      const darkMaskStrength = settings.quickPasteDarkMaskStrength?.valueInt ?? 72
       const fontSize = settings.quickPasteFontSize?.valueInt ?? 16
       const highlightColor = settings.quickPasteHighlightColor?.valueText ?? '#2563eb'
       const separator = settings.pasteSequenceEachSeparator?.valueText ?? '\n'
@@ -50,7 +57,10 @@ function QuickPasteApp() {
         maskEnabled,
         fontSize,
         highlightColor,
-        maskStrength,
+        lightMaskColor,
+        lightMaskStrength,
+        darkMaskColor,
+        darkMaskStrength,
       }
 
       setAppearance(nextAppearance)
@@ -65,8 +75,20 @@ function QuickPasteApp() {
         String(nextAppearance.acrylicColorDepth)
       )
       document.documentElement.style.setProperty(
-        '--quick-paste-mask-strength',
-        nextAppearance.maskEnabled ? String(nextAppearance.maskStrength) : '0'
+        '--quick-paste-light-mask-color',
+        nextAppearance.lightMaskColor
+      )
+      document.documentElement.style.setProperty(
+        '--quick-paste-light-mask-strength',
+        nextAppearance.maskEnabled ? String(nextAppearance.lightMaskStrength) : '0'
+      )
+      document.documentElement.style.setProperty(
+        '--quick-paste-dark-mask-color',
+        nextAppearance.darkMaskColor
+      )
+      document.documentElement.style.setProperty(
+        '--quick-paste-dark-mask-strength',
+        nextAppearance.maskEnabled ? String(nextAppearance.darkMaskStrength) : '0'
       )
       document.documentElement.style.setProperty(
         '--quick-paste-font-size',

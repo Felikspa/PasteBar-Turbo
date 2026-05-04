@@ -285,11 +285,17 @@ function App() {
           isMainWindowOnTop: settings.isMainWindowOnTop?.valueBool ?? false,
           isQuickPasteCopyOnly: settings.isQuickPasteCopyOnly?.valueBool ?? false,
           isQuickPasteAutoClose: settings.isQuickPasteAutoClose?.valueBool ?? true,
-          quickPasteAcrylicOpacity: settings.quickPasteAcrylicOpacity?.valueInt ?? 86,
+          quickPasteAcrylicOpacity: settings.quickPasteAcrylicOpacity?.valueInt ?? 25,
           quickPasteAcrylicColorDepth:
-            settings.quickPasteAcrylicColorDepth?.valueInt ?? 100,
-          quickPasteMaskEnabled: settings.quickPasteMaskEnabled?.valueBool ?? true,
-          quickPasteMaskStrength: settings.quickPasteMaskStrength?.valueInt ?? 72,
+            settings.quickPasteAcrylicColorDepth?.valueInt ?? 95,
+          quickPasteMaskEnabled: settings.quickPasteMaskEnabled?.valueBool ?? false,
+          quickPasteLightMaskColor:
+            settings.quickPasteLightMaskColor?.valueText ?? '#ffffff',
+          quickPasteLightMaskStrength:
+            settings.quickPasteLightMaskStrength?.valueInt ?? 72,
+          quickPasteDarkMaskColor:
+            settings.quickPasteDarkMaskColor?.valueText ?? '#000000',
+          quickPasteDarkMaskStrength: settings.quickPasteDarkMaskStrength?.valueInt ?? 72,
           quickPasteFontSize: settings.quickPasteFontSize?.valueInt ?? 16,
           quickPasteHighlightColor:
             settings.quickPasteHighlightColor?.valueText ?? '#2563eb',

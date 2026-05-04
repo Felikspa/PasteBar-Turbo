@@ -54,8 +54,14 @@ export default function ThemeSettings() {
     setQuickPasteAcrylicColorDepth,
     quickPasteMaskEnabled,
     setQuickPasteMaskEnabled,
-    quickPasteMaskStrength,
-    setQuickPasteMaskStrength,
+    quickPasteLightMaskColor,
+    setQuickPasteLightMaskColor,
+    quickPasteLightMaskStrength,
+    setQuickPasteLightMaskStrength,
+    quickPasteDarkMaskColor,
+    setQuickPasteDarkMaskColor,
+    quickPasteDarkMaskStrength,
+    setQuickPasteDarkMaskStrength,
     quickPasteFontSize,
     setQuickPasteFontSize,
     quickPasteHighlightColor,
@@ -72,6 +78,13 @@ export default function ThemeSettings() {
   )
   const materialPreviewTintChannel =
     249 - Math.round(((249 - 17) * quickPasteAcrylicColorDepth) / 100)
+  const materialPreviewMaskColor =
+    mode === 'dark' ? quickPasteDarkMaskColor : quickPasteLightMaskColor
+  const materialPreviewMaskStrength =
+    mode === 'dark' ? quickPasteDarkMaskStrength : quickPasteLightMaskStrength
+  const materialPreviewTextColor = mode === 'dark' ? '#ffffff' : '#000000'
+  const materialPreviewSubtitleColor = '#6c6c6c'
+  const materialPreviewSeparatorColor = materialPreviewSubtitleColor
 
   useEffect(() => {
     if (theme !== mode) {
@@ -98,7 +111,7 @@ export default function ThemeSettings() {
             </Box>
             <Spacer h={3} />
 
-            <SimpleBar style={{ maxHeight: height - 85 }} autoHide>
+            <SimpleBar style={{ maxHeight: height - 85, paddingBottom: 48 }} autoHide>
               <Box className="animate-in fade-in max-w-xl">
                 <Card>
                   <CardHeader className="flex flex-col items-start justify-between space-y-0 pb-1">
@@ -327,7 +340,7 @@ export default function ThemeSettings() {
                               onChange={e => {
                                 const value = e.target.value
                                 setQuickPasteAcrylicOpacity(
-                                  value === '' ? 86 : parseInt(value, 10)
+                                  value === '' ? 25 : parseInt(value, 10)
                                 )
                               }}
                             />
@@ -371,7 +384,7 @@ export default function ThemeSettings() {
                           onChange={e => {
                             const value = e.target.value
                             setQuickPasteAcrylicColorDepth(
-                              value === '' ? 100 : parseInt(value, 10)
+                              value === '' ? 95 : parseInt(value, 10)
                             )
                           }}
                         />
@@ -407,10 +420,37 @@ export default function ThemeSettings() {
                       <div className="flex items-start justify-between gap-4">
                         <div>
                           <Text className="text-[15px] font-semibold">
-                            {t('Mask strength', { ns: 'settings2' })}
+                            {t('Light mask color', { ns: 'settings2' })}
                           </Text>
                           <Text className="text-xs text-muted-foreground">
-                            {t('Adjust the page overlay strength behind the list.', {
+                            {t('Set the Quick Paste mask color in light mode.', {
+                              ns: 'settings2',
+                            })}
+                          </Text>
+                        </div>
+                        <div className="flex w-44 items-center gap-2">
+                          <input
+                            aria-label={t('Light mask color', { ns: 'settings2' })}
+                            className="h-8 w-8 shrink-0 rounded border border-slate-300 bg-transparent p-0 dark:border-slate-700"
+                            type="color"
+                            value={quickPasteLightMaskColor}
+                            onChange={e => setQuickPasteLightMaskColor(e.target.value)}
+                          />
+                          <InputField
+                            className="text-md"
+                            small
+                            value={quickPasteLightMaskColor}
+                            onChange={e => setQuickPasteLightMaskColor(e.target.value)}
+                          />
+                        </div>
+                      </div>
+                      <div className="flex items-start justify-between gap-4">
+                        <div>
+                          <Text className="text-[15px] font-semibold">
+                            {t('Light mask strength', { ns: 'settings2' })}
+                          </Text>
+                          <Text className="text-xs text-muted-foreground">
+                            {t('Adjust the Quick Paste mask strength in light mode.', {
                               ns: 'settings2',
                             })}
                           </Text>
@@ -422,23 +462,98 @@ export default function ThemeSettings() {
                           min={0}
                           max={100}
                           small
-                          value={quickPasteMaskStrength}
-                          onBlur={() => setQuickPasteMaskStrength(quickPasteMaskStrength)}
+                          value={quickPasteLightMaskStrength}
+                          onBlur={() =>
+                            setQuickPasteLightMaskStrength(quickPasteLightMaskStrength)
+                          }
                           onChange={e => {
                             const value = e.target.value
-                            setQuickPasteMaskStrength(value === '' ? 72 : parseInt(value, 10))
+                            setQuickPasteLightMaskStrength(
+                              value === '' ? 72 : parseInt(value, 10)
+                            )
                           }}
                         />
                       </div>
                       <input
-                        aria-label={t('Mask strength', { ns: 'settings2' })}
+                        aria-label={t('Light mask strength', { ns: 'settings2' })}
                         className="w-full accent-sky-600"
                         type="range"
                         min={0}
                         max={100}
                         step={1}
-                        value={quickPasteMaskStrength}
-                        onChange={e => setQuickPasteMaskStrength(parseInt(e.target.value, 10))}
+                        value={quickPasteLightMaskStrength}
+                        onChange={e =>
+                          setQuickPasteLightMaskStrength(parseInt(e.target.value, 10))
+                        }
+                      />
+                      <div className="flex items-start justify-between gap-4">
+                        <div>
+                          <Text className="text-[15px] font-semibold">
+                            {t('Dark mask color', { ns: 'settings2' })}
+                          </Text>
+                          <Text className="text-xs text-muted-foreground">
+                            {t('Set the Quick Paste mask color in dark mode.', {
+                              ns: 'settings2',
+                            })}
+                          </Text>
+                        </div>
+                        <div className="flex w-44 items-center gap-2">
+                          <input
+                            aria-label={t('Dark mask color', { ns: 'settings2' })}
+                            className="h-8 w-8 shrink-0 rounded border border-slate-300 bg-transparent p-0 dark:border-slate-700"
+                            type="color"
+                            value={quickPasteDarkMaskColor}
+                            onChange={e => setQuickPasteDarkMaskColor(e.target.value)}
+                          />
+                          <InputField
+                            className="text-md"
+                            small
+                            value={quickPasteDarkMaskColor}
+                            onChange={e => setQuickPasteDarkMaskColor(e.target.value)}
+                          />
+                        </div>
+                      </div>
+                      <div className="flex items-start justify-between gap-4">
+                        <div>
+                          <Text className="text-[15px] font-semibold">
+                            {t('Dark mask strength', { ns: 'settings2' })}
+                          </Text>
+                          <Text className="text-xs text-muted-foreground">
+                            {t('Adjust the Quick Paste mask strength in dark mode.', {
+                              ns: 'settings2',
+                            })}
+                          </Text>
+                        </div>
+                        <InputField
+                          className="text-md !w-20"
+                          type="number"
+                          step="1"
+                          min={0}
+                          max={100}
+                          small
+                          value={quickPasteDarkMaskStrength}
+                          onBlur={() =>
+                            setQuickPasteDarkMaskStrength(quickPasteDarkMaskStrength)
+                          }
+                          onChange={e => {
+                            const value = e.target.value
+                            setQuickPasteDarkMaskStrength(
+                              value === '' ? 72 : parseInt(value, 10)
+                            )
+                          }}
+                        />
+                      </div>
+                      <input
+                        aria-label={t('Dark mask strength', { ns: 'settings2' })}
+                        className="w-full accent-sky-600"
+                        type="range"
+                        min={0}
+                        max={100}
+                        step={1}
+                        value={quickPasteDarkMaskStrength}
+                        onChange={e =>
+                          setQuickPasteDarkMaskStrength(parseInt(e.target.value, 10))
+                        }
                       />
                       <div className="space-y-2">
                         <Text className="text-[15px] font-semibold">
@@ -470,27 +585,43 @@ export default function ThemeSettings() {
                               }}
                             >
                               <div
-                                className="overflow-hidden border border-[#444444] text-[#fffff8]"
+                                className="overflow-hidden border"
                                 style={{
+                                  borderColor: materialPreviewTextColor,
                                   backgroundColor: quickPasteMaskEnabled
-                                    ? `rgb(0 0 0 / ${quickPasteMaskStrength}%)`
+                                    ? `color-mix(in srgb, ${materialPreviewMaskColor} ${materialPreviewMaskStrength}%, transparent)`
                                     : 'transparent',
+                                  color: materialPreviewTextColor,
                                 }}
                               >
-                                <div className="flex h-10 items-center px-3 text-white">
+                                <div className="flex h-10 items-center px-3">
                                   在此处输入以搜索
                                 </div>
-                                <div className="mx-3 h-px bg-[#444444]" />
+                                <div
+                                  className="mx-3 h-px"
+                                  style={{
+                                    backgroundColor: materialPreviewSeparatorColor,
+                                  }}
+                                />
                                 <div
                                   className="grid h-10 grid-cols-[minmax(0,1fr)_auto] items-center px-3"
                                   style={{ backgroundColor: quickPasteHighlightColor }}
                                 >
-                                  <span className="truncate">Selected clipboard item</span>
-                                  <span className="ml-3 tabular-nums text-white/70">1</span>
+                                  <span className="truncate">
+                                    Selected clipboard item
+                                  </span>
+                                  <span className="ml-3 tabular-nums text-white/70">
+                                    1
+                                  </span>
                                 </div>
                                 <div className="grid h-10 grid-cols-[minmax(0,1fr)_auto] items-center px-3">
                                   <span className="truncate">Clipboard item preview</span>
-                                  <span className="ml-3 tabular-nums text-white/50">2</span>
+                                  <span
+                                    className="ml-3 tabular-nums"
+                                    style={{ color: materialPreviewSubtitleColor }}
+                                  >
+                                    2
+                                  </span>
                                 </div>
                               </div>
                             </div>
@@ -501,10 +632,13 @@ export default function ThemeSettings() {
                         variant="secondary"
                         size="sm"
                         onClick={() => {
-                          setQuickPasteAcrylicOpacity(86)
-                          setQuickPasteAcrylicColorDepth(100)
-                          setQuickPasteMaskEnabled(true)
-                          setQuickPasteMaskStrength(72)
+                          setQuickPasteAcrylicOpacity(25)
+                          setQuickPasteAcrylicColorDepth(95)
+                          setQuickPasteMaskEnabled(false)
+                          setQuickPasteLightMaskColor('#ffffff')
+                          setQuickPasteLightMaskStrength(72)
+                          setQuickPasteDarkMaskColor('#000000')
+                          setQuickPasteDarkMaskStrength(72)
                           setQuickPasteFontSize(16)
                           setQuickPasteHighlightColor('#2563eb')
                         }}

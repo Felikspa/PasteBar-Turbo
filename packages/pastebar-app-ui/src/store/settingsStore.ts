@@ -113,7 +113,10 @@ type Settings = {
   quickPasteAcrylicOpacity: number
   quickPasteAcrylicColorDepth: number
   quickPasteMaskEnabled: boolean
-  quickPasteMaskStrength: number
+  quickPasteLightMaskColor: string
+  quickPasteLightMaskStrength: number
+  quickPasteDarkMaskColor: string
+  quickPasteDarkMaskStrength: number
   quickPasteFontSize: number
   quickPasteHighlightColor: string
   isKeepPinnedOnClearEnabled: boolean
@@ -219,7 +222,10 @@ export interface SettingsStoreState {
   setQuickPasteAcrylicOpacity: (opacity: number) => void
   setQuickPasteAcrylicColorDepth: (depth: number) => void
   setQuickPasteMaskEnabled: (isEnabled: boolean) => void
-  setQuickPasteMaskStrength: (strength: number) => void
+  setQuickPasteLightMaskColor: (color: string) => void
+  setQuickPasteLightMaskStrength: (strength: number) => void
+  setQuickPasteDarkMaskColor: (color: string) => void
+  setQuickPasteDarkMaskStrength: (strength: number) => void
   setQuickPasteFontSize: (fontSize: number) => void
   setQuickPasteHighlightColor: (color: string) => void
   setIsSingleClickToCopyPaste: (isEnabled: boolean) => void
@@ -345,10 +351,13 @@ const initialState: SettingsStoreState & Settings = {
   isSingleClickToCopyPasteQuickWindow: false,
   isQuickPasteCopyOnly: false,
   isQuickPasteAutoClose: true,
-  quickPasteAcrylicOpacity: 86,
-  quickPasteAcrylicColorDepth: 100,
-  quickPasteMaskEnabled: true,
-  quickPasteMaskStrength: 72,
+  quickPasteAcrylicOpacity: 25,
+  quickPasteAcrylicColorDepth: 95,
+  quickPasteMaskEnabled: false,
+  quickPasteLightMaskColor: '#ffffff',
+  quickPasteLightMaskStrength: 72,
+  quickPasteDarkMaskColor: '#000000',
+  quickPasteDarkMaskStrength: 72,
   quickPasteFontSize: 16,
   quickPasteHighlightColor: '#2563eb',
   isKeepPinnedOnClearEnabled: false,
@@ -446,7 +455,10 @@ const initialState: SettingsStoreState & Settings = {
   setQuickPasteAcrylicOpacity: () => {},
   setQuickPasteAcrylicColorDepth: () => {},
   setQuickPasteMaskEnabled: () => {},
-  setQuickPasteMaskStrength: () => {},
+  setQuickPasteLightMaskColor: () => {},
+  setQuickPasteLightMaskStrength: () => {},
+  setQuickPasteDarkMaskColor: () => {},
+  setQuickPasteDarkMaskStrength: () => {},
   setQuickPasteFontSize: () => {},
   setQuickPasteHighlightColor: () => {},
   setIsKeepPinnedOnClearEnabled: () => {},
@@ -927,10 +939,23 @@ export const settingsStore = createStore<SettingsStoreState & Settings>()((set, 
     get().syncStateUpdate('quickPasteMaskEnabled', isEnabled)
     return get().updateSetting('quickPasteMaskEnabled', isEnabled)
   },
-  setQuickPasteMaskStrength: async (strength: number) => {
+  setQuickPasteLightMaskColor: async (color: string) => {
+    get().syncStateUpdate('quickPasteLightMaskColor', color)
+    return get().updateSetting('quickPasteLightMaskColor', color)
+  },
+  setQuickPasteLightMaskStrength: async (strength: number) => {
     const normalizedStrength = Math.min(100, Math.max(0, Math.round(strength)))
-    get().syncStateUpdate('quickPasteMaskStrength', normalizedStrength)
-    return get().updateSetting('quickPasteMaskStrength', normalizedStrength)
+    get().syncStateUpdate('quickPasteLightMaskStrength', normalizedStrength)
+    return get().updateSetting('quickPasteLightMaskStrength', normalizedStrength)
+  },
+  setQuickPasteDarkMaskColor: async (color: string) => {
+    get().syncStateUpdate('quickPasteDarkMaskColor', color)
+    return get().updateSetting('quickPasteDarkMaskColor', color)
+  },
+  setQuickPasteDarkMaskStrength: async (strength: number) => {
+    const normalizedStrength = Math.min(100, Math.max(0, Math.round(strength)))
+    get().syncStateUpdate('quickPasteDarkMaskStrength', normalizedStrength)
+    return get().updateSetting('quickPasteDarkMaskStrength', normalizedStrength)
   },
   setQuickPasteFontSize: async (fontSize: number) => {
     const normalizedFontSize = Math.min(24, Math.max(12, Math.round(fontSize)))
@@ -1438,11 +1463,35 @@ export const listenToSettingsStoreEvents = listen('settings-store-sync', async e
       return
     }
     if (
-      setting === 'quickPasteMaskStrength' &&
-      settingsStore.getState().quickPasteMaskStrength !== value &&
+      setting === 'quickPasteLightMaskColor' &&
+      settingsStore.getState().quickPasteLightMaskColor !== value &&
+      typeof value === 'string'
+    ) {
+      settingsStore.setState({ quickPasteLightMaskColor: value })
+      return
+    }
+    if (
+      setting === 'quickPasteLightMaskStrength' &&
+      settingsStore.getState().quickPasteLightMaskStrength !== value &&
       typeof value === 'number'
     ) {
-      settingsStore.setState({ quickPasteMaskStrength: value })
+      settingsStore.setState({ quickPasteLightMaskStrength: value })
+      return
+    }
+    if (
+      setting === 'quickPasteDarkMaskColor' &&
+      settingsStore.getState().quickPasteDarkMaskColor !== value &&
+      typeof value === 'string'
+    ) {
+      settingsStore.setState({ quickPasteDarkMaskColor: value })
+      return
+    }
+    if (
+      setting === 'quickPasteDarkMaskStrength' &&
+      settingsStore.getState().quickPasteDarkMaskStrength !== value &&
+      typeof value === 'number'
+    ) {
+      settingsStore.setState({ quickPasteDarkMaskStrength: value })
       return
     }
     if (
