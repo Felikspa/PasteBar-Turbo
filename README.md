@@ -1,67 +1,69 @@
 # FlowPaster
 
-FlowPaster 是一个基于 PasteBar 二次开发的 Windows 剪贴板与 Quick Paste 工具。项目在组件体验上参考 Flow Launcher，重点重写了 Quick Paste 页面与交互逻辑，让快速粘贴窗口在视觉、操作方式和系统融合度上更贴近原生 Windows。
+[中文文档](./README.zh-CN.md)
 
-核心目标是让常用剪贴板内容可以用最少按键完成调用、选择和粘贴，同时保留足够高的主题、热键与界面自定义能力。
+FlowPaster is a Windows clipboard and Quick Paste app based on PasteBar. It keeps PasteBar as the foundation, takes component-level inspiration from Flow Launcher, and rewrites the Quick Paste page and interaction model around a native Windows experience.
 
-## 新特性
+The main goal is to make frequent clipboard actions fast, keyboard-first, and highly configurable.
 
-- 全新 Quick Paste 页面：重新设计快速粘贴窗口布局、视觉风格和键盘交互。
-- 原生 Windows 风格：默认采用半透明亚克力材质，窗口观感更贴近系统弹层。
-- 数字键快速粘贴：按下 `Alt+V` 唤出 Quick Paste 后，直接按数字键即可粘贴对应项目。
-- 多项目一次粘贴：连续或同时输入多个数字，例如 `123`，会一次性粘贴第 1、2、3 项，并在项目之间插入分隔符。
-- 文本与图片剪贴板：Quick Paste 同时支持文字内容和图片内容。
-- 搜索模式：按 `/` 进入搜索状态，焦点自动转移到搜索栏；搜索完成后按 `Enter` 退回列表操作状态。
-- 高度可配置：重构设置页，扩展主题设置、热键设置等原先缺失或较弱的配置项。
-- 独立设置菜单：主题设置与热键设置抽离为独立页面，配置入口更清晰。
+## What's New
 
-## Quick Paste 上手
+- Redesigned Quick Paste page: rebuilt layout, visual style, and keyboard interaction.
+- Native Windows feel: Quick Paste uses a translucent acrylic-style surface by default.
+- Number-key paste: press `Alt+V` to open Quick Paste, then press a number key to paste the matching item.
+- Multi-item paste: press multiple number keys, such as `123`, to paste items 1, 2, and 3 in list order with the configured separator between them.
+- Text and image clipboard support: Quick Paste works with both text clips and image clips.
+- Search mode: press `/` to move focus into the search box, then press `Enter` to return focus to list control.
+- Expanded customization: settings have been reorganized and extended for themes, hotkeys, and paste behavior.
+- Separate settings pages: theme settings and hotkey settings are now independent menu pages.
 
-1. 使用 `Alt+V` 唤出 Quick Paste。
-2. 查看列表中每个剪贴板项目右侧的数字编号。
-3. 按下对应数字键，例如 `1`，立即粘贴第 1 项。
-4. 需要一次粘贴多个项目时，同时按下多个数字键，例如 `123`，按列表顺序粘贴第 1、2、3 项。
-5. 多项目粘贴时，项目之间会自动应用已配置的分隔符。
+## Quick Paste Basics
 
-## 搜索与粘贴
+1. Press `Alt+V` to open Quick Paste.
+2. Find the number shown on the right side of each clipboard item.
+3. Press a number key, such as `1`, to paste that item immediately.
+4. To paste multiple items at once, press multiple number keys, such as `123`.
+5. Multi-item paste follows the current list order and applies the configured separator between items.
 
-在 Quick Paste 窗口中按 `/` 可进入搜索状态：
+## Search And Paste
 
-1. 按 `/` 后，焦点会进入搜索栏。
-2. 输入关键词筛选剪贴板项目。
-3. 按 `Enter` 退出搜索输入，焦点回到列表操作状态。
-4. 继续使用数字键选择并粘贴搜索结果。
+Press `/` inside Quick Paste to enter search mode:
 
-这个流程适合在大量剪贴板记录中快速定位目标内容，并继续保持纯键盘操作。
+1. Focus moves to the search box.
+2. Type keywords to filter clipboard items.
+3. Press `Enter` to leave search input and return focus to list control.
+4. Use number keys to paste from the filtered results.
 
-## 自定义设置
+This keeps large clipboard histories searchable while preserving a keyboard-first paste flow.
 
-设置项大幅扩展与重新整理：
+## Customization
 
-- 主题设置：设置外观、透明度、视觉风格等显示相关选项。
-- 热键设置：自定义全部应用内快捷键及全局热键。
-- 粘贴行为设置：配置多项目粘贴时的分隔符与粘贴方式。
+The settings experience has been reorganized and expanded:
 
-## 开发
+- Theme settings: configure appearance, transparency, and visual style.
+- Hotkey settings: customize in-app shortcuts and global hotkeys.
+- Paste behavior settings: configure separators and multi-item paste behavior.
 
-安装依赖：
+## Development
+
+Install dependencies:
 
 ```bash
 npm install
 ```
 
-启动开发环境：
+Start the development app:
 
 ```bash
 npm run dev
 ```
 
-构建应用：
+Build the app:
 
 ```bash
 npm run build
 ```
 
-## 项目来源
+## Project Origin
 
-本项目主要基于 PasteBar 进行二次开发，并在 Quick Paste 的交互和组件体验上参考了 Flow Launcher。当前开发重点集中在 Windows 平台下的快速粘贴体验、键盘优先操作和更细粒度的个性化配置。
+FlowPaster is mainly based on PasteBar and references Flow Launcher for parts of the component and interaction experience. Current development focuses on a Windows-first Quick Paste workflow, simplified keyboard operation, and deeper customization.
