@@ -24,7 +24,7 @@ Restoring backup...: Restauration de la sauvegarde...
 Backup deleted successfully: Sauvegarde supprimée avec succès
 Failed to delete backup: Échec de la suppression de la sauvegarde
 Invalid backup file: Fichier de sauvegarde invalide
-The selected file is not a valid PasteBar backup: Le fichier sélectionné n'est pas une sauvegarde PasteBar valide
+The selected file is not a valid FlowPaster backup: Le fichier sélectionné n'est pas une sauvegarde FlowPaster valide
 Created: Créé
 Size: Taille
 Failed to load backup list: Échec du chargement de la liste des sauvegardes

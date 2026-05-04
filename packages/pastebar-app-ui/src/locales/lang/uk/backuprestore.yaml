@@ -24,7 +24,7 @@ Restoring backup...: Відновлення резервної копії...
 Backup deleted successfully: Резервну копію успішно видалено
 Failed to delete backup: Не вдалося видалити резервну копію
 Invalid backup file: Недійсний файл резервної копії
-The selected file is not a valid PasteBar backup: Вибраний файл не є дійсною резервною копією PasteBar
+The selected file is not a valid FlowPaster backup: Вибраний файл не є дійсною резервною копією FlowPaster
 Created: Створено
 Size: Розмір
 Failed to load backup list: Не вдалося завантажити список резервних копій

@@ -1,9 +1,9 @@
 [package]
-name = "pastebar-app"
+name = "flowpaster"
 version = "0.0.1"
-description = "PasteBar App"
+description = "FlowPaster App"
 license = "Creative Commons Attribution-NonCommercial (CC BY-NC) License"
-repository = "https://github.com/PasteBar/PasteBarApp"
+repository = "https://github.com/Felikspa/FlowPaster"
 edition = "2021"
 rust-version = "1.75.0"
 

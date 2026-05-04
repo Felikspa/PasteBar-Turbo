@@ -47,7 +47,7 @@ export const APP_TOURS_NAMES = {
   [APP_TOURS.dashboardClipsTour]: 'Boards and Clips Tour',
   [APP_TOURS.menuTour]: 'Paste Menu Tour',
   [APP_TOURS.navBarTour]: 'Navigation Bar Tour',
-  [APP_TOURS.settingsTour]: 'PasteBar Settings Tour',
+  [APP_TOURS.settingsTour]: 'FlowPaster Settings Tour',
 } as const
 
 export const APP_TOURS_ORDER = [
@@ -60,7 +60,7 @@ export const APP_TOURS_ORDER = [
 
 export const SCREEN_AUTO_LOCK_TIMES_IN_MINUTES = [5, 10, 15, 20, 30, 45, 60]
 export const RESET_TIME_DELAY_SECONDS = 60
-export const APP_NAME = 'PasteBar'
+export const APP_NAME = 'FlowPaster'
 
 // Default special copy/paste settings
 export const DEFAULT_SPECIAL_PASTE_OPERATIONS = [
@@ -133,7 +133,7 @@ export const DEFAULT_SPECIAL_PASTE_CATEGORIES = [
   'formatConverter',
 ] as const
 
-window['PasteBar'] = {
+window['FlowPaster'] = {
   APP_UI_VERSION: APP_UI_VERSION,
   APP_VERSION: APP_VERSION,
   MAC_STORE: false,

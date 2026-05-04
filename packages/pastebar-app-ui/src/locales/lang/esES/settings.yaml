@@ -68,13 +68,13 @@ Enter your <strong>{{screenLockPassCodeLength}} digits</strong> passcode: Ingr
 Entered Passcode is invalid: El código de acceso ingresado no es válido
 Excluded Apps List: Lista de Apps Excluidas
 Execute Web Requests: Ejecutar Solicitudes Web
-Execute terminal or shell commands directly from PasteBar clip and copy the results to the clipboard.: Ejecuta comandos de terminal o shell directamente desde el clip de PasteBar y copia los resultados al portapapeles.
+Execute terminal or shell commands directly from FlowPaster clip and copy the results to the clipboard.: Ejecuta comandos de terminal o shell directamente desde el clip de FlowPaster y copia los resultados al portapapeles.
 'Expires:': 'Expira:'
 Forgot Passcode ? Enter your recovery password to reset the passcode.: ¿Olvidaste el código? Ingresa tu contraseña de recuperación para restablecer el código.
 Forgot passcode ?: ¿Olvidaste el código?
 Forgot?: ¿Olvidaste?
 Forgot? Reset using Password: ¿Olvidaste? Restablece usando Contraseña
-Get priority email support from us to resolve any issues or questions you may have about PasteBar.: Obtén soporte prioritario por correo electrónico para resolver cualquier problema o pregunta que puedas tener sobre PasteBar.
+Get priority email support from us to resolve any issues or questions you may have about FlowPaster.: Obtén soporte prioritario por correo electrónico para resolver cualquier problema o pregunta que puedas tener sobre FlowPaster.
 'Hint: {{screenLockRecoveryPasswordMasked}}': 'Pista: {{screenLockRecoveryPasswordMasked}}'
 Incorrect passcode.: Código incorrecto.
 Increase UI Font Size: Aumentar Tamaño de Fuente de UI
@@ -110,7 +110,7 @@ Password is incorrect. <br/>{{screenLockRecoveryPasswordMasked}}: La contraseña
 'Password is incorrect. Masked password is: {{screenLockRecoveryPasswordMasked}}': 'La contraseña es incorrecta. La contraseña enmascarada es: {{screenLockRecoveryPasswordMasked}}'
 Password is incorrect. {{screenLockRecoveryPasswordMasked}}: La contraseña es incorrecta. {{screenLockRecoveryPasswordMasked}}
 Passwords do not match: Las contraseñas no coinciden
-PasteBar Settings: Ajustes de PasteBar
+FlowPaster Settings: Ajustes de FlowPaster
 Pin Window: Fijar Ventana
 Pin on Top Window: Fijar en Ventana Superior
 Please set up a Passcode and recovery password in Security Settings to enable Screen Lock and ensure better security.: Por favor, configura un Código y una contraseña de recuperación en los Ajustes de Seguridad para habilitar el Bloqueo de Pantalla y garantizar una mejor seguridad.
@@ -148,7 +148,7 @@ Small: Pequeño
 Stop Words List: Lista de Palabras de Parada
 Swap Panels Layout: Intercambiar Diseño de Paneles
 Switch the layout position of panels in Clipboard History and Paste Menu views: Cambiar la posición del diseño de los paneles en las vistas de Historial del Portapapeles y Menú de Pegado
-Thank you again for using PasteBar.: Gracias de nuevo por usar PasteBar.
+Thank you again for using FlowPaster.: Gracias de nuevo por usar FlowPaster.
 Thank you for testing! 🙌: ¡Gracias por probar! 🙌
 This option lets you control the display and timing of hover notes on clips. You can choose to show notes instantly or with a delay to prevent unintended popups.: Esta opción te permite controlar la visualización y el tiempo de las notas emergentes en los clips. Puedes elegir mostrar notas instantáneamente o con un retraso para evitar ventanas emergentes no deseadas.
 This option lets you customize the maximum width and height of the popup that displays clip notes, ensuring it fits comfortably within your desired size.: Esta opción te permite personalizar el ancho y alto máximos de la ventana emergente que muestra las notas de los clips, asegurando que se ajuste cómodamente dentro del tamaño deseado.
@@ -199,8 +199,8 @@ Select a custom location to store your application data instead of the default l
 Selected data folder: Carpeta de datos seleccionada
 Selected new data folder for change: Nueva carpeta de datos seleccionada para cambio
 Setting a custom database location requires an application restart to take effect.: Establecer una ubicación de base de datos personalizada requiere reiniciar la aplicación para que surta efecto.
-The selected folder is not empty and does not contain PasteBar data files. Do you want to create a "pastebar-data" subfolder to store the data?: La carpeta seleccionada no está vacía y no contiene archivos de datos de PasteBar. ¿Quieres crear una subcarpeta "pastebar-data" para almacenar los datos?
-This folder already contains PasteBar data. The application will use this existing data after restart.: Esta carpeta ya contiene datos de PasteBar. La aplicación usará estos datos existentes después del reinicio.
+The selected folder is not empty and does not contain FlowPaster data files. Do you want to create a "pastebar-data" subfolder to store the data?: La carpeta seleccionada no está vacía y no contiene archivos de datos de FlowPaster. ¿Quieres crear una subcarpeta "pastebar-data" para almacenar los datos?
+This folder already contains FlowPaster data. The application will use this existing data after restart.: Esta carpeta ya contiene datos de FlowPaster. La aplicación usará estos datos existentes después del reinicio.
 Use new location: Usar nueva ubicación
 An error occurred during directory processing.: Ocurrió un error durante el procesamiento del directorio.
 An error occurred during directory selection or setup.: Ocurrió un error durante la selección o configuración del directorio.

@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useState } from 'react'
-import { invoke } from '@tauri-apps/api/tauri'
+import { useEffect } from 'react'
+import { convertFileSrc } from '@tauri-apps/api/tauri'
 import i18n from '~/locales'
 import { LANGUAGES } from '~/locales/languges'
 import {
@@ -30,15 +30,8 @@ import {
   Text,
 } from '~/components/ui'
 
-type SystemFontOption = {
-  family: string
-  displayName: string
-  isCjk: boolean
-}
-
 export default function ThemeSettings() {
   const { t } = useTranslation()
-  const [systemFonts, setSystemFonts] = useState<SystemFontOption[]>([])
   const {
     isShowCollectionNameOnNavBar,
     setIsShowCollectionNameOnNavBar,
@@ -57,12 +50,12 @@ export default function ThemeSettings() {
     setIsSimplifiedLayout,
     quickPasteAcrylicOpacity,
     setQuickPasteAcrylicOpacity,
+    quickPasteAcrylicColorDepth,
+    setQuickPasteAcrylicColorDepth,
+    quickPasteMaskStrength,
+    setQuickPasteMaskStrength,
     quickPasteFontSize,
     setQuickPasteFontSize,
-    quickPasteLatinFontFamily,
-    setQuickPasteLatinFontFamily,
-    quickPasteCjkFontFamily,
-    setQuickPasteCjkFontFamily,
     quickPasteHighlightColor,
     setQuickPasteHighlightColor,
   } = useAtomValue(settingsStoreAtom)
@@ -72,32 +65,17 @@ export default function ThemeSettings() {
   const { setTheme, theme } = useTheme()
   const { mode, setMode } = useAtomValue(themeStoreAtom)
   const isSinglePanelView = isHistoryPanelVisibleOnly || isSavedClipsPanelVisibleOnly
-  const latinFontOptions = useMemo(
-    () => systemFonts.filter(font => !font.isCjk),
-    [systemFonts]
+  const materialPreviewDesktopUrl = convertFileSrc(
+    'C:\\Windows\\Web\\Wallpaper\\Windows\\img0.jpg'
   )
-  const cjkFontOptions = useMemo(
-    () => systemFonts.filter(font => font.isCjk),
-    [systemFonts]
-  )
+  const materialPreviewTintChannel =
+    249 - Math.round(((249 - 17) * quickPasteAcrylicColorDepth) / 100)
 
   useEffect(() => {
     if (theme !== mode) {
       setMode(theme)
     }
   }, [theme, mode, setMode])
-
-  useEffect(() => {
-    if (!isWindows) {
-      return
-    }
-
-    invoke<SystemFontOption[]>('list_system_fonts')
-      .then(setSystemFonts)
-      .catch(error => {
-        console.error('Failed to list system fonts', error)
-      })
-  }, [isWindows])
 
   return (
     <AutoSize disableWidth>
@@ -293,41 +271,6 @@ export default function ThemeSettings() {
                         }
                       />
 
-                      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                        <div>
-                          <Text className="text-[15px] font-semibold">
-                            {t('Quick Paste Latin Font', { ns: 'settings2' })}
-                          </Text>
-                          <select
-                            className="mt-2 h-9 w-full rounded-md border border-input bg-transparent px-3 text-sm outline-none focus:ring-2 focus:ring-ring"
-                            value={quickPasteLatinFontFamily}
-                            onChange={e => setQuickPasteLatinFontFamily(e.target.value)}
-                          >
-                            {latinFontOptions.map(font => (
-                              <option key={font.family} value={font.family}>
-                                {font.displayName}
-                              </option>
-                            ))}
-                          </select>
-                        </div>
-                        <div>
-                          <Text className="text-[15px] font-semibold">
-                            {t('Quick Paste Chinese Font', { ns: 'settings2' })}
-                          </Text>
-                          <select
-                            className="mt-2 h-9 w-full rounded-md border border-input bg-transparent px-3 text-sm outline-none focus:ring-2 focus:ring-ring"
-                            value={quickPasteCjkFontFamily}
-                            onChange={e => setQuickPasteCjkFontFamily(e.target.value)}
-                          >
-                            {cjkFontOptions.map(font => (
-                              <option key={font.family} value={font.family}>
-                                {font.displayName}
-                              </option>
-                            ))}
-                          </select>
-                        </div>
-                      </div>
-
                       <div className="flex items-start justify-between gap-4">
                         <div>
                           <Text className="text-[15px] font-semibold">
@@ -401,6 +344,153 @@ export default function ThemeSettings() {
                           />
                         </>
                       )}
+                      <div className="flex items-start justify-between gap-4">
+                        <div>
+                          <Text className="text-[15px] font-semibold">
+                            {t('Acrylic color depth', { ns: 'settings2' })}
+                          </Text>
+                          <Text className="text-xs text-muted-foreground">
+                            {t('Adjust the tint depth of the Quick Paste acrylic.', {
+                              ns: 'settings2',
+                            })}
+                          </Text>
+                        </div>
+                        <InputField
+                          className="text-md !w-20"
+                          type="number"
+                          step="1"
+                          min={0}
+                          max={100}
+                          small
+                          value={quickPasteAcrylicColorDepth}
+                          onBlur={() =>
+                            setQuickPasteAcrylicColorDepth(quickPasteAcrylicColorDepth)
+                          }
+                          onChange={e => {
+                            const value = e.target.value
+                            setQuickPasteAcrylicColorDepth(
+                              value === '' ? 100 : parseInt(value, 10)
+                            )
+                          }}
+                        />
+                      </div>
+                      <input
+                        aria-label={t('Acrylic color depth', { ns: 'settings2' })}
+                        className="w-full accent-sky-600"
+                        type="range"
+                        min={0}
+                        max={100}
+                        step={1}
+                        value={quickPasteAcrylicColorDepth}
+                        onChange={e =>
+                          setQuickPasteAcrylicColorDepth(parseInt(e.target.value, 10))
+                        }
+                      />
+                      <div className="flex items-start justify-between gap-4">
+                        <div>
+                          <Text className="text-[15px] font-semibold">
+                            {t('Mask strength', { ns: 'settings2' })}
+                          </Text>
+                          <Text className="text-xs text-muted-foreground">
+                            {t('Adjust the page overlay strength behind the list.', {
+                              ns: 'settings2',
+                            })}
+                          </Text>
+                        </div>
+                        <InputField
+                          className="text-md !w-20"
+                          type="number"
+                          step="1"
+                          min={0}
+                          max={100}
+                          small
+                          value={quickPasteMaskStrength}
+                          onBlur={() => setQuickPasteMaskStrength(quickPasteMaskStrength)}
+                          onChange={e => {
+                            const value = e.target.value
+                            setQuickPasteMaskStrength(value === '' ? 72 : parseInt(value, 10))
+                          }}
+                        />
+                      </div>
+                      <input
+                        aria-label={t('Mask strength', { ns: 'settings2' })}
+                        className="w-full accent-sky-600"
+                        type="range"
+                        min={0}
+                        max={100}
+                        step={1}
+                        value={quickPasteMaskStrength}
+                        onChange={e => setQuickPasteMaskStrength(parseInt(e.target.value, 10))}
+                      />
+                      <div className="space-y-2">
+                        <Text className="text-[15px] font-semibold">
+                          {t('Material preview', { ns: 'settings2' })}
+                        </Text>
+                        <div
+                          className="relative h-72 overflow-hidden rounded border border-slate-300 dark:border-slate-700"
+                          style={{
+                            backgroundImage: `url(${materialPreviewDesktopUrl})`,
+                            backgroundPosition: 'center center',
+                            backgroundSize: 'cover',
+                          }}
+                        >
+                          <div className="absolute inset-0 bg-black/10" />
+                          <div
+                            className="absolute left-1/2 top-1/2 w-[82%] max-w-[390px] -translate-x-1/2 -translate-y-1/2 overflow-hidden border border-[#444444] shadow-2xl"
+                            style={{
+                              backgroundColor: `rgb(${materialPreviewTintChannel} ${materialPreviewTintChannel} ${materialPreviewTintChannel} / ${quickPasteAcrylicOpacity}%)`,
+                              backdropFilter: 'blur(22px) saturate(130%)',
+                              WebkitBackdropFilter: 'blur(22px) saturate(130%)',
+                            }}
+                          >
+                            <div
+                              className="p-3"
+                              style={{
+                                fontFamily:
+                                  "'Segoe UI', 'Microsoft YaHei UI', 'Microsoft YaHei', system-ui, sans-serif",
+                                fontSize: `${quickPasteFontSize}px`,
+                              }}
+                            >
+                              <div
+                                className="overflow-hidden border border-[#444444] text-[#fffff8]"
+                                style={{
+                                  backgroundColor: `rgb(0 0 0 / ${quickPasteMaskStrength}%)`,
+                                }}
+                              >
+                                <div className="flex h-10 items-center px-3 text-white">
+                                  在此处输入以搜索
+                                </div>
+                                <div className="mx-3 h-px bg-[#444444]" />
+                                <div
+                                  className="grid h-10 grid-cols-[minmax(0,1fr)_auto] items-center px-3"
+                                  style={{ backgroundColor: quickPasteHighlightColor }}
+                                >
+                                  <span className="truncate">Selected clipboard item</span>
+                                  <span className="ml-3 tabular-nums text-white/70">1</span>
+                                </div>
+                                <div className="grid h-10 grid-cols-[minmax(0,1fr)_auto] items-center px-3">
+                                  <span className="truncate">Clipboard item preview</span>
+                                  <span className="ml-3 tabular-nums text-white/50">2</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <Button
+                        variant="secondary"
+                        size="sm"
+                        onClick={() => {
+                          setQuickPasteAcrylicOpacity(86)
+                          setQuickPasteAcrylicColorDepth(100)
+                          setQuickPasteMaskStrength(72)
+                          setQuickPasteFontSize(16)
+                          setQuickPasteHighlightColor('#2563eb')
+                        }}
+                        className="text-sm bg-slate-200 dark:bg-slate-700 dark:text-slate-200"
+                      >
+                        {t('Reset Quick Paste style', { ns: 'settings2' })}
+                      </Button>
                     </div>
                   </CardContent>
                 </Card>

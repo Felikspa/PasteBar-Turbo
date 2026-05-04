@@ -111,9 +111,9 @@ type Settings = {
   isQuickPasteCopyOnly: boolean
   isQuickPasteAutoClose: boolean
   quickPasteAcrylicOpacity: number
+  quickPasteAcrylicColorDepth: number
+  quickPasteMaskStrength: number
   quickPasteFontSize: number
-  quickPasteLatinFontFamily: string
-  quickPasteCjkFontFamily: string
   quickPasteHighlightColor: string
   isKeepPinnedOnClearEnabled: boolean
   isKeepStarredOnClearEnabled: boolean
@@ -216,9 +216,9 @@ export interface SettingsStoreState {
   setIsQuickPasteCopyOnly: (isEnabled: boolean) => void
   setIsQuickPasteAutoClose: (isEnabled: boolean) => void
   setQuickPasteAcrylicOpacity: (opacity: number) => void
+  setQuickPasteAcrylicColorDepth: (depth: number) => void
+  setQuickPasteMaskStrength: (strength: number) => void
   setQuickPasteFontSize: (fontSize: number) => void
-  setQuickPasteLatinFontFamily: (fontFamily: string) => void
-  setQuickPasteCjkFontFamily: (fontFamily: string) => void
   setQuickPasteHighlightColor: (color: string) => void
   setIsSingleClickToCopyPaste: (isEnabled: boolean) => void
   setIsSingleClickKeyboardFocus: (isEnabled: boolean) => void
@@ -344,9 +344,9 @@ const initialState: SettingsStoreState & Settings = {
   isQuickPasteCopyOnly: false,
   isQuickPasteAutoClose: true,
   quickPasteAcrylicOpacity: 86,
+  quickPasteAcrylicColorDepth: 100,
+  quickPasteMaskStrength: 72,
   quickPasteFontSize: 16,
-  quickPasteLatinFontFamily: 'Segoe UI',
-  quickPasteCjkFontFamily: 'Microsoft YaHei',
   quickPasteHighlightColor: '#2563eb',
   isKeepPinnedOnClearEnabled: false,
   isKeepStarredOnClearEnabled: false,
@@ -441,9 +441,9 @@ const initialState: SettingsStoreState & Settings = {
   setIsQuickPasteCopyOnly: () => {},
   setIsQuickPasteAutoClose: () => {},
   setQuickPasteAcrylicOpacity: () => {},
+  setQuickPasteAcrylicColorDepth: () => {},
+  setQuickPasteMaskStrength: () => {},
   setQuickPasteFontSize: () => {},
-  setQuickPasteLatinFontFamily: () => {},
-  setQuickPasteCjkFontFamily: () => {},
   setQuickPasteHighlightColor: () => {},
   setIsKeepPinnedOnClearEnabled: () => {},
   setIsKeepStarredOnClearEnabled: () => {},
@@ -914,18 +914,20 @@ export const settingsStore = createStore<SettingsStoreState & Settings>()((set, 
     get().syncStateUpdate('quickPasteAcrylicOpacity', normalizedOpacity)
     return get().updateSetting('quickPasteAcrylicOpacity', normalizedOpacity)
   },
+  setQuickPasteAcrylicColorDepth: async (depth: number) => {
+    const normalizedDepth = Math.min(100, Math.max(0, Math.round(depth)))
+    get().syncStateUpdate('quickPasteAcrylicColorDepth', normalizedDepth)
+    return get().updateSetting('quickPasteAcrylicColorDepth', normalizedDepth)
+  },
+  setQuickPasteMaskStrength: async (strength: number) => {
+    const normalizedStrength = Math.min(100, Math.max(0, Math.round(strength)))
+    get().syncStateUpdate('quickPasteMaskStrength', normalizedStrength)
+    return get().updateSetting('quickPasteMaskStrength', normalizedStrength)
+  },
   setQuickPasteFontSize: async (fontSize: number) => {
     const normalizedFontSize = Math.min(24, Math.max(12, Math.round(fontSize)))
     get().syncStateUpdate('quickPasteFontSize', normalizedFontSize)
     return get().updateSetting('quickPasteFontSize', normalizedFontSize)
-  },
-  setQuickPasteLatinFontFamily: async (fontFamily: string) => {
-    get().syncStateUpdate('quickPasteLatinFontFamily', fontFamily)
-    return get().updateSetting('quickPasteLatinFontFamily', fontFamily)
-  },
-  setQuickPasteCjkFontFamily: async (fontFamily: string) => {
-    get().syncStateUpdate('quickPasteCjkFontFamily', fontFamily)
-    return get().updateSetting('quickPasteCjkFontFamily', fontFamily)
   },
   setQuickPasteHighlightColor: async (color: string) => {
     get().syncStateUpdate('quickPasteHighlightColor', color)
@@ -1412,27 +1414,27 @@ export const listenToSettingsStoreEvents = listen('settings-store-sync', async e
       return
     }
     if (
+      setting === 'quickPasteAcrylicColorDepth' &&
+      settingsStore.getState().quickPasteAcrylicColorDepth !== value &&
+      typeof value === 'number'
+    ) {
+      settingsStore.setState({ quickPasteAcrylicColorDepth: value })
+      return
+    }
+    if (
+      setting === 'quickPasteMaskStrength' &&
+      settingsStore.getState().quickPasteMaskStrength !== value &&
+      typeof value === 'number'
+    ) {
+      settingsStore.setState({ quickPasteMaskStrength: value })
+      return
+    }
+    if (
       setting === 'quickPasteFontSize' &&
       settingsStore.getState().quickPasteFontSize !== value &&
       typeof value === 'number'
     ) {
       settingsStore.setState({ quickPasteFontSize: value })
-      return
-    }
-    if (
-      setting === 'quickPasteLatinFontFamily' &&
-      settingsStore.getState().quickPasteLatinFontFamily !== value &&
-      typeof value === 'string'
-    ) {
-      settingsStore.setState({ quickPasteLatinFontFamily: value })
-      return
-    }
-    if (
-      setting === 'quickPasteCjkFontFamily' &&
-      settingsStore.getState().quickPasteCjkFontFamily !== value &&
-      typeof value === 'string'
-    ) {
-      settingsStore.setState({ quickPasteCjkFontFamily: value })
       return
     }
     if (

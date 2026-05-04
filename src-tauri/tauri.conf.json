@@ -7,7 +7,7 @@
     "withGlobalTauri": false
   },
   "package": {
-    "productName": "PasteBar",
+    "productName": "FlowPaster",
     "version": "../package.json"
   },
   "tauri": {
@@ -64,7 +64,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "app.anothervision.pasteBar",
+      "identifier": "app.flowpaster.desktop",
       "longDescription": "",
       "macOS": {
         "entitlements": null,

@@ -19,7 +19,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "app.anothervision.pasteBar",
+      "identifier": "app.flowpaster.desktop",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
@@ -28,7 +28,7 @@
         "providerShortName": null
       },
       "resources": [],
-      "shortDescription": "Limitless Clipboard Manager",
+      "shortDescription": "FlowPaster Clipboard Manager",
       "targets": ["appimage", "nsis", "app", "dmg"],
       "windows": {
         "nsis": {

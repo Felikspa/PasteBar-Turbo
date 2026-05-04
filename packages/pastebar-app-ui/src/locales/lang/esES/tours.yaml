@@ -156,13 +156,13 @@ NAVBAR_TOUR:
   - element: '#navbar-panel_tour'
     popover:
       title: Barra de Navegación
-      description: La barra de navegación ofrece acceso rápido a funciones de PasteBar. Úsala para cambiar entre vistas, acceder a colecciones, buscar globalmente, alternar visibilidad del tablero fijado, ajustar configuraciones y obtener ayuda.
+      description: La barra de navegación ofrece acceso rápido a funciones de FlowPaster. Úsala para cambiar entre vistas, acceder a colecciones, buscar globalmente, alternar visibilidad del tablero fijado, ajustar configuraciones y obtener ayuda.
       alignment: center
       prefferedSide: bottom
   - element: '#navbar-pastebar_tour'
     popover:
-      title: Menú PasteBar
-      description: El menú PasteBar ofrece acceso rápido a funciones esenciales. Aquí puedes buscar actualizaciones, acceder a ajustes, bloquear la pantalla, cerrar la ventana principal o salir de la aplicación.
+      title: Menú FlowPaster
+      description: El menú FlowPaster ofrece acceso rápido a funciones esenciales. Aquí puedes buscar actualizaciones, acceder a ajustes, bloquear la pantalla, cerrar la ventana principal o salir de la aplicación.
       alignment: start
       prefferedSide: bottom
   - element: '#navbar-view_tour'
@@ -198,13 +198,13 @@ NAVBAR_TOUR:
   - element: '#navbar-help_tour'
     popover:
       title: Menú de Ayuda
-      description: Accede rápidamente a tours guiados y demostraciones de funciones desde el menú Ayuda. Proporciona guía paso a paso para navegar y entender las funciones e interfaz de PasteBar efectivamente.
+      description: Accede rápidamente a tours guiados y demostraciones de funciones desde el menú Ayuda. Proporciona guía paso a paso para navegar y entender las funciones e interfaz de FlowPaster efectivamente.
       alignment: end
       prefferedSide: bottom
   - element: '#navbar-close-window_tour'
     popover:
       title: Cerrar Ventana Principal
-      description: Clic para cerrar la ventana principal de PasteBar manteniendo su funcionalidad disponible desde el icono de la barra de tareas o menú. Siempre puedes reabrir la ventana principal desde el menú principal.
+      description: Clic para cerrar la ventana principal de FlowPaster manteniendo su funcionalidad disponible desde el icono de la barra de tareas o menú. Siempre puedes reabrir la ventana principal desde el menú principal.
       alignment: end
       prefferedSide: bottom
 
@@ -212,7 +212,7 @@ SETTINGS_TOUR:
   - element: '#app-settings-history_tour'
     popover:
       title: Ajustes del Historial
-      description: Ajusta la configuración del historial para personalizar cómo PasteBar captura y gestiona tu contenido copiado. Activa o desactiva funciones como actualización automática, auto-estrella, vista previa de enlaces y detección de lenguaje para una experiencia personalizada.
+      description: Ajusta la configuración del historial para personalizar cómo FlowPaster captura y gestiona tu contenido copiado. Activa o desactiva funciones como actualización automática, auto-estrella, vista previa de enlaces y detección de lenguaje para una experiencia personalizada.
       alignment: start
       prefferedSide: right
   - element: '#app-settings-collections_tour'
@@ -230,7 +230,7 @@ SETTINGS_TOUR:
   - element: '#app-settings-security_tour'
     popover:
       title: Ajustes de Seguridad
-      description: Configura tus ajustes de seguridad para proteger tus datos. Establece un código de bloqueo de pantalla y contraseña de recuperación. Controla la captura del historial desde la pantalla bloqueada y activa el bloqueo automático por inactividad. Ajusta estas opciones para mejorar la seguridad de tu aplicación PasteBar.
+      description: Configura tus ajustes de seguridad para proteger tus datos. Establece un código de bloqueo de pantalla y contraseña de recuperación. Controla la captura del historial desde la pantalla bloqueada y activa el bloqueo automático por inactividad. Ajusta estas opciones para mejorar la seguridad de tu aplicación FlowPaster.
       alignment: start
       prefferedSide: right
   - element: '#app-settings-back_tour'

@@ -36,7 +36,7 @@ Restoring backup...: Backup wird wiederhergestellt...
 Restoring...: Wird wiederhergestellt...
 Select backup file: Backup-Datei auswählen
 Size: Größe
-The selected file is not a valid PasteBar backup: Die ausgewählte Datei ist kein gültiges PasteBar-Backup
+The selected file is not a valid FlowPaster backup: Die ausgewählte Datei ist kein gültiges FlowPaster-Backup
 This action cannot be undone. All current data will be replaced with the backup data.: Diese Aktion kann nicht rückgängig gemacht werden. Alle aktuellen Daten werden durch die Backup-Daten ersetzt.
 This will create a backup file containing your database: Dies erstellt eine Backup-Datei mit Ihrer Datenbank
 This will replace all current data. Are you sure?: Dies ersetzt alle aktuellen Daten. Sind Sie sicher?

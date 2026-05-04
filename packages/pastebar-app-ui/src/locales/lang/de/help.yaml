@@ -11,7 +11,7 @@ Clipboard History Settings: Zwischenablage-Verlauf-Einstellungen
 Clipboard History Tour: Zwischenablage-Verlauf-Tour
 Close Main Window: Hauptfenster schließen
 Collections Menu: Sammlungsmenü
-Congratulations! You have finished <strong>all the tours</strong> and now ready to make the most of PasteBar's features. Remember, all tours always available from the <strong>Help > App Guided Tours</strong> menu in the navbar.: Herzlichen Glückwunsch! Sie haben <strong>alle Touren</strong> abgeschlossen und sind nun bereit, die Funktionen von PasteBar optimal zu nutzen. Denken Sie daran, alle Touren sind immer über das Menü <strong>Hilfe > App-Führungen</strong> in der Navigationsleiste verfügbar.
+Congratulations! You have finished <strong>all the tours</strong> and now ready to make the most of FlowPaster's features. Remember, all tours always available from the <strong>Help > App Guided Tours</strong> menu in the navbar.: Herzlichen Glückwunsch! Sie haben <strong>alle Touren</strong> abgeschlossen und sind nun bereit, die Funktionen von FlowPaster optimal zu nutzen. Denken Sie daran, alle Touren sind immer über das Menü <strong>Hilfe > App-Führungen</strong> in der Navigationsleiste verfügbar.
 Contact Us Form: Kontaktformular
 Create Dashboard Items: Dashboard-Elemente erstellen
 Dashboard Panel: Dashboard-Panel
@@ -45,10 +45,10 @@ Paste Menu: Einfügemenü
 Paste Menu Panel: Einfügemenü-Panel
 Paste Menu Tour: Einfügemenü-Tour
 Paste Menu View: Einfügemenü-Ansicht
-PasteBar Menu: PasteBar-Menü
-PasteBar Settings: PasteBar-Einstellungen
-PasteBar Settings Tour: PasteBar-Einstellungen-Tour
-PasteBar Tour: PasteBar-Tour
+FlowPaster Menu: FlowPaster-Menü
+FlowPaster Settings: FlowPaster-Einstellungen
+FlowPaster Settings Tour: FlowPaster-Einstellungen-Tour
+FlowPaster Tour: FlowPaster-Tour
 Previous: Zurück
 Priority Support: Vorrangiger Support
 Reset All Tours: Alle Touren zurücksetzen
@@ -78,10 +78,10 @@ TourCanSkip: TourKannÜberspringen
 User Preferences: Benutzereinstellungen
 View Menu: Ansichtsmenü
 Welcome to Paste Menu: Willkommen beim Einfügemenü
-Welcome to PasteBar: Willkommen bei PasteBar
-Welcome to PasteBar Settings: Willkommen bei den PasteBar-Einstellungen
-WelcomeBody: Machen Sie sich bereit, Ihren Kopier- und Einfüge-Workflow mit PasteBar zu vereinfachen! Diese geführte Tour führt Sie durch die wichtigsten Funktionen und zeigt Ihnen, wie Sie die App optimal nutzen können. Beginnen wir mit der Erkundung des Zwischenablage-Verlauf-Panels.
-WelcomeDescription: Vielen Dank, dass Sie unsere Anwendung zur Vereinfachung Ihres Kopier-Einfüge-Workflows und zur Verbesserung der Zwischenablage-Funktionalität gewählt haben. Um Ihnen den Einstieg zu erleichtern und die Funktionen von PasteBar optimal zu nutzen, laden wir Sie zu einer kurzen Tour durch die App ein.
+Welcome to FlowPaster: Willkommen bei FlowPaster
+Welcome to FlowPaster Settings: Willkommen bei den FlowPaster-Einstellungen
+WelcomeBody: Machen Sie sich bereit, Ihren Kopier- und Einfüge-Workflow mit FlowPaster zu vereinfachen! Diese geführte Tour führt Sie durch die wichtigsten Funktionen und zeigt Ihnen, wie Sie die App optimal nutzen können. Beginnen wir mit der Erkundung des Zwischenablage-Verlauf-Panels.
+WelcomeDescription: Vielen Dank, dass Sie unsere Anwendung zur Vereinfachung Ihres Kopier-Einfüge-Workflows und zur Verbesserung der Zwischenablage-Funktionalität gewählt haben. Um Ihnen den Einstieg zu erleichtern und die Funktionen von FlowPaster optimal zu nutzen, laden wir Sie zu einer kurzen Tour durch die App ein.
 WelcomeTour: Beginnen wir mit der Erkundung des Zwischenablage-Verlauf-Panels.
 WelcomeTourCanSkip: Oder Sie können die <i>Tour überspringen</i>, wenn Sie lieber selbst erkunden möchten. Sie können jederzeit auf alle Touren über das Menü <strong>Hilfe > App-Führungen</strong> in der Navigationsleiste zugreifen.
 WelcomeTourDescription: Machen Sie eine Tour durch diesen Anwendungsbereich, um mehr über seine Funktionen und Funktionalitäten zu erfahren.

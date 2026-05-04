@@ -14,7 +14,6 @@ import {
   isCreatingMenuItem,
   isNavBarHovering,
   onBoardingTourSingleElements,
-  openAboutPasteBarModal,
   openContactUsFormModal,
   openOnBoardingTourName,
   openProtectedContentModal,
@@ -288,7 +287,7 @@ export function NavBar() {
   })
 
   useHotkeys(getAppHotkey(appHotkeys, 'showQuickPaste'), async () => {
-    await toggleHistoryQuickPasteWindow(t('PasteBar Quick Paste', { ns: 'settings2' }))
+    await toggleHistoryQuickPasteWindow(t('FlowPaster Quick Paste', { ns: 'settings2' }))
   })
 
   useHotkeys(getAppHotkey(appHotkeys, 'hideWindow'), () => {
@@ -327,7 +326,7 @@ export function NavBar() {
                 className="bg-green-800 dark:bg-green-700 dark:hover:bg-green-600 hover:bg-green-500 px-4 mt-3 text-white"
                 onClick={closeWindow}
               >
-                {t('Quit PasteBar', { ns: 'updater' })}
+                {t('Quit FlowPaster', { ns: 'updater' })}
               </Button>
 
               <Flex className="gap-3">
@@ -551,26 +550,9 @@ export function NavBar() {
             className="md m-0 px-2.5 text-sm font-semibold whitespace-nowrap"
             id="navbar-pastebar_tour"
           >
-            <Text className="font-semibold">{t('PasteBar', { ns: 'common' })}</Text>
+            <Text className="font-semibold">FlowPaster</Text>
           </MenubarTrigger>
           <MenubarContent>
-            <MenubarItem
-              onClick={() => {
-                openAboutPasteBarModal.value = true
-              }}
-            >
-              {t('About PasteBar', { ns: 'common' })}
-              <MenubarShortcut>
-                <ToolTip
-                  text={t('Build on {{buildDate}}', { ns: 'common', buildDate })}
-                  isCompact
-                  side="right"
-                >
-                  v{APP_VERSION}
-                </ToolTip>
-              </MenubarShortcut>
-            </MenubarItem>
-
             <MenubarItem
               onClick={() => {
                 navigate('/app-settings/preferences', { replace: true })
@@ -650,7 +632,7 @@ export function NavBar() {
             <MenubarItem
               onClick={async () => {
                 await toggleHistoryQuickPasteWindow(
-                  t('PasteBar Quick Paste', { ns: 'settings2' })
+                  t('FlowPaster Quick Paste', { ns: 'settings2' })
                 )
               }}
             >
@@ -1323,7 +1305,7 @@ export function NavBar() {
                           openOnBoardingTourName.value = APP_TOURS.settingsTour
                         }}
                       >
-                        {t('PasteBar Settings Tour', { ns: 'help' })}
+                        {t('FlowPaster Settings Tour', { ns: 'help' })}
                         {appToursCompletedList.includes(APP_TOURS.settingsTour) ? (
                           <Badge
                             variant="outline"
@@ -1481,7 +1463,7 @@ export function NavBar() {
                       </MenubarSub>
                       <MenubarSub>
                         <MenubarSubTrigger>
-                          {t('PasteBar Settings', { ns: 'help' })}
+                          {t('FlowPaster Settings', { ns: 'help' })}
                         </MenubarSubTrigger>
                         <MenubarSubContent className="dark:text-slate-300">
                           {(

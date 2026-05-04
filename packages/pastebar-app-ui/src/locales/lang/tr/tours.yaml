@@ -156,13 +156,13 @@ NAVBAR_TOUR:
   - element: '#navbar-panel_tour'
     popover:
       title: Gezinme Çubuğu
-      description: Gezinme çubuğu, PasteBar'ın özelliklerine ve ayarlarına hızlı erişim sağlar. Panoya Geçmiş ve Yapıştır Menüleri görünümleri arasında geçiş yapmak, koleksiyonlarınıza erişmek, genel bir arama yapmak, sabitlenmiş panonun görünürlüğünü değiştirmek, ayarları düzenlemek ve gerektiğinde yardım almak için kullanın.
+      description: Gezinme çubuğu, FlowPaster'ın özelliklerine ve ayarlarına hızlı erişim sağlar. Panoya Geçmiş ve Yapıştır Menüleri görünümleri arasında geçiş yapmak, koleksiyonlarınıza erişmek, genel bir arama yapmak, sabitlenmiş panonun görünürlüğünü değiştirmek, ayarları düzenlemek ve gerektiğinde yardım almak için kullanın.
       alignment: center
       prefferedSide: bottom
   - element: '#navbar-pastebar_tour'
     popover:
-      title: PasteBar Menü
-      description: PasteBar menüsü temel işlevlere ve bilgilere hızlı erişim sağlar. Burada güncellemeleri kontrol edebilir, ayarlara erişebilir, uygulama ekranını kilitleyebilir, ana pencereyi kapatabilir veya uygulamadan çıkabilirsiniz.
+      title: FlowPaster Menü
+      description: FlowPaster menüsü temel işlevlere ve bilgilere hızlı erişim sağlar. Burada güncellemeleri kontrol edebilir, ayarlara erişebilir, uygulama ekranını kilitleyebilir, ana pencereyi kapatabilir veya uygulamadan çıkabilirsiniz.
       alignment: start
       prefferedSide: bottom
   - element: '#navbar-view_tour'
@@ -198,13 +198,13 @@ NAVBAR_TOUR:
   - element: '#navbar-help_tour'
     popover:
       title: Yardım Menüsü
-      description: Yardım menüsünden rehberli turlara ve kullanıcı arayüzü özelliği vitrinlerine hızla erişin. PasteBar'ın özelliklerini ve kullanıcı arayüzünü etkili bir şekilde gezinmenize ve anlamanıza yardımcı olmak için adım adım rehberlik ve gösteriler sunar.
+      description: Yardım menüsünden rehberli turlara ve kullanıcı arayüzü özelliği vitrinlerine hızla erişin. FlowPaster'ın özelliklerini ve kullanıcı arayüzünü etkili bir şekilde gezinmenize ve anlamanıza yardımcı olmak için adım adım rehberlik ve gösteriler sunar.
       alignment: end
       prefferedSide: bottom
   - element: '#navbar-close-window_tour'
     popover:
       title: Ana Pencereyi Kapat
-      description: Ana PasteBar penceresini kapatmak için kapatma simgesine tıklayın ve işlevselliğini görev çubuğundan veya menü çubuğu simgesinden kullanmaya devam edin. Ana uygulama penceresini her zaman ana menüden yeniden açabilirsiniz.
+      description: Ana FlowPaster penceresini kapatmak için kapatma simgesine tıklayın ve işlevselliğini görev çubuğundan veya menü çubuğu simgesinden kullanmaya devam edin. Ana uygulama penceresini her zaman ana menüden yeniden açabilirsiniz.
       alignment: end
       prefferedSide: bottom
 
@@ -212,7 +212,7 @@ SETTINGS_TOUR:
   - element: '#app-settings-history_tour'
     popover:
       title: Pano Geçmiş Ayarları
-      description: PasteBar'ın kopyaladığınız içeriği nasıl yakalayacağını ve yöneteceğini özelleştirmek için pano geçmişi ayarlarınızı düzenleyin. Kişiselleştirilmiş bir deneyim için otomatik güncelleme, otomatik favorileme, bağlantı önizlemesi, durdurma sözcükleri listesi ve programlama dili otomatik algılama gibi özellikleri etkinleştirin veya devre dışı bırakın.
+      description: FlowPaster'ın kopyaladığınız içeriği nasıl yakalayacağını ve yöneteceğini özelleştirmek için pano geçmişi ayarlarınızı düzenleyin. Kişiselleştirilmiş bir deneyim için otomatik güncelleme, otomatik favorileme, bağlantı önizlemesi, durdurma sözcükleri listesi ve programlama dili otomatik algılama gibi özellikleri etkinleştirin veya devre dışı bırakın.
       alignment: start
       prefferedSide: right
   - element: '#app-settings-collections_tour'
@@ -230,7 +230,7 @@ SETTINGS_TOUR:
   - element: '#app-settings-security_tour'
     popover:
       title: Güvenlik Ayarları
-      description: Verilerinizi korumak için güvenlik ayarlarınızı yapılandırın. Bir kilit ekranı parolası ve kurtarma parolası ayarlayın. Pano geçmişi yakalamayı kilit ekranından kontrol edin ve hareketsizlik durumunda otomatik kilitlemeyi etkinleştirin. PasteBar uygulamanızın güvenliğini artırmak için bu ayarları düzenleyin.
+      description: Verilerinizi korumak için güvenlik ayarlarınızı yapılandırın. Bir kilit ekranı parolası ve kurtarma parolası ayarlayın. Pano geçmişi yakalamayı kilit ekranından kontrol edin ve hareketsizlik durumunda otomatik kilitlemeyi etkinleştirin. FlowPaster uygulamanızın güvenliğini artırmak için bu ayarları düzenleyin.
       alignment: start
       prefferedSide: right
   - element: '#app-settings-back_tour'

@@ -153,12 +153,12 @@ NAVBAR_TOUR:
   - element: '#navbar-panel_tour'
     popover:
       title: Barre de Navigation
-      description: Accédez rapidement aux fonctionnalités de PasteBar. Basculez entre Historique et Menu de Collage, accédez aux collections, effectuez une recherche globale, gérez le tableau épinglé, ajustez les paramètres et obtenez de l'aide.
+      description: Accédez rapidement aux fonctionnalités de FlowPaster. Basculez entre Historique et Menu de Collage, accédez aux collections, effectuez une recherche globale, gérez le tableau épinglé, ajustez les paramètres et obtenez de l'aide.
       alignment: center
       prefferedSide: bottom
   - element: '#navbar-pastebar_tour'
     popover:
-      title: Menu PasteBar
+      title: Menu FlowPaster
       description: Accédez rapidement aux fonctions essentielles. Vérifiez les mises à jour, accédez aux paramètres, verrouillez l'écran, fermez la fenêtre principale ou quittez l'application.
       alignment: start
       prefferedSide: bottom
@@ -195,7 +195,7 @@ NAVBAR_TOUR:
   - element: '#navbar-help_tour'
     popover:
       title: Menu Aide
-      description: Accédez rapidement aux visites guidées et aux démonstrations des fonctionnalités de l'interface. Obtenez des conseils étape par étape pour comprendre les fonctionnalités de PasteBar.
+      description: Accédez rapidement aux visites guidées et aux démonstrations des fonctionnalités de l'interface. Obtenez des conseils étape par étape pour comprendre les fonctionnalités de FlowPaster.
       alignment: end
       prefferedSide: bottom
   - element: '#navbar-close-window_tour'
@@ -226,7 +226,7 @@ SETTINGS_TOUR:
   - element: '#app-settings-security_tour'
     popover:
       title: Paramètres de Sécurité
-      description: Configurez vos paramètres de sécurité pour protéger vos données. Définissez un code d'accès et un mot de passe de récupération. Contrôlez la capture de l'historique depuis l'écran de verrouillage et activez le verrouillage auto en cas d'inactivité. Ajustez ces paramètres pour renforcer la sécurité de PasteBar.
+      description: Configurez vos paramètres de sécurité pour protéger vos données. Définissez un code d'accès et un mot de passe de récupération. Contrôlez la capture de l'historique depuis l'écran de verrouillage et activez le verrouillage auto en cas d'inactivité. Ajustez ces paramètres pour renforcer la sécurité de FlowPaster.
       alignment: start
       prefferedSide: right
   - element: '#app-settings-back_tour'

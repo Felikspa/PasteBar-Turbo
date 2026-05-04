@@ -24,7 +24,7 @@ Restoring backup...: 正在恢复备份...
 Backup deleted successfully: 备份删除成功
 Failed to delete backup: 删除备份失败
 Invalid backup file: 无效的备份文件
-The selected file is not a valid PasteBar backup: 选择的文件不是有效的PasteBar备份
+The selected file is not a valid FlowPaster backup: 选择的文件不是有效的FlowPaster备份
 Created: 创建时间
 Size: 大小
 Failed to load backup list: 加载备份列表失败

@@ -14,7 +14,6 @@ import {
   isKeyAltPressed,
   isNavBarHovering,
   onBoardingTourSingleElements,
-  openAboutPasteBarModal,
   openActionConfirmModal,
   openAddSelectedTextModal,
   openContactUsFormModal,
@@ -51,7 +50,6 @@ import { TooltipProvider } from '~/components/ui/tooltip'
 import { ToasterToast, useToast } from '~/components/ui/use-toast'
 import mergeRefs from '~/components/atoms/merge-refs'
 import ToolTip from '~/components/atoms/tooltip'
-import ModalAboutPasteBar from '~/components/organisms/modals/about-pastebar-modal'
 import ModalConfirmationAddSelectedTextAs from '~/components/organisms/modals/add-selected-text-as-modal'
 import ModalContactSupportForm from '~/components/organisms/modals/contact-support-form'
 import ModalLockScreenConfirmationWithPasscodeOrPassword from '~/components/organisms/modals/lock-screen-confirmation-modal'
@@ -349,7 +347,7 @@ const Container: React.ForwardRefRenderFunction<HTMLDivElement, MainContainerPro
       isNotTourCompletedOrSkipped(APP_TOURS.settingsTour)
     ) {
       toatTourRef.current = toast({
-        title: `${t('Welcome to PasteBar Settings', { ns: 'help' })}`,
+        title: `${t('Welcome to FlowPaster Settings', { ns: 'help' })}`,
         id: 'settings-tour',
         duration: 0,
         description: (
@@ -531,16 +529,6 @@ const Container: React.ForwardRefRenderFunction<HTMLDivElement, MainContainerPro
               addSelectedTextToMenu.value = text
               isCreatingMenuItem.value = true
             }, 300)
-          }}
-        />
-      )}
-      {openAboutPasteBarModal.value && (
-        <ModalAboutPasteBar
-          open
-          showUpdateAppIsLatest={showUpdateAppIsLatest}
-          showUpdateChecking={showUpdateChecking}
-          onClose={() => {
-            openAboutPasteBarModal.value = false
           }}
         />
       )}

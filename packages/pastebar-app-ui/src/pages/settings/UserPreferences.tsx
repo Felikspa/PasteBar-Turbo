@@ -246,7 +246,7 @@ export default function UserPreferences() {
                               </Text>
                               <Text className="text-xs text-muted-foreground">
                                 {t(
-                                  'Remove PasteBar from the system tray until this option is disabled',
+                                  'Remove FlowPaster from the system tray until this option is disabled',
                                   { ns: 'settings2' }
                                 )}
                               </Text>
@@ -486,7 +486,7 @@ export default function UserPreferences() {
                       <CardContent>
                         <Text className="text-sm text-muted-foreground">
                           {t(
-                            'Remove PasteBar app icon from the macOS Dock while keeping the app running in the background. The app remains accessible via the menu bar icon. Requires an app restart to take effect.',
+                            'Remove FlowPaster app icon from the macOS Dock while keeping the app running in the background. The app remains accessible via the menu bar icon. Requires an app restart to take effect.',
                             { ns: 'settings2' }
                           )}
                         </Text>

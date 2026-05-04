@@ -11,7 +11,7 @@ Clipboard History Settings: 剪贴板历史设置
 Clipboard History Tour: 剪贴板历史教程
 Close Main Window: 关闭主窗口
 Collections Menu: 收藏菜单
-Congratulations! You have finished <strong>all the tours</strong> and now ready to make the most of PasteBar's features. Remember, all tours always available from the <strong>Help > App Guided Tours</strong> menu in the navbar.: 恭喜！您已完成<strong>所有教程</strong>，现在可以充分利用 PasteBar 的功能了。请记住，所有教程随时可从导航栏的<strong>帮助 > 应用引导教程</strong>菜单中获取。
+Congratulations! You have finished <strong>all the tours</strong> and now ready to make the most of FlowPaster's features. Remember, all tours always available from the <strong>Help > App Guided Tours</strong> menu in the navbar.: 恭喜！您已完成<strong>所有教程</strong>，现在可以充分利用 FlowPaster 的功能了。请记住，所有教程随时可从导航栏的<strong>帮助 > 应用引导教程</strong>菜单中获取。
 Contact Us Form: 联系我们表单
 Create Dashboard Items: 创建仪表板项目
 Dashboard Panel: 仪表板面板
@@ -45,10 +45,10 @@ Paste Menu: 粘贴菜单
 Paste Menu Panel: 粘贴菜单面板
 Paste Menu Tour: 粘贴菜单教程
 Paste Menu View: 粘贴菜单视图
-PasteBar Menu: PasteBar 菜单
-PasteBar Settings: PasteBar 设置
-PasteBar Settings Tour: PasteBar 设置教程
-PasteBar Tour: PasteBar 教程
+FlowPaster Menu: FlowPaster 菜单
+FlowPaster Settings: FlowPaster 设置
+FlowPaster Settings Tour: FlowPaster 设置教程
+FlowPaster Tour: FlowPaster 教程
 Previous: 上一步
 Priority Support: 优先支持
 Reset All Tours: 重置所有教程
@@ -78,10 +78,10 @@ TourCanSkip: 教程可跳过
 User Preferences: 用户首选项
 View Menu: 查看菜单
 Welcome to Paste Menu: 欢迎使用粘贴菜单
-Welcome to PasteBar: 欢迎使用 PasteBar
-Welcome to PasteBar Settings: 欢迎使用 PasteBar 设置
-WelcomeBody: 准备好使用 PasteBar 简化您的复制粘贴工作流程了吗！本引导教程将带您了解主要功能，并向您展示如何充分利用该应用。让我们从探索剪贴板历史面板开始。
-WelcomeDescription: 感谢您选择我们的应用来简化复制粘贴工作流程并增强剪贴板功能。为了帮助您入门并充分利用 PasteBar 的功能，我们邀请您
+Welcome to FlowPaster: 欢迎使用 FlowPaster
+Welcome to FlowPaster Settings: 欢迎使用 FlowPaster 设置
+WelcomeBody: 准备好使用 FlowPaster 简化您的复制粘贴工作流程了吗！本引导教程将带您了解主要功能，并向您展示如何充分利用该应用。让我们从探索剪贴板历史面板开始。
+WelcomeDescription: 感谢您选择我们的应用来简化复制粘贴工作流程并增强剪贴板功能。为了帮助您入门并充分利用 FlowPaster 的功能，我们邀请您
 WelcomeTour: 让我们从探索剪贴板历史面板开始。
 WelcomeTourCanSkip: 或者，如果您更喜欢自己探索，可以<i>跳过教程</i>。您随时可以从导航栏的<strong>帮助 > 应用引导教程</strong>菜单中访问所有教程。
 WelcomeTourDescription: 了解本应用程序的这一部分的功能和特性。

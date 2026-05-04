@@ -3,7 +3,7 @@ Checking for Update...: Проверка обновления...
 Confirm Restart: Подтвердить перезапуск
 Confirm Update: Подтвердить обновление
 Download Completed: Загрузка завершена
-Download Completed Quit and Manually Install: Загруженный файл обновления откроется автоматически. Для завершения обновления закройте PasteBar и вручную установите последнюю версию. После установки запустите обновленный PasteBar.
+Download Completed Quit and Manually Install: Загруженный файл обновления откроется автоматически. Для завершения обновления закройте FlowPaster и вручную установите последнюю версию. После установки запустите обновленный FlowPaster.
 Download Update: Загрузить обновление
 Downloading...: Идет загрузка...
 General Update Error: В процессе обновления произошла ошибка. Пожалуйста, попробуйте обновить приложение позже. Если проблема сохранится, вам следует вручную загрузить и установить обновление.
@@ -11,13 +11,13 @@ Install Update: Установить обновление
 Installing Update: Установка обновления
 No Update Available: Нет доступных обновлений
 Permission Denied Message: Не удалось автоматически обновить файлы приложения из-за отсутствия необходимых прав доступа. Для успешного обновления загрузите новую версию и самостоятельно скопируйте файлы с использованием учетной записи, обладающей правами администратора.
-Quit PasteBar: Закрыть PasteBar
+Quit FlowPaster: Закрыть FlowPaster
 Release date {{date}}: Дата выпуска {{date}}
 Remind Me Later: Напомнить позже
 Restart: Перезапуск
 Restart Required: Требуется перезапуск
 Restart to Finish: Перезапуск для завершения
-Restart to Update: Перезапустить PasteBar
+Restart to Update: Перезапустить FlowPaster
 Skip Download: Отмена загрузки
 Skip This Version: Пропустить эту версию
 Try Install Again: Попробуйте еще раз

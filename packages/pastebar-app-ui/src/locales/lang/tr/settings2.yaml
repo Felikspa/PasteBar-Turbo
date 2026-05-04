@@ -10,10 +10,10 @@ Hide collections menu on the navbar: Gezinme çubuğundaki koleksiyonlar menüs�
 Hide the App Dock Icon: Uygulama Dock Simgesini Gizle
 Keep the main application window hidden when the app restarts. You can reopen it using the menu bar or taskbar menu, or using global hotkeys.: Uygulama yeniden başladığında ana uygulama penceresini gizli tut. Menü çubuğu veya görev çubuğu menüsünü kullanarak veya global kısayol tuşlarını kullanarak yeniden açabilirsiniz.
 No keys set: Tuş atanmadı
-PasteBar Quick Paste: PasteBar Hızlı Yapıştır
+FlowPaster Quick Paste: FlowPaster Hızlı Yapıştır
 Press keys: Tuşlara basın
 Quick Paste Window: Hızlı Yapıştır Penceresi
-Remove PasteBar app icon from the macOS Dock while keeping the app running in the background. The app remains accessible via the menu bar icon. Requires an app restart to take effect.: PasteBar uygulama simgesini macOS Dock'tan kaldırır ancak uygulama arka planda çalışmaya devam eder. Uygulamaya menü çubuğu simgesi üzerinden erişilebilir. Etkili olması için uygulama yeniden başlatma gerekir.
+Remove FlowPaster app icon from the macOS Dock while keeping the app running in the background. The app remains accessible via the menu bar icon. Requires an app restart to take effect.: FlowPaster uygulama simgesini macOS Dock'tan kaldırır ancak uygulama arka planda çalışmaya devam eder. Uygulamaya menü çubuğu simgesi üzerinden erişilebilir. Etkili olması için uygulama yeniden başlatma gerekir.
 Set: Ayarla
 Set system OS hotkeys to show/hide the main app window and quick paste window: Ana uygulama penceresini ve hızlı yapıştır penceresini göstermek/gizlemek için sistem kısayol tuşlarını ayarla. 3 tuşa kadar kombinasyonları destekler.
 'How to set hotkeys:': 'Kısayol tuşları nasıl ayarlanır:'

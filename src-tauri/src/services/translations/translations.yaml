@@ -5,8 +5,8 @@ en:
   clipboard_image_size: Clipboard Image size
   history_capture_is_disabled: Clipboard History Capture is Disabled
   recent_history: Recent History
-  open_pastebar: Open PasteBar
-  unlock_pastebar: Unlock PasteBar
+  open_pastebar: Open FlowPaster
+  unlock_pastebar: Unlock FlowPaster
   quit: Quit
 
 de:
@@ -16,8 +16,8 @@ de:
   clipboard_image_size: Bild in Zwischenablage
   history_capture_is_disabled: Zwischenablageerfassung deaktiviert
   recent_history: Zwischenablageverlauf
-  open_pastebar: PasteBar öffnen
-  unlock_pastebar: PasteBar entsperren
+  open_pastebar: FlowPaster öffnen
+  unlock_pastebar: FlowPaster entsperren
   quit: Beenden
 
 esES:
@@ -27,8 +27,8 @@ esES:
   clipboard_image_size: Imagen en portapapeles
   history_capture_is_disabled: Captura del portapapeles desactivada
   recent_history: Historial reciente
-  open_pastebar: Abrir PasteBar
-  unlock_pastebar: Desbloquear PasteBar
+  open_pastebar: Abrir FlowPaster
+  unlock_pastebar: Desbloquear FlowPaster
   quit: Salir
 
 fr:
@@ -38,8 +38,8 @@ fr:
   clipboard_image_size: Image dans presse-papiers
   history_capture_is_disabled: Capture du presse-papiers désactivée
   recent_history: Historique récent
-  open_pastebar: Ouvrir PasteBar
-  unlock_pastebar: Déverrouiller PasteBar
+  open_pastebar: Ouvrir FlowPaster
+  unlock_pastebar: Déverrouiller FlowPaster
   quit: Quitter
 
 it:
@@ -49,8 +49,8 @@ it:
   clipboard_image_size: Dimensione Immagine negli Appunti
   history_capture_is_disabled: Cattura cronologia disattivata
   recent_history: Cronologia Recente
-  open_pastebar: Apri PasteBar
-  unlock_pastebar: Sblocca PasteBar
+  open_pastebar: Apri FlowPaster
+  unlock_pastebar: Sblocca FlowPaster
   quit: Esci
 
 uk:
@@ -60,8 +60,8 @@ uk:
   clipboard_image_size: Зображення у буфері
   history_capture_is_disabled: Захоплення буфера вимкнено
   recent_history: Історія буферу
-  open_pastebar: Відкрити PasteBar
-  unlock_pastebar: Розблокувати PasteBar
+  open_pastebar: Відкрити FlowPaster
+  unlock_pastebar: Розблокувати FlowPaster
   quit: Вийти
 
 ru:
@@ -71,8 +71,8 @@ ru:
   clipboard_image_size: Изображение в буфере
   history_capture_is_disabled: Захват истории отключен
   recent_history: История буфера
-  open_pastebar: Открыть PasteBar
-  unlock_pastebar: Разблокировать PasteBar
+  open_pastebar: Открыть FlowPaster
+  unlock_pastebar: Разблокировать FlowPaster
   quit: Выйти
 
 zhCN:
@@ -82,8 +82,8 @@ zhCN:
   clipboard_image_size: 剪贴板图像大小
   history_capture_is_disabled: 剪贴板历史记录捕获已禁用
   recent_history: 最近的历史记录
-  open_pastebar: 打开 PasteBar
-  unlock_pastebar: 解锁 PasteBar
+  open_pastebar: 打开 FlowPaster
+  unlock_pastebar: 解锁 FlowPaster
   quit: 退出
 
 tr:
@@ -93,6 +93,6 @@ tr:
   clipboard_image_size: Pano Resim Boyutu
   history_capture_is_disabled: Geçmiş Yakalama Devre Dışı
   recent_history: Son Geçmiş
-  open_pastebar: PasteBar'ı Aç
-  unlock_pastebar: PasteBar'ı Kilit Aç
+  open_pastebar: FlowPaster'ı Aç
+  unlock_pastebar: FlowPaster'ı Kilit Aç
   quit: Çıkış

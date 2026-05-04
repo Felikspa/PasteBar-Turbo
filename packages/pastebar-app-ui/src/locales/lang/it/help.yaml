@@ -11,7 +11,7 @@ Clipboard History Settings: Impostazioni Cronologia Appunti
 Clipboard History Tour: Tour Cronologia Appunti
 Close Main Window: Chiudi Finestra Principale
 Collections Menu: Menu Collezioni
-Congratulations! You have finished <strong>all the tours</strong> and now ready to make the most of PasteBar's features. Remember, all tours always available from the <strong>Help > App Guided Tours</strong> menu in the navbar.: Congratulazioni! Hai completato <strong>tutti i tour</strong> e ora sei pronto per sfruttare al massimo le funzionalità di PasteBar. Ricorda, tutti i tour sono sempre disponibili dal menu <strong>Aiuto > Tour Guidati dell'App</strong> nella barra di navigazione.
+Congratulations! You have finished <strong>all the tours</strong> and now ready to make the most of FlowPaster's features. Remember, all tours always available from the <strong>Help > App Guided Tours</strong> menu in the navbar.: Congratulazioni! Hai completato <strong>tutti i tour</strong> e ora sei pronto per sfruttare al massimo le funzionalità di FlowPaster. Ricorda, tutti i tour sono sempre disponibili dal menu <strong>Aiuto > Tour Guidati dell'App</strong> nella barra di navigazione.
 Contact Us Form: Modulo di Contatto
 Create Dashboard Items: Crea Elementi Dashboard
 Dashboard Panel: Pannello Dashboard
@@ -45,10 +45,10 @@ Paste Menu: Menu Incolla
 Paste Menu Panel: Pannello Menu Incolla
 Paste Menu Tour: Tour Menu Incolla
 Paste Menu View: Vista Menu Incolla
-PasteBar Menu: Menu PasteBar
-PasteBar Settings: Impostazioni PasteBar
-PasteBar Settings Tour: Tour Impostazioni PasteBar
-PasteBar Tour: Tour PasteBar
+FlowPaster Menu: Menu FlowPaster
+FlowPaster Settings: Impostazioni FlowPaster
+FlowPaster Settings Tour: Tour Impostazioni FlowPaster
+FlowPaster Tour: Tour FlowPaster
 Previous: Precedente
 Priority Support: Supporto Prioritario
 Reset All Tours: Reimposta Tutti i Tour
@@ -78,10 +78,10 @@ TourCanSkip: TourCanSkip
 User Preferences: Preferenze Utente
 View Menu: Menu Visualizza
 Welcome to Paste Menu: Benvenuto nel Menu Incolla
-Welcome to PasteBar: Benvenuto in PasteBar
-Welcome to PasteBar Settings: Benvenuto nelle Impostazioni PasteBar
-WelcomeBody: Preparati a semplificare il tuo flusso di lavoro di copia e incolla con PasteBar! Questo tour guidato ti mostrerà le funzionalità chiave e come sfruttare al meglio l'app. Iniziamo esplorando il Pannello Cronologia Appunti.
-WelcomeDescription: Grazie per aver scelto la nostra applicazione per semplificare il tuo flusso di lavoro di copia-incolla e migliorare le funzionalità degli appunti. Per aiutarti a iniziare e sfruttare al meglio le funzionalità di PasteBar, ti invitiamo a fare un rapido tour dell'app.
+Welcome to FlowPaster: Benvenuto in FlowPaster
+Welcome to FlowPaster Settings: Benvenuto nelle Impostazioni FlowPaster
+WelcomeBody: Preparati a semplificare il tuo flusso di lavoro di copia e incolla con FlowPaster! Questo tour guidato ti mostrerà le funzionalità chiave e come sfruttare al meglio l'app. Iniziamo esplorando il Pannello Cronologia Appunti.
+WelcomeDescription: Grazie per aver scelto la nostra applicazione per semplificare il tuo flusso di lavoro di copia-incolla e migliorare le funzionalità degli appunti. Per aiutarti a iniziare e sfruttare al meglio le funzionalità di FlowPaster, ti invitiamo a fare un rapido tour dell'app.
 WelcomeTour: Iniziamo esplorando il pannello della cronologia degli appunti.
 WelcomeTourCanSkip: Oppure puoi <i>Saltare il Tour</i> se preferisci esplorarlo per conto tuo. Puoi sempre accedere a tutti i tour dal menu <strong>Aiuto > Tour Guidati dell'App</strong> nella barra di navigazione.
 WelcomeTourDescription: Fai un tour di questa sezione dell'applicazione per conoscerne le caratteristiche e le funzionalità.

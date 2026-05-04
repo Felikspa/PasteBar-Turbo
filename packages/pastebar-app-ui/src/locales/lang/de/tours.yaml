@@ -156,13 +156,13 @@ NAVBAR_TOUR:
   - element: '#navbar-panel_tour'
     popover:
       title: Navigationsleiste
-      description: Die Navigationsleiste bietet schnellen Zugriff auf die Funktionen und Einstellungen von PasteBar. Verwenden Sie sie, um zwischen Zwischenablage-Verlauf und Einfügemenü-Ansichten zu wechseln, auf Ihre Sammlungen zuzugreifen, eine globale Suche durchzuführen, die Sichtbarkeit des angehefteten Boards umzuschalten, Einstellungen anzupassen und bei Bedarf Hilfe zu erhalten.
+      description: Die Navigationsleiste bietet schnellen Zugriff auf die Funktionen und Einstellungen von FlowPaster. Verwenden Sie sie, um zwischen Zwischenablage-Verlauf und Einfügemenü-Ansichten zu wechseln, auf Ihre Sammlungen zuzugreifen, eine globale Suche durchzuführen, die Sichtbarkeit des angehefteten Boards umzuschalten, Einstellungen anzupassen und bei Bedarf Hilfe zu erhalten.
       alignment: center
       prefferedSide: bottom
   - element: '#navbar-pastebar_tour'
     popover:
-      title: PasteBar-Menü
-      description: Das PasteBar-Menü bietet schnellen Zugriff auf wichtige Funktionen und Informationen. Hier können Sie nach Updates suchen, auf Einstellungen zugreifen, den App-Bildschirm sperren, das Hauptfenster schließen oder die Anwendung beenden.
+      title: FlowPaster-Menü
+      description: Das FlowPaster-Menü bietet schnellen Zugriff auf wichtige Funktionen und Informationen. Hier können Sie nach Updates suchen, auf Einstellungen zugreifen, den App-Bildschirm sperren, das Hauptfenster schließen oder die Anwendung beenden.
       alignment: start
       prefferedSide: bottom
   - element: '#navbar-view_tour'
@@ -198,13 +198,13 @@ NAVBAR_TOUR:
   - element: '#navbar-help_tour'
     popover:
       title: Hilfemenü
-      description: Greifen Sie schnell auf geführte Touren und UI-Feature-Präsentationen aus dem Hilfemenü zu. Es bietet schrittweise Anleitungen und Demonstrationen, um Ihnen zu helfen, die Funktionen und die Benutzeroberfläche von PasteBar effektiv zu navigieren und zu verstehen.
+      description: Greifen Sie schnell auf geführte Touren und UI-Feature-Präsentationen aus dem Hilfemenü zu. Es bietet schrittweise Anleitungen und Demonstrationen, um Ihnen zu helfen, die Funktionen und die Benutzeroberfläche von FlowPaster effektiv zu navigieren und zu verstehen.
       alignment: end
       prefferedSide: bottom
   - element: '#navbar-close-window_tour'
     popover:
       title: Hauptfenster schließen
-      description: Klicken Sie auf das Schließen-Symbol, um das PasteBar-Hauptfenster zu schließen, während die Funktionalität über das Taskleisten- oder Menüleistensymbol verfügbar bleibt. Sie können das Hauptanwendungsfenster jederzeit über das Hauptmenü wieder öffnen.
+      description: Klicken Sie auf das Schließen-Symbol, um das FlowPaster-Hauptfenster zu schließen, während die Funktionalität über das Taskleisten- oder Menüleistensymbol verfügbar bleibt. Sie können das Hauptanwendungsfenster jederzeit über das Hauptmenü wieder öffnen.
       alignment: end
       prefferedSide: bottom
 
@@ -212,7 +212,7 @@ SETTINGS_TOUR:
   - element: '#app-settings-history_tour'
     popover:
       title: Zwischenablage-Verlauf-Einstellungen
-      description: Passen Sie Ihre Zwischenablage-Verlauf-Einstellungen an, um anzupassen, wie PasteBar Ihre kopierten Inhalte erfasst und verwaltet. Aktivieren oder deaktivieren Sie Funktionen wie Auto-Update, Auto-Stern, Link-Vorschau, Stoppwortliste und automatische Programmiersprachen-Erkennung für eine personalisierte Erfahrung.
+      description: Passen Sie Ihre Zwischenablage-Verlauf-Einstellungen an, um anzupassen, wie FlowPaster Ihre kopierten Inhalte erfasst und verwaltet. Aktivieren oder deaktivieren Sie Funktionen wie Auto-Update, Auto-Stern, Link-Vorschau, Stoppwortliste und automatische Programmiersprachen-Erkennung für eine personalisierte Erfahrung.
       alignment: start
       prefferedSide: right
   - element: '#app-settings-collections_tour'
@@ -230,7 +230,7 @@ SETTINGS_TOUR:
   - element: '#app-settings-security_tour'
     popover:
       title: Sicherheitseinstellungen
-      description: Konfigurieren Sie Ihre Sicherheitseinstellungen zum Schutz Ihrer Daten. Legen Sie einen Sperrbildschirm-Passcode und ein Wiederherstellungspasswort fest. Steuern Sie die Erfassung des Zwischenablage-Verlaufs vom Sperrbildschirm aus und aktivieren Sie die automatische Sperre bei Inaktivität. Passen Sie diese Einstellungen an, um die Sicherheit Ihrer PasteBar-Anwendung zu erhöhen.
+      description: Konfigurieren Sie Ihre Sicherheitseinstellungen zum Schutz Ihrer Daten. Legen Sie einen Sperrbildschirm-Passcode und ein Wiederherstellungspasswort fest. Steuern Sie die Erfassung des Zwischenablage-Verlaufs vom Sperrbildschirm aus und aktivieren Sie die automatische Sperre bei Inaktivität. Passen Sie diese Einstellungen an, um die Sicherheit Ihrer FlowPaster-Anwendung zu erhöhen.
       alignment: start
       prefferedSide: right
   - element: '#app-settings-back_tour'

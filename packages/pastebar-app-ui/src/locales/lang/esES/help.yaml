@@ -11,7 +11,7 @@ Clipboard History Settings: Ajustes del Historial
 Clipboard History Tour: Tour del Historial
 Close Main Window: Cerrar Ventana Principal
 Collections Menu: Menú de Colecciones
-Congratulations! You have finished <strong>all the tours</strong> and now ready to make the most of PasteBar's features. Remember, all tours always available from the <strong>Help > App Guided Tours</strong> menu in the navbar.: ¡Felicidades! Has completado <strong>todos los tours</strong> y ahora estás listo para aprovechar al máximo las funciones de PasteBar. Recuerda, todos los tours están siempre disponibles en el menú <strong>Ayuda > Tours Guiados de la App</strong> en la barra de navegación.
+Congratulations! You have finished <strong>all the tours</strong> and now ready to make the most of FlowPaster's features. Remember, all tours always available from the <strong>Help > App Guided Tours</strong> menu in the navbar.: ¡Felicidades! Has completado <strong>todos los tours</strong> y ahora estás listo para aprovechar al máximo las funciones de FlowPaster. Recuerda, todos los tours están siempre disponibles en el menú <strong>Ayuda > Tours Guiados de la App</strong> en la barra de navegación.
 Contact Us Form: Formulario de Contacto
 Create Dashboard Items: Crear Elementos del Panel
 Dashboard Panel: Panel de Control
@@ -45,10 +45,10 @@ Paste Menu: Menú de Pegado
 Paste Menu Panel: Panel de Menú de Pegado
 Paste Menu Tour: Tour del Menú de Pegado
 Paste Menu View: Vista del Menú de Pegado
-PasteBar Menu: Menú de PasteBar
-PasteBar Settings: Ajustes de PasteBar
-PasteBar Settings Tour: Tour de Ajustes de PasteBar
-PasteBar Tour: Tour de PasteBar
+FlowPaster Menu: Menú de FlowPaster
+FlowPaster Settings: Ajustes de FlowPaster
+FlowPaster Settings Tour: Tour de Ajustes de FlowPaster
+FlowPaster Tour: Tour de FlowPaster
 Previous: Anterior
 Priority Support: Soporte Prioritario
 Reset All Tours: Reiniciar Todos los Tours
@@ -78,10 +78,10 @@ TourCanSkip: TourPuedeOmitirse
 User Preferences: Preferencias de Usuario
 View Menu: Menú de Vista
 Welcome to Paste Menu: Bienvenido al Menú de Pegado
-Welcome to PasteBar: Bienvenido a PasteBar
-Welcome to PasteBar Settings: Bienvenido a Ajustes de PasteBar
-WelcomeBody: ¡Prepárate para simplificar tu flujo de trabajo de copiar y pegar con PasteBar! Este tour guiado te mostrará las funciones clave y cómo aprovechar al máximo la app. Comencemos explorando el Panel de Historial del Portapapeles.
-WelcomeDescription: Gracias por elegir nuestra aplicación para simplificar tu flujo de trabajo de copiar y pegar y mejorar la funcionalidad del portapapeles. Para ayudarte a comenzar y aprovechar al máximo las funciones de PasteBar, te invitamos a hacer un rápido tour por la aplicación.
+Welcome to FlowPaster: Bienvenido a FlowPaster
+Welcome to FlowPaster Settings: Bienvenido a Ajustes de FlowPaster
+WelcomeBody: ¡Prepárate para simplificar tu flujo de trabajo de copiar y pegar con FlowPaster! Este tour guiado te mostrará las funciones clave y cómo aprovechar al máximo la app. Comencemos explorando el Panel de Historial del Portapapeles.
+WelcomeDescription: Gracias por elegir nuestra aplicación para simplificar tu flujo de trabajo de copiar y pegar y mejorar la funcionalidad del portapapeles. Para ayudarte a comenzar y aprovechar al máximo las funciones de FlowPaster, te invitamos a hacer un rápido tour por la aplicación.
 WelcomeTour: Comencemos explorando el panel de historial del portapapeles.
 WelcomeTourCanSkip: O puedes <i>Omitir Tour</i> si prefieres explorar por tu cuenta. Siempre puedes acceder a todos los tours desde el menú <strong>Ayuda > Tours Guiados de la App</strong> en la barra de navegación.
 WelcomeTourDescription: Realiza un tour por esta sección de la aplicación para aprender sobre sus características y funcionalidad.

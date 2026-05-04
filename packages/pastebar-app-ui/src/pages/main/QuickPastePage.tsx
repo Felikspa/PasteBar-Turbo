@@ -19,8 +19,21 @@ import {
 import { useDebounce } from '~/hooks/use-debounce'
 
 import { clipboardHistoryStoreAtom } from '~/store/clipboardHistoryStore'
+import { settingsStoreAtom } from '~/store/settingsStore'
 
-export default function QuickPastePage() {
+export type QuickPasteAppearance = {
+  acrylicColorDepth: number
+  acrylicOpacity: number
+  fontSize: number
+  highlightColor: string
+  maskStrength: number
+}
+
+type QuickPastePageProps = {
+  appearance?: QuickPasteAppearance
+}
+
+export default function QuickPastePage({ appearance }: QuickPastePageProps) {
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedIndexes, setSelectedIndexes] = useState<number[]>([])
   const searchInputRef = useRef<HTMLInputElement>(null)
@@ -35,6 +48,20 @@ export default function QuickPastePage() {
   const { clipboardHistory, foundClipboardHistory } = useAtomValue(
     clipboardHistoryStoreAtom
   )
+  const {
+    quickPasteHighlightColor,
+    quickPasteAcrylicColorDepth,
+    quickPasteAcrylicOpacity,
+    quickPasteFontSize,
+    quickPasteMaskStrength,
+  } = useAtomValue(settingsStoreAtom)
+  const activeAppearance = appearance ?? {
+    acrylicColorDepth: quickPasteAcrylicColorDepth,
+    acrylicOpacity: quickPasteAcrylicOpacity,
+    fontSize: quickPasteFontSize,
+    highlightColor: quickPasteHighlightColor,
+    maskStrength: quickPasteMaskStrength,
+  }
   const visibleClipboardHistory = hasSearch ? foundClipboardHistory : clipboardHistory
   const visibleClipboardHistoryRef = useRef(visibleClipboardHistory)
 
@@ -171,6 +198,35 @@ export default function QuickPastePage() {
   const focusSearchInput = () => {
     searchInputRef.current?.focus()
   }
+
+  useEffect(() => {
+    document.documentElement.style.setProperty(
+      '--quick-paste-highlight-color',
+      activeAppearance.highlightColor
+    )
+    document.documentElement.style.setProperty(
+      '--quick-paste-acrylic-color-depth',
+      String(activeAppearance.acrylicColorDepth)
+    )
+    document.documentElement.style.setProperty(
+      '--quick-paste-mask-strength',
+      String(activeAppearance.maskStrength)
+    )
+    document.documentElement.style.setProperty(
+      '--quick-paste-acrylic-opacity',
+      String(activeAppearance.acrylicOpacity)
+    )
+    document.documentElement.style.setProperty(
+      '--quick-paste-font-size',
+      `${activeAppearance.fontSize}px`
+    )
+  }, [
+    activeAppearance.acrylicColorDepth,
+    activeAppearance.acrylicOpacity,
+    activeAppearance.fontSize,
+    activeAppearance.highlightColor,
+    activeAppearance.maskStrength,
+  ])
 
   const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value)

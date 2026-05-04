@@ -1,6 +1,6 @@
 ' No': ' Ні'
-' This permission ensures PasteBar can access the clipboard and perform copy and paste operations across applications.': ' Цей дозвіл гарантує, що PasteBar може отримати доступ до буфера обміну та виконувати операції копіювання та вставки між додатками.'
-About PasteBar: Про PasteBar
+' This permission ensures FlowPaster can access the clipboard and perform copy and paste operations across applications.': ' Цей дозвіл гарантує, що FlowPaster може отримати доступ до буфера обміну та виконувати операції копіювання та вставки між додатками.'
+About FlowPaster: Про FlowPaster
 Action Menu: Контекстне меню
 Activation Error: Помилка активації
 ? Add <b>{{Clipboard}}</b> field to template. This allows you to copy text to the clipboard, and it will be inserted into the template
@@ -10,7 +10,7 @@ Add First Option: Додати перший варіант
 Add Link Card: Додати картку посилання
 Add Menu: Додати Меню
 Add Option: Додати варіант
-Add PasteBar to Accessibility: Додати PasteBar до Спеціальних можливостей
+Add FlowPaster to Accessibility: Додати FlowPaster до Спеціальних можливостей
 Add To Player: Додати до плеєра
 Add to: Додати до
 Add to Clips: Додати до Кліпів
@@ -21,7 +21,7 @@ Add to template fields: Додати до полів шаблону
 Add {{Clipboard}} field to template. This allows you to copy text to the clipboard, and it will be inserted into the template: Додайте поле <b>{{Clipboard}}</b> до шаблону. Це дозволить копіювати текст до буфера обміну, і він буде вставлений у шаблон
 Added: Додано
 Adding this file to the player is not recommended unless you trust the source.: Додавання цього файлу до плеєра не рекомендується, якщо ви не довіряєте джерелу.
-Allow PasteBar to Copy and Paste from Clipboard: Дозволити PasteBar копіювати та вставляти з буфера обміну
+Allow FlowPaster to Copy and Paste from Clipboard: Дозволити FlowPaster копіювати та вставляти з буфера обміну
 Are you sure you want to delete?: Ви впевнені, що хочете видалити?
 Are you sure?: Ви впевнені?
 Back: Назад
@@ -92,7 +92,7 @@ Emoji: Емодзі
 Empty: Порожній
 Empty Select: Порожній вибір
 Enable / Disable: Увімкнути / Вимкнути
-Enable PasteBar in Accessibility Settings: Дозволити доступ до спеціальних можливостей
+Enable FlowPaster in Accessibility Settings: Дозволити доступ до спеціальних можливостей
 Enabled: Увімкнено
 Enter Current Passcode: Введіть поточний код доступу
 Enter Digits Only Passcode: Введіть код доступу, що складається лише з цифр
@@ -164,16 +164,16 @@ Paste: Вставка
 Paste Delay: Затримка вставки
 Paste Menu: Меню вставки
 Paste in {{pastingCountDown}}...: Вставка через {{pastingCountDown}}...
-PasteBar: PasteBar
-PasteBar Application Error: Помилка додатку PasteBar
-PasteBar application now can access the clipboard and perform copy and paste operations across applications.: Додаток PasteBar тепер має доступ до буфера обміну і може виконувати операції копіювання та вставки між додатками.
-PasteBar was successfuly added to Accessibility settings: PasteBar був успішно доданий до налаштувань Спеціальних можливостей
+FlowPaster: FlowPaster
+FlowPaster Application Error: Помилка додатку FlowPaster
+FlowPaster application now can access the clipboard and perform copy and paste operations across applications.: Додаток FlowPaster тепер має доступ до буфера обміну і може виконувати операції копіювання та вставки між додатками.
+FlowPaster was successfuly added to Accessibility settings: FlowPaster був успішно доданий до налаштувань Спеціальних можливостей
 Pasted: Вставлено
 Path: Шлях
 Pause: Пауза
 Pause Playing: Пауза
-? 'Permission Check Failed: PasteBar has not been successfully added to Accessibility settings. Please grant the required permissions and click Done again.'
-: 'Помилка перевірки: PasteBar не був успішно доданий до налаштувань Спеціальних можливостей. Будь ласка, надайте необхідні дозволи та натисніть «Готово» ще раз.'
+? 'Permission Check Failed: FlowPaster has not been successfully added to Accessibility settings. Please grant the required permissions and click Done again.'
+: 'Помилка перевірки: FlowPaster не був успішно доданий до налаштувань Спеціальних можливостей. Будь ласка, надайте необхідні дозволи та натисніть «Готово» ще раз.'
 Pin Selected: Закріпити вибране
 Pinned: Закріплений
 Pinned_few: Закріплених
@@ -182,7 +182,7 @@ Pinned_one: Закріплений
 Pinned_two: Закріплених
 Pinned_zero: Закріплених
 Play: Грати
-Please add PasteBar to the list of apps in: Будь ласка, додайте PasteBar до списку додатків в
+Please add FlowPaster to the list of apps in: Будь ласка, додайте FlowPaster до списку додатків в
 Please confirm your action!: Будь ласка, підтвердіть свою дію!
 Press: Натиснути
 Press ESC key to close: Натисніть клавішу ESC для закриття
@@ -256,7 +256,7 @@ Tab: Tab
 Thank you for reporting the error.: Дякуємо, що повідомили нам про помилку.
 Thank you for using Pro: Дякуємо, що обрали Pro
 Thank you!: Дякуємо!
-This permission ensures PasteBar can access the clipboard and perform copy and paste operations across applications.: Цей дозвіл гарантує, що PasteBar зможе отримати доступ до буфера обміну та виконувати операції копіювання та вставки між додатками.
+This permission ensures FlowPaster can access the clipboard and perform copy and paste operations across applications.: Цей дозвіл гарантує, що FlowPaster зможе отримати доступ до буфера обміну та виконувати операції копіювання та вставки між додатками.
 Too long: Занадто довгий
 Too short: Занадто короткий
 Toolbar:

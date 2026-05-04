@@ -1,5 +1,5 @@
 ' No': ' Hayır'
-About PasteBar: PasteBar Hakkında
+About FlowPaster: FlowPaster Hakkında
 Action Menu: Eylem Menüsü
 Add <b>{{Clipboard}}</b> field to template. This allows you to copy text to the clipboard, and it will be inserted into the template: Şablona <b>{{Clipboard}}</b> alanı ekleyin. Bu, metni panoya kopyalamanıza ve şablona eklenmesine olanak tanır
 Add Clip: Klip Ekle
@@ -7,7 +7,7 @@ Add First Option: Ilk Seçeneği Ekle
 Add Link Card: Bağlantı Kartı Ekle
 Add Menu: Menü Ekle
 Add Option: Seçenek Ekle
-Add PasteBar to Accessibility: Erişilebilirliğe PasteBar'ı ekle
+Add FlowPaster to Accessibility: Erişilebilirliğe FlowPaster'ı ekle
 Add To Player: Oynatıcıya Ekleyin
 Add to: A ekle
 Add to Clips: Kliplere Ekleyin
@@ -17,7 +17,7 @@ Add to clip or menu: Klipe veya menüye ekleyin
 Add to template fields: Şablon alanına ekleyin
 Added: Eklendi
 Adding this file to the player is not recommended unless you trust the source.: Kaynağa güvenmiyorsanız bu dosyayı oynatıcıya eklemeniz önerilmez.
-Allow PasteBar to Copy and Paste from Clipboard: PasteBar'ın Panodan Kopyalayıp Yapıştırmasına İzin Ver
+Allow FlowPaster to Copy and Paste from Clipboard: FlowPaster'ın Panodan Kopyalayıp Yapıştırmasına İzin Ver
 Are you sure you want to delete?: Bunu silmek istediğinizden eminmisiniz?
 Are you sure?: Eminmisiniz?
 Attach History Window: Geçmiş Penceresini Ekle
@@ -86,7 +86,7 @@ Emoji: Emoji
 Empty: Boş
 Empty Select: Boş seçim
 Enable / Disable: Etkin / Devre dışı
-Enable PasteBar in Accessibility Settings: Erişilebilirlik Ayarlarında PasteBar'ı Etkinleştir
+Enable FlowPaster in Accessibility Settings: Erişilebilirlik Ayarlarında FlowPaster'ı Etkinleştir
 Enabled: Etkinleştirildi
 Enter Current Passcode: Mevcut parolayı gir
 Enter Digits Only Passcode: Ancak rakamlardan oluşan parolayı gir
@@ -158,20 +158,20 @@ Password: Şifre
 Paste Delay: Yapıştırma Gecikmesi
 Paste Menu: Yapıştırma Menüsü
 Paste in {{pastingCountDown}}...: Yapıştırılıyor {{pastingCountDown}}...
-PasteBar: PasteBar
-PasteBar Application Error: PasteBar Uygulama Hatası
-PasteBar History: PasteBar Geçmişi
-PasteBar application now can access the clipboard and perform copy and paste operations across applications.: PasteBar uygulaması artık panoya erişebiliyor ve uygulamalar arasında kopyalama ve yapıştırma işlemleri gerçekleştirebiliyor.
-PasteBar was successfuly added to Accessibility settings: PasteBar Erişilebilirlik ayarlarına başarıyla eklendi
+FlowPaster: FlowPaster
+FlowPaster Application Error: FlowPaster Uygulama Hatası
+FlowPaster History: FlowPaster Geçmişi
+FlowPaster application now can access the clipboard and perform copy and paste operations across applications.: FlowPaster uygulaması artık panoya erişebiliyor ve uygulamalar arasında kopyalama ve yapıştırma işlemleri gerçekleştirebiliyor.
+FlowPaster was successfuly added to Accessibility settings: FlowPaster Erişilebilirlik ayarlarına başarıyla eklendi
 Pasted: Yapıştırıldı
 Path: Yol
 Pause: Duraklat
 Pause Playing: Oynatmayı Duraklat
-'Permission Check Failed: PasteBar has not been successfully added to Accessibility settings. Please grant the required permissions and click Done again.': 'İzin Kontrolü Başarısız: PasteBar Erişilebilirlik ayarlarına başarıyla eklenemedi. Lütfen gerekli izinleri verin ve tekrar Tamamlandı`ya tıklayın.'
+'Permission Check Failed: FlowPaster has not been successfully added to Accessibility settings. Please grant the required permissions and click Done again.': 'İzin Kontrolü Başarısız: FlowPaster Erişilebilirlik ayarlarına başarıyla eklenemedi. Lütfen gerekli izinleri verin ve tekrar Tamamlandı`ya tıklayın.'
 Pin Selected: Pin Seçildi
 Pinned: Sabitlendi
 Play: Oynat
-Please add PasteBar to the list of apps in: Lütfen PasteBar'ı uygulama listesine ekleyin
+Please add FlowPaster to the list of apps in: Lütfen FlowPaster'ı uygulama listesine ekleyin
 Please confirm your action!: Lütfen eyleminizi onaylayın!
 Press: Tıkla
 Press ESC key to close: Kapatmak için ESC tuşuna basın
@@ -241,7 +241,7 @@ System Settings -> Privacy & Security -> Accessibility: Sistem Ayarları -> Gizl
 Thank you for reporting the error.: Hatayı raporladığınız için teşekkür ederiz.
 Thank you for using Pro: Pro kullandığınız için teşekkür ederiz
 Thank you!: Teşekkür Ederiz!
-This permission ensures PasteBar can access the clipboard and perform copy and paste operations across applications.: Bu izin, PasteBar'ın panoya erişebilmesini ve uygulamalar arasında kopyalama ve yapıştırma işlemleri gerçekleştirebilmesini sağlar.
+This permission ensures FlowPaster can access the clipboard and perform copy and paste operations across applications.: Bu izin, FlowPaster'ın panoya erişebilmesini ve uygulamalar arasında kopyalama ve yapıştırma işlemleri gerçekleştirebilmesini sağlar.
 Too long: Çok uzun
 Too short: Çok kısa
 Toolbar:

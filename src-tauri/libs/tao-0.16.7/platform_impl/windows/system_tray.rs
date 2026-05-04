@@ -327,7 +327,7 @@ unsafe extern "system" fn tray_subclass_proc(
         });
 
         // Check environment variable to see if we should show context menu on left click
-        let enable_left_click_menu = std::env::var("PASTEBAR_ENABLE_LEFT_CLICK_MENU")
+        let enable_left_click_menu = std::env::var("FLOWPASTER_ENABLE_LEFT_CLICK_MENU")
           .unwrap_or_else(|_| "false".to_string())
           .parse::<bool>()
           .unwrap_or(false);

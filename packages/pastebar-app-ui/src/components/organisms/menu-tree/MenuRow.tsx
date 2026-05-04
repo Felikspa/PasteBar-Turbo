@@ -49,7 +49,7 @@ export default function MenuRow<T>({
                 ns: 'menus',
               }
             ),
-            'PasteBar'
+            'FlowPaster'
           )
 
           return
@@ -66,7 +66,7 @@ export default function MenuRow<T>({
                 ns: 'menus',
               }
             ),
-            'PasteBar'
+            'FlowPaster'
           )
 
           return

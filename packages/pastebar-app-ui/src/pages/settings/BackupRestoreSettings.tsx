@@ -252,7 +252,7 @@ export default function BackupRestoreSettings() {
             duration: 3000,
             description: (
               <Box className="word-break">
-                {t('The selected file is not a valid PasteBar backup', {
+                {t('The selected file is not a valid FlowPaster backup', {
                   ns: 'backuprestore',
                 })}
               </Box>

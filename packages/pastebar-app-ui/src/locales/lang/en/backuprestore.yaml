@@ -36,7 +36,7 @@ Restoring backup...: Restoring backup...
 Restoring...: Restoring...
 Select backup file: Select backup file
 Size: Size
-The selected file is not a valid PasteBar backup: The selected file is not a valid PasteBar backup
+The selected file is not a valid FlowPaster backup: The selected file is not a valid FlowPaster backup
 This action cannot be undone. All current data will be replaced with the backup data.: This action cannot be undone. All current data will be replaced with the backup data.
 This will create a backup file containing your database: This will create a backup file containing your database
 This will replace all current data. Are you sure?: This will replace all current data. Are you sure?

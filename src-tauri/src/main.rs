@@ -117,7 +117,59 @@ use winapi::um::winuser::GetCursorPos;
 use winapi::um::winuser::{GetForegroundWindow, SetForegroundWindow};
 
 #[cfg(target_os = "windows")]
-fn apply_quickpaste_windows_backdrop(window: &tauri::Window, is_dark: bool) -> Result<(), String> {
+#[derive(Clone, Copy)]
+struct QuickPasteWindowsMaterial {
+  acrylic_opacity: i32,
+  acrylic_color_depth: i32,
+}
+
+#[cfg(target_os = "windows")]
+fn quickpaste_setting_int(
+  settings_map: &HashMap<String, Setting>,
+  name: &str,
+  default_value: i32,
+) -> i32 {
+  settings_map
+    .get(name)
+    .and_then(|setting| setting.value_int)
+    .unwrap_or(default_value)
+}
+
+#[cfg(target_os = "windows")]
+fn quickpaste_windows_material_from_settings(
+  settings_map: &HashMap<String, Setting>,
+) -> QuickPasteWindowsMaterial {
+  QuickPasteWindowsMaterial {
+    acrylic_opacity: quickpaste_setting_int(settings_map, "quickPasteAcrylicOpacity", 86)
+      .clamp(25, 100),
+    acrylic_color_depth: quickpaste_setting_int(
+      settings_map,
+      "quickPasteAcrylicColorDepth",
+      100,
+    )
+    .clamp(0, 100),
+  }
+}
+
+#[cfg(target_os = "windows")]
+fn quickpaste_acrylic_tint(is_dark: bool, material: QuickPasteWindowsMaterial) -> u32 {
+  let alpha = ((material.acrylic_opacity * 255) / 100) as u32;
+  let depth = material.acrylic_color_depth;
+  let channel = if is_dark {
+    249 - ((249 - 17) * depth / 100)
+  } else {
+    255 - ((255 - 249) * depth / 100)
+  } as u32;
+
+  (alpha << 24) | (channel << 16) | (channel << 8) | channel
+}
+
+#[cfg(target_os = "windows")]
+fn apply_quickpaste_windows_backdrop(
+  window: &tauri::Window,
+  is_dark: bool,
+  material: QuickPasteWindowsMaterial,
+) -> Result<(), String> {
   use windows_sys::Win32::Graphics::Dwm::DwmSetWindowAttribute;
   use windows_sys::Win32::System::LibraryLoader::{GetProcAddress, LoadLibraryA};
 
@@ -162,11 +214,7 @@ fn apply_quickpaste_windows_backdrop(window: &tauri::Window, is_dark: bool) -> R
   let immersive_dark_mode = if is_dark { 1u32 } else { 0u32 };
   let corner_preference = DWMWCP_ROUND;
   let backdrop_type = DWMSBT_TRANSIENTWINDOW;
-  let accent_tint = if is_dark {
-    0xAA111111u32
-  } else {
-    0xAAF9F9F9u32
-  };
+  let accent_tint = quickpaste_acrylic_tint(is_dark, material);
 
   unsafe {
     check_dwm_result(
@@ -263,8 +311,12 @@ fn apply_quickpaste_webview_transparent_background(window: &tauri::Window) -> Re
 }
 
 #[cfg(target_os = "windows")]
-fn apply_quickpaste_windows_material(window: &tauri::Window, is_dark: bool) -> Result<(), String> {
-  apply_quickpaste_windows_backdrop(window, is_dark)?;
+fn apply_quickpaste_windows_material(
+  window: &tauri::Window,
+  is_dark: bool,
+  material: QuickPasteWindowsMaterial,
+) -> Result<(), String> {
+  apply_quickpaste_windows_backdrop(window, is_dark, material)?;
   apply_quickpaste_webview_transparent_background(window)?;
 
   Ok(())
@@ -966,7 +1018,7 @@ fn open_path_or_app(path: String) -> Result<(), String> {
 
 #[tauri::command]
 fn get_device_id() -> Result<String, String> {
-  match mid::get("PasteBarApp") {
+  match mid::get("FlowPasterApp") {
     Ok(id) => {
       debug_output(|| {
         println!("Device ID: {}", &id[..24]);
@@ -991,7 +1043,7 @@ fn update_left_click_tray_env(is_toggle_enabled: bool, is_disabled: bool) -> Res
   let should_disable_context_menu = is_disabled || is_toggle_enabled;
 
   std::env::set_var(
-    "PASTEBAR_ENABLE_LEFT_CLICK_MENU",
+    "FLOWPASTER_ENABLE_LEFT_CLICK_MENU",
     should_disable_context_menu.to_string(),
   );
   Ok(())
@@ -1011,7 +1063,7 @@ fn set_windows_left_click_tray_env(settings_map: &HashMap<String, Setting>) {
       .unwrap_or(false);
 
     std::env::set_var(
-      "PASTEBAR_ENABLE_LEFT_CLICK_MENU",
+      "FLOWPASTER_ENABLE_LEFT_CLICK_MENU",
       (is_disabled || is_toggle_enabled).to_string(),
     );
   }
@@ -1066,7 +1118,7 @@ fn is_autostart_enabled() -> Result<bool, bool> {
   let current_exe = current_exe().unwrap();
 
   let auto_start = AutoLaunchBuilder::new()
-    .set_app_name("PasteBar")
+    .set_app_name("FlowPaster")
     .set_app_path(&current_exe.to_str().unwrap())
     .set_use_launch_agent(true)
     .build()
@@ -1080,7 +1132,7 @@ fn autostart(enabled: bool) -> Result<bool, bool> {
   let current_exe = current_exe().unwrap();
 
   let auto_start = AutoLaunchBuilder::new()
-    .set_app_name("PasteBar")
+    .set_app_name("FlowPaster")
     .set_app_path(&current_exe.to_str().unwrap())
     .set_use_launch_agent(true)
     .build()
@@ -1207,7 +1259,7 @@ fn set_icon(app_handle: tauri::AppHandle, name: &str, is_dark: bool) {
     return;
   };
 
-  let _ = tray_handle.set_tooltip("PasteBar");
+  let _ = tray_handle.set_tooltip("FlowPaster");
   let is_windows_system_dark_mode = utils::is_windows_system_uses_dark_theme();
 
   match name {
@@ -1254,7 +1306,7 @@ fn open_history_window(app_handle: tauri::AppHandle) -> Result<(), String> {
     return Ok(());
   }
   let menu = Menu::new().add_submenu(Submenu::new(
-    "PasteBar",
+    "FlowPaster",
     Menu::new()
       .add_native_item(MenuItem::CloseWindow)
       .add_native_item(MenuItem::Copy)
@@ -1269,7 +1321,7 @@ fn open_history_window(app_handle: tauri::AppHandle) -> Result<(), String> {
     "history",
     tauri::WindowUrl::App("history-index".into()),
   )
-  .title("PasteBar History")
+  .title("FlowPaster History")
   .max_inner_size(700.0, 2200.0)
   .min_inner_size(300.0, 400.0)
   .menu(menu)
@@ -1334,7 +1386,7 @@ async fn open_history_window(app_handle: tauri::AppHandle) -> Result<(), String>
     return Ok(());
   }
   let menu = Menu::new().add_submenu(Submenu::new(
-    "PasteBar",
+    "FlowPaster",
     Menu::new()
       .add_native_item(MenuItem::CloseWindow)
       .add_native_item(MenuItem::Copy)
@@ -1349,7 +1401,7 @@ async fn open_history_window(app_handle: tauri::AppHandle) -> Result<(), String>
     "history",
     tauri::WindowUrl::App("history-index".into()),
   )
-  .title("PasteBar History")
+  .title("FlowPaster History")
   .decorations(false)
   .transparent(true)
   .max_inner_size(700.0, 2200.0)
@@ -1429,7 +1481,13 @@ async fn open_quickpaste_window(
 
   let window_width = 410.0;
   let window_height = 720.0;
-  let _ = app_settings;
+  #[cfg(target_os = "windows")]
+  let quickpaste_windows_material = {
+    let settings_map = app_settings
+      .lock()
+      .expect("Failed to lock app settings for Quick Paste material");
+    quickpaste_windows_material_from_settings(&settings_map)
+  };
   let main_window = app_handle.get_window("main").unwrap();
   let is_main_window_visible = main_window.is_visible().unwrap();
 
@@ -1461,7 +1519,11 @@ async fn open_quickpaste_window(
   #[cfg(target_os = "windows")]
   {
     let use_dark_tint = is_dark.unwrap_or_else(utils::is_windows_system_uses_dark_theme);
-    apply_quickpaste_windows_material(&quickpaste_window, use_dark_tint)?;
+    apply_quickpaste_windows_material(
+      &quickpaste_window,
+      use_dark_tint,
+      quickpaste_windows_material,
+    )?;
   }
 
   let position = Mouse::get_mouse_position();
@@ -1564,7 +1626,7 @@ async fn open_quickpaste_window(
       tauri::WindowEvent::Focused(_) => {
         if let Some(window) = app_handle_clone.get_window("quickpaste") {
           let use_dark_tint = is_dark.unwrap_or_else(utils::is_windows_system_uses_dark_theme);
-          apply_quickpaste_windows_material(&window, use_dark_tint)
+          apply_quickpaste_windows_material(&window, use_dark_tint, quickpaste_windows_material)
             .expect("Failed to refresh Quick Paste Windows material after focus change");
         }
       }
@@ -1586,7 +1648,11 @@ async fn open_quickpaste_window(
   #[cfg(target_os = "windows")]
   {
     let use_dark_tint = is_dark.unwrap_or_else(utils::is_windows_system_uses_dark_theme);
-    apply_quickpaste_windows_material(&quickpaste_window, use_dark_tint)?;
+    apply_quickpaste_windows_material(
+      &quickpaste_window,
+      use_dark_tint,
+      quickpaste_windows_material,
+    )?;
   }
   #[cfg(target_os = "windows")]
   {
@@ -1594,6 +1660,7 @@ async fn open_quickpaste_window(
     apply_quickpaste_windows_material(
       &quickpaste_window,
       is_dark.unwrap_or_else(utils::is_windows_system_uses_dark_theme),
+      quickpaste_windows_material,
     )?;
   }
 
@@ -1612,7 +1679,7 @@ async fn main() {
   dotenv().ok();
   let db_items_state = DbItems(Mutex::new(Vec::new()));
   let db_recent_history_items_state = DbRecentHistoryItems(Mutex::new(Vec::new()));
-  tauri_plugin_deep_link::prepare("app.anothervision.pasteBar");
+  tauri_plugin_deep_link::prepare("app.flowpaster.desktop");
 
   tauri::Builder::default()
     .manage(db_items_state)
@@ -2022,7 +2089,7 @@ async fn main() {
       app.manage(app_settings);
 
       let menu = Menu::new().add_submenu(Submenu::new(
-        "PasteBar",
+        "FlowPaster",
         Menu::new()
           .add_native_item(MenuItem::CloseWindow)
           .add_native_item(MenuItem::Copy)
@@ -2060,7 +2127,7 @@ async fn main() {
       let window = window_builder.build()?;
 
       // set dynamic title for window for Pro version
-      window.set_title("PasteBar").unwrap();
+      window.set_title("FlowPaster").unwrap();
 
       #[cfg(target_os = "windows")]
       {
@@ -2150,11 +2217,11 @@ async fn main() {
       let handle = app.handle().clone();
       let w = app.get_window("main").unwrap();
 
-      let _ = tauri_plugin_deep_link::register("pastebar", move |request| {
+      let _ = tauri_plugin_deep_link::register("flowpaster", move |request| {
         debug_output(|| {
           println!("scheme request received: {:?}", &request);
         });
-        if request.starts_with("pastebar://") {
+        if request.starts_with("flowpaster://") {
           w.show().unwrap();
           w.set_focus().unwrap();
           handle.emit_all("scheme-request-received", request).unwrap();
@@ -2168,7 +2235,7 @@ async fn main() {
         debug_output(|| {
           println!("scheme request received on start url: {:?}", &url);
         });
-        if url.starts_with("pastebar://") {
+        if url.starts_with("flowpaster://") {
           let w = app.get_window("main").unwrap();
           w.show().unwrap();
           w.set_focus().unwrap();
@@ -2328,5 +2395,5 @@ async fn main() {
       })
     }))
     .run(tauri::generate_context!())
-    .expect("Error While Running PasteBar App");
+    .expect("Error While Running FlowPaster App");
 }

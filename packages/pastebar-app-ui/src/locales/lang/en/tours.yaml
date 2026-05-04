@@ -156,13 +156,13 @@ NAVBAR_TOUR:
   - element: '#navbar-panel_tour'
     popover:
       title: Navigation Bar
-      description: The navigation bar provides quick access to PasteBar's features and settings. Use it to switch between the Clipboard History and Paste Menus views, access your collections, perform a global search, toggle pinned board visibility, adjust settings, and get help when needed.
+      description: The navigation bar provides quick access to FlowPaster's features and settings. Use it to switch between the Clipboard History and Paste Menus views, access your collections, perform a global search, toggle pinned board visibility, adjust settings, and get help when needed.
       alignment: center
       prefferedSide: bottom
   - element: '#navbar-pastebar_tour'
     popover:
-      title: PasteBar Menu
-      description: The PasteBar menu provides quick access to essential functions and information. Here you can check for updates, access settings, lock the app screen, close the main window, or quit the application.
+      title: FlowPaster Menu
+      description: The FlowPaster menu provides quick access to essential functions and information. Here you can check for updates, access settings, lock the app screen, close the main window, or quit the application.
       alignment: start
       prefferedSide: bottom
   - element: '#navbar-view_tour'
@@ -198,13 +198,13 @@ NAVBAR_TOUR:
   - element: '#navbar-help_tour'
     popover:
       title: Help Menu
-      description: Quickly access guided tours and UI feature showcases from the Help menu. It provides step-by-step guidance and demonstrations to help you navigate and understand PasteBar's features and user interface effectively.
+      description: Quickly access guided tours and UI feature showcases from the Help menu. It provides step-by-step guidance and demonstrations to help you navigate and understand FlowPaster's features and user interface effectively.
       alignment: end
       prefferedSide: bottom
   - element: '#navbar-close-window_tour'
     popover:
       title: Close Main Window
-      description: Click the close icon to close the main PasteBar window while keeping its functionality available from the taskbar or menubar icon. You can always reopen the main application window from the main menu.
+      description: Click the close icon to close the main FlowPaster window while keeping its functionality available from the taskbar or menubar icon. You can always reopen the main application window from the main menu.
       alignment: end
       prefferedSide: bottom
 
@@ -212,7 +212,7 @@ SETTINGS_TOUR:
   - element: '#app-settings-history_tour'
     popover:
       title: Clipboard History Settings
-      description: Adjust your clipboard history settings to customize how PasteBar captures and manages your copied content. Enable or disable features like auto-update, auto-star, link preview, stop words list, and programming language auto-detection for a personalized experience.
+      description: Adjust your clipboard history settings to customize how FlowPaster captures and manages your copied content. Enable or disable features like auto-update, auto-star, link preview, stop words list, and programming language auto-detection for a personalized experience.
       alignment: start
       prefferedSide: right
   - element: '#app-settings-collections_tour'
@@ -230,7 +230,7 @@ SETTINGS_TOUR:
   - element: '#app-settings-security_tour'
     popover:
       title: Security Settings
-      description: Configure your security settings to protect your data. Set a lock screen passcode and recovery password. Control clipboard history capture from the lock screen and enable auto-lock on inactivity. Adjust these settings to enhance the security of your PasteBar application.
+      description: Configure your security settings to protect your data. Set a lock screen passcode and recovery password. Control clipboard history capture from the lock screen and enable auto-lock on inactivity. Adjust these settings to enhance the security of your FlowPaster application.
       alignment: start
       prefferedSide: right
   - element: '#app-settings-back_tour'

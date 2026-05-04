@@ -68,13 +68,13 @@ Enter your <strong>{{screenLockPassCodeLength}} digits</strong> passcode: <str
 Entered Passcode is invalid: Girilen Parola geçersiz
 Excluded Apps List: Hariç Tutulan Uygulamalar Listesi
 Execute Web Requests: Web Isteklerini Yürüt
-Execute terminal or shell commands directly from PasteBar clip and copy the results to the clipboard.: Terminal veya kabuk komutlarını doğrudan PasteBar klipinden yürütün ve sonuçları panoya kopyalayın.
+Execute terminal or shell commands directly from FlowPaster clip and copy the results to the clipboard.: Terminal veya kabuk komutlarını doğrudan FlowPaster klipinden yürütün ve sonuçları panoya kopyalayın.
 'Expires:': 'Sona erme:'
 Forgot Passcode ? Enter your recovery password to reset the passcode.: Şifrenizimi Unuttunuz? Şifrenizi sıfırlamak için kurtarma parolanızı girin.
 Forgot passcode ?: Şifremi unuttum ?
 Forgot?: Unuttum?
 Forgot? Reset using Password: Unuttunuz mu? Şifreyi kullanarak sıfırlayın
-Get priority email support from us to resolve any issues or questions you may have about PasteBar.: PasteBar ile ilgili herhangi bir sorun veya sorunuzun çözümü için bizden öncelikli e-posta desteği alın.
+Get priority email support from us to resolve any issues or questions you may have about FlowPaster.: FlowPaster ile ilgili herhangi bir sorun veya sorunuzun çözümü için bizden öncelikli e-posta desteği alın.
 'Hint: {{screenLockRecoveryPasswordMasked}}': 'Ipucu: {{screenLockRecoveryPasswordMasked}}'
 Incorrect passcode.: Hatalı şifre.
 Increase UI Font Size: Arayüz Yazı Tipi Boyutunu Artır
@@ -110,7 +110,7 @@ Password is incorrect. <br/>{{screenLockRecoveryPasswordMasked}}: Şifre hatalı
 'Password is incorrect. Masked password is: {{screenLockRecoveryPasswordMasked}}': 'Şifre hatalı. Maskeli şifre: {{screenLockRecoveryPasswordMasked}}'
 Password is incorrect. {{screenLockRecoveryPasswordMasked}}: Şifre hatalı. {{screenLockRecoveryPasswordMasked}}
 Passwords do not match: Şifreler eşleşmiyor
-PasteBar Settings: PasteBar Ayarları
+FlowPaster Settings: FlowPaster Ayarları
 Pin Window: Pencereyi Sabitle
 Pin on Top Window: Üst Pencereye Sabitleyin
 Please set up a Passcode and recovery password in Security Settings to enable Screen Lock and ensure better security.: Ekran Kilidini etkinleştirmek ve daha iyi güvenlik sağlamak için lütfen Güvenlik Ayarları'nda bir Parola ve kurtarma parolası ayarlayın.
@@ -149,7 +149,7 @@ Small: Küçük
 Stop Words List: Durdurma Sözcükleri Listesi
 Swap Panels Layout: Panel Düzenini Değiştir
 Switch the layout position of panels in Clipboard History and Paste Menu views: Panoya Geçmiş ve Yapıştır Menüsü görünümlerinde panellerin düzen konumunu değiştirin
-Thank you again for using PasteBar.: PasteBar'ı kullandığınız için tekrar teşekkür ederiz.
+Thank you again for using FlowPaster.: FlowPaster'ı kullandığınız için tekrar teşekkür ederiz.
 Thank you for testing! 🙌: Test ettiğiniz için teşekkür ederiz! 🙌
 This option lets you control the display and timing of hover notes on clips. You can choose to show notes instantly or with a delay to prevent unintended popups.: Bu seçenek, kliplerdeki gezinme notlarının görüntülenmesini ve zamanlamasını kontrol etmenizi sağlar. Notları anında veya istenmeyen açılır pencereleri önlemek için gecikmeli olarak göstermeyi seçebilirsiniz.
 This option lets you customize the maximum width and height of the popup that displays clip notes, ensuring it fits comfortably within your desired size.: Bu seçenek, klip notlarını görüntüleyen açılır pencerenin maksimum genişliğini ve yüksekliğini özelleştirmenize olanak tanır ve böylece pencerenin istediğiniz boyuta rahatça sığmasını sağlar.
@@ -200,8 +200,8 @@ Select a custom location to store your application data instead of the default l
 Selected data folder: Seçili veri klasörü
 Selected new data folder for change: Değişiklik için seçili yeni veri klasörü
 Setting a custom database location requires an application restart to take effect.: Özel veritabanı konumu ayarlamak, etkili olması için uygulama yeniden başlatması gerektirir.
-The selected folder is not empty and does not contain PasteBar data files. Do you want to create a "pastebar-data" subfolder to store the data?: Seçili klasör boş değil ve PasteBar veri dosyalarını içermiyor. Verileri depolamak için "pastebar-data" alt klasörü oluşturmak istiyor musunuz?
-This folder already contains PasteBar data. The application will use this existing data after restart.: Bu klasör zaten PasteBar verileri içeriyor. Uygulama yeniden başlatıldıktan sonra mevcut verileri kullanacak.
+The selected folder is not empty and does not contain FlowPaster data files. Do you want to create a "pastebar-data" subfolder to store the data?: Seçili klasör boş değil ve FlowPaster veri dosyalarını içermiyor. Verileri depolamak için "pastebar-data" alt klasörü oluşturmak istiyor musunuz?
+This folder already contains FlowPaster data. The application will use this existing data after restart.: Bu klasör zaten FlowPaster verileri içeriyor. Uygulama yeniden başlatıldıktan sonra mevcut verileri kullanacak.
 Use new location: Yeni konumu kullan
 An error occurred during directory processing.: Dizin işleme sırasında bir hata oluştu.
 An error occurred during directory selection or setup.: Dizin seçimi veya kurulumu sırasında bir hata oluştu.

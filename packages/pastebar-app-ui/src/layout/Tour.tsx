@@ -139,7 +139,7 @@ const Tour = ({
                 <>
                   <Box className="text-[14px]">
                     <Trans
-                      i18nKey="Congratulations! You have finished <strong>all the tours</strong> and now ready to make the most of PasteBar's features. Remember, all tours always available from the <strong>Help > App Guided Tours</strong> menu in the navbar."
+                      i18nKey="Congratulations! You have finished <strong>all the tours</strong> and now ready to make the most of FlowPaster's features. Remember, all tours always available from the <strong>Help > App Guided Tours</strong> menu in the navbar."
                       ns="help"
                     />
                   </Box>

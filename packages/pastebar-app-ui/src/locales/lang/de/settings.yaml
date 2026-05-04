@@ -91,7 +91,7 @@ Enter your <strong>{{screenLockPassCodeLength}} digits</strong> passcode: Gebe
 Entered Passcode is invalid: Eingegebener Passcode ist ungültig
 Excluded Apps List: Liste ausgeschlossener Apps
 Execute Web Requests: Web-Anfragen ausführen
-Execute terminal or shell commands directly from PasteBar clip and copy the results to the clipboard.: Terminal- oder Shell-Befehle direkt aus PasteBar-Clip ausführen und Ergebnisse in die Zwischenablage kopieren.
+Execute terminal or shell commands directly from FlowPaster clip and copy the results to the clipboard.: Terminal- oder Shell-Befehle direkt aus FlowPaster-Clip ausführen und Ergebnisse in die Zwischenablage kopieren.
 'Expires:': 'Läuft ab:'
 Failed to revert to default database location.: Rückkehr zum Standard-Datenbankstandort fehlgeschlagen.
 Failed to select directory: Verzeichnisauswahl fehlgeschlagen
@@ -99,7 +99,7 @@ Forgot Passcode ? Enter your recovery password to reset the passcode.: Passcode 
 Forgot passcode ?: Passcode vergessen?
 Forgot?: Vergessen?
 Forgot? Reset using Password: Vergessen? Mit Passwort zurücksetzen
-Get priority email support from us to resolve any issues or questions you may have about PasteBar.: Erhalten Sie vorrangigen E-Mail-Support von uns, um Probleme oder Fragen zu PasteBar zu lösen.
+Get priority email support from us to resolve any issues or questions you may have about FlowPaster.: Erhalten Sie vorrangigen E-Mail-Support von uns, um Probleme oder Fragen zu FlowPaster zu lösen.
 'Hint: {{screenLockRecoveryPasswordMasked}}': 'Hinweis: {{screenLockRecoveryPasswordMasked}}'
 If a database file already exists at the default location, do you want to overwrite it? Choosing "Cancel" will skip moving the file if an existing file is found.: Wenn bereits eine Datenbankdatei am Standardort existiert, möchten Sie sie überschreiben? "Abbrechen" überspringt das Verschieben der Datei, wenn eine vorhandene Datei gefunden wird.
 Incorrect passcode.: Falscher Passcode.
@@ -141,7 +141,7 @@ Password is incorrect. <br/>{{screenLockRecoveryPasswordMasked}}: Passwort ist f
 'Password is incorrect. Masked password is: {{screenLockRecoveryPasswordMasked}}': 'Passwort ist falsch. Maskiertes Passwort ist: {{screenLockRecoveryPasswordMasked}}'
 Password is incorrect. {{screenLockRecoveryPasswordMasked}}: Passwort ist falsch. {{screenLockRecoveryPasswordMasked}}
 Passwords do not match: Passwörter stimmen nicht überein
-PasteBar Settings: PasteBar-Einstellungen
+FlowPaster Settings: FlowPaster-Einstellungen
 Pin Window: Fenster anheften
 Pin on Top Window: Fenster im Vordergrund anheften
 Please set up a Passcode and recovery password in Security Settings to enable Screen Lock and ensure better security.: Bitte richten Sie einen Passcode und ein Wiederherstellungspasswort in den Sicherheitseinstellungen ein, um die Bildschirmsperre zu aktivieren und bessere Sicherheit zu gewährleisten.
@@ -190,11 +190,11 @@ Small: Klein
 Stop Words List: Stoppwortliste
 Swap Panels Layout: Panel-Layout tauschen
 Switch the layout position of panels in Clipboard History and Paste Menu views: Layout-Position der Panels in Zwischenablage-Verlauf und Einfügemenü-Ansichten tauschen
-Thank you again for using PasteBar.: Vielen Dank, dass Sie PasteBar verwenden.
+Thank you again for using FlowPaster.: Vielen Dank, dass Sie FlowPaster verwenden.
 Thank you for testing! 🙌: Danke fürs Testen! 🙌
-The selected folder is not empty and does not contain PasteBar data files. Do you want to create a "pastebar-data" subfolder to store the data?: Der ausgewählte Ordner ist nicht leer und enthält keine PasteBar-Datendateien. Möchten Sie einen "pastebar-data"-Unterordner erstellen, um die Daten zu speichern?
+The selected folder is not empty and does not contain FlowPaster data files. Do you want to create a "pastebar-data" subfolder to store the data?: Der ausgewählte Ordner ist nicht leer und enthält keine FlowPaster-Datendateien. Möchten Sie einen "pastebar-data"-Unterordner erstellen, um die Daten zu speichern?
 The selected folder is not empty. Do you want to create a "pastebar-data" subfolder to store the data?: Der ausgewählte Ordner ist nicht leer. Möchten Sie einen "pastebar-data"-Unterordner erstellen, um die Daten zu speichern?
-This folder already contains PasteBar data. The application will use this existing data after restart.: Dieser Ordner enthält bereits PasteBar-Daten. Die Anwendung wird diese vorhandenen Daten nach dem Neustart verwenden.
+This folder already contains FlowPaster data. The application will use this existing data after restart.: Dieser Ordner enthält bereits FlowPaster-Daten. Die Anwendung wird diese vorhandenen Daten nach dem Neustart verwenden.
 This option lets you control the display and timing of hover notes on clips. You can choose to show notes instantly or with a delay to prevent unintended popups.: Diese Option ermöglicht es Ihnen, die Anzeige und das Timing von Hover-Notizen auf Clips zu steuern. Sie können wählen, ob Notizen sofort oder mit Verzögerung angezeigt werden sollen, um unbeabsichtigte Popups zu verhindern.
 This option lets you customize the maximum width and height of the popup that displays clip notes, ensuring it fits comfortably within your desired size.: Diese Option ermöglicht es Ihnen, die maximale Breite und Höhe des Popups anzupassen, das Clip-Notizen anzeigt, um sicherzustellen, dass es bequem in Ihre gewünschte Größe passt.
 This option lets you customize the minimum and maximum length of text that can be captured in the clipboard history. Setting either value to 0 makes that limit unlimited.: Diese Option ermöglicht es Ihnen, die minimale und maximale Länge von Text anzupassen, der im Zwischenablage-Verlauf erfasst werden kann. Wenn Sie einen Wert auf 0 setzen, wird diese Begrenzung unbegrenzt.

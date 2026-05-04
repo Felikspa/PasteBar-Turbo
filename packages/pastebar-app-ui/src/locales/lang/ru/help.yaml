@@ -11,7 +11,7 @@ Clipboard History Settings: Настройки истории буфера
 Clipboard History Tour: Истории буфера тур
 Close Main Window: Закрыть главное окно
 Collections Menu: Меню коллекций
-Congratulations! You have finished <strong>all the tours</strong> and now ready to make the most of PasteBar's features. Remember, all tours always available from the <strong>Help > App Guided Tours</strong> menu in the navbar.: Отлично! Вы завершили этот тур. Готовы посмотреть еще? Нажмите 'Пропустить', если хотите изучать самостоятельно. Все туры всегда доступны в навигационном меню <strong>Помощь > Туры по приложению</strong>.
+Congratulations! You have finished <strong>all the tours</strong> and now ready to make the most of FlowPaster's features. Remember, all tours always available from the <strong>Help > App Guided Tours</strong> menu in the navbar.: Отлично! Вы завершили этот тур. Готовы посмотреть еще? Нажмите 'Пропустить', если хотите изучать самостоятельно. Все туры всегда доступны в навигационном меню <strong>Помощь > Туры по приложению</strong>.
 Contact Us Form: Форма обратной связи
 Create Dashboard Items: Создать элементы панели управления
 Dashboard Panel: Панель управления
@@ -44,10 +44,10 @@ Paste Menu: Меню вставки
 Paste Menu Panel: Панель меню вставки
 Paste Menu Tour: Меню вставки тур
 Paste Menu View: Просмотр меню вставки
-PasteBar Menu: Меню PasteBar
-PasteBar Settings: Настройки PasteBar
-PasteBar Settings Tour: Настройки PasteBar тур
-PasteBar Tour: PasteBar тур
+FlowPaster Menu: Меню FlowPaster
+FlowPaster Settings: Настройки FlowPaster
+FlowPaster Settings Tour: Настройки FlowPaster тур
+FlowPaster Tour: FlowPaster тур
 Previous: Назад
 Priority Support: Приоритетная поддержка
 Priority Support Pro Form: Форма Pro поддержки
@@ -76,9 +76,9 @@ Tour skipped: Тур пропущен
 User Preferences: Пользовательские настройки
 View Menu: Меню просмотра
 Welcome to Paste Menu: Добро пожаловать в Меню вставки
-Welcome to PasteBar: Добро пожаловать в PasteBar
-Welcome to PasteBar Settings: Добро пожаловать настройки PasteBar
-WelcomeDescription: Спасибо, что выбрали наше приложение для легкой работы с копируемой информацией и буфером обмена. Мы хотим помочь вам быстро освоиться и предлагаем пройти Тур по возможностям PasteBar.
+Welcome to FlowPaster: Добро пожаловать в FlowPaster
+Welcome to FlowPaster Settings: Добро пожаловать настройки FlowPaster
+WelcomeDescription: Спасибо, что выбрали наше приложение для легкой работы с копируемой информацией и буфером обмена. Мы хотим помочь вам быстро освоиться и предлагаем пройти Тур по возможностям FlowPaster.
 WelcomePasteMenuDescription: WelcomePasteMenuDescription
 WelcomeTour: Давайте начнем с изучения панели истории буфера обмена.
 WelcomeTourCanSkip: Нажмите <i>Пропустить тур</i> если вы хотите разобраться в его работе сами. Если вам понадобится помощь, вы всегда сможете найти все туры в навигационном меню <strong>Помощь > Туры по приложению</strong>.

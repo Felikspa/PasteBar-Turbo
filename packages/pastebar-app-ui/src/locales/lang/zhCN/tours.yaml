@@ -156,13 +156,13 @@ NAVBAR_TOUR:
   - element: '#navbar-panel_tour'
     popover:
       title: 导航栏
-      description: 导航栏提供对 PasteBar 功能和设置的快速访问。使用它在剪贴板历史和粘贴菜单之间切换，访问您的收藏，执行全局搜索功能，切换固定面板的显示状态可见性，调整设置，以及在需要时获取帮助。
+      description: 导航栏提供对 FlowPaster 功能和设置的快速访问。使用它在剪贴板历史和粘贴菜单之间切换，访问您的收藏，执行全局搜索功能，切换固定面板的显示状态可见性，调整设置，以及在需要时获取帮助。
       alignment: center
       prefferedSide: bottom
   - element: '#navbar-pastebar_tour'
     popover:
-      title: PasteBar 菜单
-      description: PasteBar 菜单提供对基本功能和信息的快速访问。在这里，您可以检查更新，访问设置，锁定应用程序屏幕，关闭主窗口或退出应用程序。
+      title: FlowPaster 菜单
+      description: FlowPaster 菜单提供对基本功能和信息的快速访问。在这里，您可以检查更新，访问设置，锁定应用程序屏幕，关闭主窗口或退出应用程序。
       alignment: start
       prefferedSide: bottom
   - element: '#navbar-view_tour'
@@ -198,13 +198,13 @@ NAVBAR_TOUR:
   - element: '#navbar-help_tour'
     popover:
       title: 帮助菜单
-      description: 从帮助菜单快速访问引导教程和 UI 功能展示。它提供分步指导和演示，帮助您有效地浏览和理解 PasteBar 的功能和用户界面。
+      description: 从帮助菜单快速访问引导教程和 UI 功能展示。它提供分步指导和演示，帮助您有效地浏览和理解 FlowPaster 的功能和用户界面。
       alignment: end
       prefferedSide: bottom
   - element: '#navbar-close-window_tour'
     popover:
       title: 关闭主窗口
-      description: 点击关闭图标以关闭 PasteBar 主窗口，同时保持其功能从任务栏或菜单栏图标可用。您随时可以从主菜单重新打开主应用程序窗口。
+      description: 点击关闭图标以关闭 FlowPaster 主窗口，同时保持其功能从任务栏或菜单栏图标可用。您随时可以从主菜单重新打开主应用程序窗口。
       alignment: end
       prefferedSide: bottom
 
@@ -212,7 +212,7 @@ SETTINGS_TOUR:
   - element: '#app-settings-history_tour'
     popover:
       title: 剪贴板历史记录设置
-      description: 调整剪贴板历史设置以自定义 PasteBar 如何捕获和管理您复制的内容。启用或禁用自动更新、自动星标、链接预览、停用词列表、编程语言自动检测等功能，以获得个性化体验。
+      description: 调整剪贴板历史设置以自定义 FlowPaster 如何捕获和管理您复制的内容。启用或禁用自动更新、自动星标、链接预览、停用词列表、编程语言自动检测等功能，以获得个性化体验。
       alignment: start
       prefferedSide: right
   - element: '#app-settings-collections_tour'
@@ -230,7 +230,7 @@ SETTINGS_TOUR:
   - element: '#app-settings-security_tour'
     popover:
       title: 安全设置
-      description: 配置安全设置以保护您的数据。设置锁屏密码和恢复密码。在锁屏时控制剪贴板历史的捕获，并在不活动时启用自动锁定。调整这些设置以增强 PasteBar 应用程序的安全性。
+      description: 配置安全设置以保护您的数据。设置锁屏密码和恢复密码。在锁屏时控制剪贴板历史的捕获，并在不活动时启用自动锁定。调整这些设置以增强 FlowPaster 应用程序的安全性。
       alignment: start
       prefferedSide: right
   - element: '#app-settings-back_tour'

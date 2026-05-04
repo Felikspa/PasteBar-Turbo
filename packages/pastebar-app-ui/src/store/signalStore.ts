@@ -23,7 +23,6 @@ export const isWindowsOS = signal(false)
 export const resetPassCodeNextDelayInSeconds = signal<number>(0)
 export const resetPassCodeNumberOfTried = signal<number>(0)
 export const openActionConfirmModal = signal(false)
-export const openAboutPasteBarModal = signal(false)
 export const openContactUsFormModal = signal(false)
 export const openOnBoardingTourName = signal<AppTourType | null>(null)
 export const openProtectedContentModal = signal(false)
@@ -203,7 +202,6 @@ export const isAnyModalOpen = computed(
   () =>
     // Modal states
     openActionConfirmModal.value ||
-    openAboutPasteBarModal.value ||
     openContactUsFormModal.value ||
     openOSXSystemPermissionsModal.value ||
     showInvalidTrackWarningAddSong.value ||

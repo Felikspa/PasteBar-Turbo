@@ -11,7 +11,7 @@ Clipboard History Settings: Pano geçmiş ayarları
 Clipboard History Tour: Pano geçmişi turu
 Close Main Window: Ana pencereyi kapat
 Collections Menu: Koleksiyonlar menüsü
-Congratulations! You have finished <strong>all the tours</strong> and now ready to make the most of PasteBar's features. Remember, all tours always available from the <strong>Help > App Guided Tours</strong> menu in the navbar.: Tebrikler! <strong>Tüm turları</strong> tamamladınız ve artık PasteBar'ın özelliklerinden en iyi şekilde yararlanmaya hazırsınız. Unutmayın, tüm turlar her zaman gezinme çubuğundaki <strong>Yardım > Uygulama Rehberli Turlar</strong> menüsünden kullanılabilir.
+Congratulations! You have finished <strong>all the tours</strong> and now ready to make the most of FlowPaster's features. Remember, all tours always available from the <strong>Help > App Guided Tours</strong> menu in the navbar.: Tebrikler! <strong>Tüm turları</strong> tamamladınız ve artık FlowPaster'ın özelliklerinden en iyi şekilde yararlanmaya hazırsınız. Unutmayın, tüm turlar her zaman gezinme çubuğundaki <strong>Yardım > Uygulama Rehberli Turlar</strong> menüsünden kullanılabilir.
 Contact Us Form: Iletişime geçme formu
 Create Dashboard Items: Pano Öğeleri Oluştur
 Dashboard Panel: Gösterge paneli
@@ -45,10 +45,10 @@ Paste Menu: Yapıştırma Menüsü
 Paste Menu Panel: Yapıştırma Menüsü Paneli
 Paste Menu Tour: Yapıştırma Menüsü turu
 Paste Menu View: Yapıştırma Menüsü görünümü
-PasteBar Menu: PasteBar Menüsü
-PasteBar Settings: PasteBar Ayarları
-PasteBar Settings Tour: PasteBar Ayarlar turu
-PasteBar Tour: PasteBar turu
+FlowPaster Menu: FlowPaster Menüsü
+FlowPaster Settings: FlowPaster Ayarları
+FlowPaster Settings Tour: FlowPaster Ayarlar turu
+FlowPaster Tour: FlowPaster turu
 Previous: Önceki
 Priority Support: Öncelikli Destek
 Reset All Tours: Tüm Turları Sıfırla
@@ -78,10 +78,10 @@ TourCanSkip: TourCanSkip
 User Preferences: Kullanıcı Tercihleri
 View Menu: Menüyü görüntüle
 Welcome to Paste Menu: Paste Menüsüne Hoş Geldiniz
-Welcome to PasteBar: PasteBar'a hoş geldiniz
-Welcome to PasteBar Settings: PasteBar ayarlarına hoş geldiniz
-WelcomeBody: PasteBar ile kopyalama ve yapıştırma iş akışınızı basitleştirmeye hazır olun! Bu rehberli tur, sizi temel özelliklerde gezdirecek ve uygulamadan en iyi şekilde nasıl yararlanacağınızı gösterecek. Pano Geçmişi Panelini keşfederek başlayalım.
-WelcomeDescription: Kopyla-yapıştır iş akışınızı basitleştirmek ve pano işlevselliğini artırmak için uygulamamızı seçtiğiniz için teşekkür ederiz. Başlamanıza ve PasteBar'ın özelliklerinden en iyi şekilde yararlanmanıza yardımcı olmak için, uygulamada kısa bir tur atmaya davet ediyoruz.
+Welcome to FlowPaster: FlowPaster'a hoş geldiniz
+Welcome to FlowPaster Settings: FlowPaster ayarlarına hoş geldiniz
+WelcomeBody: FlowPaster ile kopyalama ve yapıştırma iş akışınızı basitleştirmeye hazır olun! Bu rehberli tur, sizi temel özelliklerde gezdirecek ve uygulamadan en iyi şekilde nasıl yararlanacağınızı gösterecek. Pano Geçmişi Panelini keşfederek başlayalım.
+WelcomeDescription: Kopyla-yapıştır iş akışınızı basitleştirmek ve pano işlevselliğini artırmak için uygulamamızı seçtiğiniz için teşekkür ederiz. Başlamanıza ve FlowPaster'ın özelliklerinden en iyi şekilde yararlanmanıza yardımcı olmak için, uygulamada kısa bir tur atmaya davet ediyoruz.
 WelcomeTour: Panoya ait geçmiş panelini inceleyerek başlayalım.
 WelcomeTourCanSkip: Veya kendi başınıza keşfetmeyi tercih ederseniz <i>Tur Atlama</i> seçeneğini kullanabilirsiniz. Tüm turlara her zaman gezinme çubuğundaki <strong>Yardım > Uygulama Rehberli Turlar</strong> menüsünden erişebilirsiniz.
 WelcomeTourDescription: Özellikleri ve işlevleri hakkında bilgi edinmek için bu uygulama bölümünü inceleyin.

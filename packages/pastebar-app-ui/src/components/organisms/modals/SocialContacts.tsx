@@ -59,7 +59,7 @@ export const SocialContacts = ({ className = '', showContactForm = true }) => {
       )}
       <div className="flex justify-center">
         <a
-          href="https://www.facebook.com/PasteBarApp"
+          href="https://www.facebook.com/FlowPasterApp"
           target="_blank"
           title="Facebook"
           className="inline-flex flex-col justify-center items-center p-1 rounded-md hover:bg-blue-600 dark:hover:bg-blue-600 hover:text-white"
@@ -77,7 +77,7 @@ export const SocialContacts = ({ className = '', showContactForm = true }) => {
       </div>
       <div className="flex justify-center">
         <a
-          href="https://twitter.com/PasteBar_App"
+          href="https://twitter.com/FlowPaster_App"
           target="_blank"
           title="Twitter"
           className="inline-flex flex-col justify-center items-center p-1 rounded-md hover:bg-blue-600 dark:hover:bg-blue-600 hover:text-white"
@@ -95,7 +95,7 @@ export const SocialContacts = ({ className = '', showContactForm = true }) => {
       </div>
       <div className="flex justify-center">
         <a
-          href="https://github.com/PasteBar"
+          href="https://github.com/FlowPaster"
           target="_blank"
           title="GitHub"
           className="inline-flex flex-col justify-center items-center p-1.5 rounded-md hover:bg-blue-600 dark:hover:bg-blue-600 hover:text-white"

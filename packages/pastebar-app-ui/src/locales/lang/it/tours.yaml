@@ -156,13 +156,13 @@ NAVBAR_TOUR:
   - element: '#navbar-panel_tour'
     popover:
       title: Barra di Navigazione
-      description: La barra di navigazione fornisce un accesso rapido alle funzionalità e alle impostazioni di PasteBar. Usala per passare tra le viste Cronologia Appunti e Menu Incolla, accedere alle tue collezioni, eseguire una ricerca globale, attivare/disattivare la visibilità della bacheca fissata, regolare le impostazioni e ottenere aiuto quando necessario.
+      description: La barra di navigazione fornisce un accesso rapido alle funzionalità e alle impostazioni di FlowPaster. Usala per passare tra le viste Cronologia Appunti e Menu Incolla, accedere alle tue collezioni, eseguire una ricerca globale, attivare/disattivare la visibilità della bacheca fissata, regolare le impostazioni e ottenere aiuto quando necessario.
       alignment: center
       prefferedSide: bottom
   - element: '#navbar-pastebar_tour'
     popover:
-      title: Menu PasteBar
-      description: Il menu PasteBar fornisce un accesso rapido a funzioni e informazioni essenziali. Qui puoi controllare gli aggiornamenti, accedere alle impostazioni, bloccare lo schermo dell'app, chiudere la finestra principale o uscire dall'applicazione.
+      title: Menu FlowPaster
+      description: Il menu FlowPaster fornisce un accesso rapido a funzioni e informazioni essenziali. Qui puoi controllare gli aggiornamenti, accedere alle impostazioni, bloccare lo schermo dell'app, chiudere la finestra principale o uscire dall'applicazione.
       alignment: start
       prefferedSide: bottom
   - element: '#navbar-view_tour'
@@ -198,13 +198,13 @@ NAVBAR_TOUR:
   - element: '#navbar-help_tour'
     popover:
       title: Menu Aiuto
-      description: Accedi rapidamente a tour guidati e dimostrazioni delle funzionalità dell'interfaccia utente dal menu Aiuto. Fornisce una guida passo-passo e dimostrazioni per aiutarti a navigare e comprendere efficacemente le funzionalità e l'interfaccia utente di PasteBar.
+      description: Accedi rapidamente a tour guidati e dimostrazioni delle funzionalità dell'interfaccia utente dal menu Aiuto. Fornisce una guida passo-passo e dimostrazioni per aiutarti a navigare e comprendere efficacemente le funzionalità e l'interfaccia utente di FlowPaster.
       alignment: end
       prefferedSide: bottom
   - element: '#navbar-close-window_tour'
     popover:
       title: Chiudi Finestra Principale
-      description: Clicca sull'icona di chiusura per chiudere la finestra principale di PasteBar mantenendo la sua funzionalità disponibile dall'icona nella barra delle applicazioni o nella barra dei menu. Puoi sempre riaprire la finestra principale dell'applicazione dal menu principale.
+      description: Clicca sull'icona di chiusura per chiudere la finestra principale di FlowPaster mantenendo la sua funzionalità disponibile dall'icona nella barra delle applicazioni o nella barra dei menu. Puoi sempre riaprire la finestra principale dell'applicazione dal menu principale.
       alignment: end
       prefferedSide: bottom
 
@@ -212,7 +212,7 @@ SETTINGS_TOUR:
   - element: '#app-settings-history_tour'
     popover:
       title: Impostazioni Cronologia Appunti
-      description: Regola le impostazioni della cronologia degli appunti per personalizzare il modo in cui PasteBar cattura e gestisce il contenuto copiato. Abilita o disabilita funzioni come l'aggiornamento automatico, l'aggiunta automatica ai preferiti, l'anteprima dei link, l'elenco delle parole da ignorare e il rilevamento automatico del linguaggio di programmazione per un'esperienza personalizzata.
+      description: Regola le impostazioni della cronologia degli appunti per personalizzare il modo in cui FlowPaster cattura e gestisce il contenuto copiato. Abilita o disabilita funzioni come l'aggiornamento automatico, l'aggiunta automatica ai preferiti, l'anteprima dei link, l'elenco delle parole da ignorare e il rilevamento automatico del linguaggio di programmazione per un'esperienza personalizzata.
       alignment: start
       prefferedSide: right
   - element: '#app-settings-collections_tour'
@@ -230,7 +230,7 @@ SETTINGS_TOUR:
   - element: '#app-settings-security_tour'
     popover:
       title: Impostazioni di Sicurezza
-      description: Configura le tue impostazioni di sicurezza per proteggere i tuoi dati. Imposta un codice di accesso per la schermata di blocco e una password di recupero. Controlla la cattura della cronologia degli appunti dalla schermata di blocco e abilita il blocco automatico in caso di inattività. Regola queste impostazioni per migliorare la sicurezza della tua applicazione PasteBar.
+      description: Configura le tue impostazioni di sicurezza per proteggere i tuoi dati. Imposta un codice di accesso per la schermata di blocco e una password di recupero. Controlla la cattura della cronologia degli appunti dalla schermata di blocco e abilita il blocco automatico in caso di inattività. Regola queste impostazioni per migliorare la sicurezza della tua applicazione FlowPaster.
       alignment: start
       prefferedSide: right
   - element: '#app-settings-back_tour'

@@ -11,7 +11,7 @@ pub fn hash_password(password: &str) -> Result<String, String> {
 
 #[tauri::command]
 pub fn store_os_password(name: &str, password: &str) -> Result<(), String> {
-  let entry = Entry::new("PasteBar Application", name).map_err(|e| e.to_string())?;
+  let entry = Entry::new("FlowPaster Application", name).map_err(|e| e.to_string())?;
   let hashed_password = hash(password, DEFAULT_COST).map_err(|e| e.to_string())?;
   entry
     .set_password(&hashed_password)
@@ -20,13 +20,13 @@ pub fn store_os_password(name: &str, password: &str) -> Result<(), String> {
 
 #[tauri::command]
 pub fn get_stored_os_password(name: &str) -> Result<String, String> {
-  let entry = Entry::new("PasteBar Application", name).map_err(|e| e.to_string())?;
+  let entry = Entry::new("FlowPaster Application", name).map_err(|e| e.to_string())?;
   entry.get_password().map_err(|e| e.to_string())
 }
 
 #[tauri::command]
 pub fn verify_os_password(name: &str, password: &str) -> Result<bool, String> {
-  let entry = Entry::new("PasteBar Application", name).map_err(|e| e.to_string())?;
+  let entry = Entry::new("FlowPaster Application", name).map_err(|e| e.to_string())?;
   let stored_password = entry.get_password().map_err(|e| e.to_string())?;
   thread::sleep(std::time::Duration::from_secs(2) as std::time::Duration);
   verify(password, &stored_password).map_err(|e| e.to_string())
@@ -34,7 +34,7 @@ pub fn verify_os_password(name: &str, password: &str) -> Result<bool, String> {
 
 #[tauri::command]
 pub fn delete_os_password(name: &str) -> Result<bool, String> {
-  let entry = Entry::new("PasteBar Application", name).map_err(|e| e.to_string())?;
+  let entry = Entry::new("FlowPaster Application", name).map_err(|e| e.to_string())?;
   let _ = entry.delete_password().map_err(|e| e.to_string());
   Ok(true)
 }

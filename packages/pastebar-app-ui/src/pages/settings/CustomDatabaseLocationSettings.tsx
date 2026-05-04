@@ -105,7 +105,7 @@ export default function CustomDatabaseLocationSettings() {
         } else if (status === 'NotEmpty') {
           const confirmSubfolder = await dialog.confirm(
             t(
-              'The selected folder is not empty and does not contain PasteBar data files. Do you want to create a "pastebar-data" subfolder to store the data?',
+              'The selected folder is not empty and does not contain FlowPaster data files. Do you want to create a "pastebar-data" subfolder to store the data?',
               { ns: 'settings' }
             )
           )
@@ -129,7 +129,7 @@ export default function CustomDatabaseLocationSettings() {
         } else if (status === 'IsPastebarDataAndNotEmpty') {
           await dialog.message(
             t(
-              'This folder already contains PasteBar data. The application will use this existing data after restart.',
+              'This folder already contains FlowPaster data. The application will use this existing data after restart.',
               { ns: 'settings' }
             )
           )
@@ -283,7 +283,7 @@ export default function CustomDatabaseLocationSettings() {
         } else if (status === 'NotEmpty') {
           const confirmSubfolder = await dialog.confirm(
             t(
-              'The selected folder is not empty and does not contain PasteBar data files. Do you want to create a "pastebar-data" subfolder to store the data?',
+              'The selected folder is not empty and does not contain FlowPaster data files. Do you want to create a "pastebar-data" subfolder to store the data?',
               { ns: 'settings' }
             )
           )
@@ -307,7 +307,7 @@ export default function CustomDatabaseLocationSettings() {
         } else if (status === 'IsPastebarDataAndNotEmpty') {
           await dialog.message(
             t(
-              'This folder already contains PasteBar data. The application will use this existing data after restart.',
+              'This folder already contains FlowPaster data. The application will use this existing data after restart.',
               { ns: 'settings' }
             )
           )
@@ -423,7 +423,7 @@ export default function CustomDatabaseLocationSettings() {
         } else if (status === 'NotEmpty') {
           const confirmSubfolder = await dialog.confirm(
             t(
-              'The selected folder is not empty and does not contain PasteBar data files. Do you want to create a "pastebar-data" subfolder to store the data?',
+              'The selected folder is not empty and does not contain FlowPaster data files. Do you want to create a "pastebar-data" subfolder to store the data?',
               { ns: 'settings' }
             )
           )
@@ -449,7 +449,7 @@ export default function CustomDatabaseLocationSettings() {
         } else if (status === 'IsPastebarDataAndNotEmpty') {
           await dialog.message(
             t(
-              'This folder already contains PasteBar data. The application will use this existing data after restart.',
+              'This folder already contains FlowPaster data. The application will use this existing data after restart.',
               { ns: 'settings' }
             )
           )

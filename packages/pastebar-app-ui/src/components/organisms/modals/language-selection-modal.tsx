@@ -100,7 +100,7 @@ export default function LanguageSelectionModal({
           <Flex className="w-full flex-col gap-3 mt-2 justify-center">
             <div className="text-center">
               <Text className="font-semibold text-2xl mb-2 justify-center">
-                {t('Welcome to PasteBar', { ns: 'common2' })}
+                {t('Welcome to FlowPaster', { ns: 'common2' })}
               </Text>
               <Text className="text-gray-600 dark:text-gray-400 justify-center">
                 {t('Please select your preferred language', { ns: 'common2' })}
@@ -132,7 +132,7 @@ export default function LanguageSelectionModal({
             onClick={handleStartApp}
             className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-2"
           >
-            {t('Start using PasteBar', { ns: 'common2' })}
+            {t('Start using FlowPaster', { ns: 'common2' })}
           </Button>
         </Modal.Footer>
       </Modal.Body>

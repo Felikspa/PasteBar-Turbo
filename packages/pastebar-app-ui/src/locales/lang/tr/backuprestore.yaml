@@ -24,7 +24,7 @@ Restoring backup...: Yedek geri yükleniyor...
 Backup deleted successfully: Yedek başarıyla silindi
 Failed to delete backup: Yedek silinemedi
 Invalid backup file: Geçersiz yedek dosyası
-The selected file is not a valid PasteBar backup: Seçilen dosya geçerli bir PasteBar yedeği değil
+The selected file is not a valid FlowPaster backup: Seçilen dosya geçerli bir FlowPaster yedeği değil
 Created: Oluşturulma
 Size: Boyut
 Failed to load backup list: Yedek listesi yüklenemedi

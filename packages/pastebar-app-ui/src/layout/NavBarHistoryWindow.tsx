@@ -632,7 +632,7 @@ export function NavBarHistoryWindow() {
                 }
               }}
             >
-              {t('Open PasteBar', { ns: 'navbar' })}
+              {t('Open FlowPaster', { ns: 'navbar' })}
               <MenubarShortcut>
                 <Shortcut keys="CTRL+O" />
               </MenubarShortcut>

@@ -115,7 +115,7 @@ function App() {
       if (quickPasteHotkey) {
         await register(quickPasteHotkey, async () => {
           await uiStore.toggleHistoryQuickPasteWindow(
-            t('PasteBar Quick Paste', { ns: 'settings2' })
+            t('FlowPaster Quick Paste', { ns: 'settings2' })
           )
         }).catch(console.error)
         registeredHotkeys.push(quickPasteHotkey)
@@ -285,11 +285,10 @@ function App() {
           isQuickPasteCopyOnly: settings.isQuickPasteCopyOnly?.valueBool ?? false,
           isQuickPasteAutoClose: settings.isQuickPasteAutoClose?.valueBool ?? true,
           quickPasteAcrylicOpacity: settings.quickPasteAcrylicOpacity?.valueInt ?? 86,
+          quickPasteAcrylicColorDepth:
+            settings.quickPasteAcrylicColorDepth?.valueInt ?? 100,
+          quickPasteMaskStrength: settings.quickPasteMaskStrength?.valueInt ?? 72,
           quickPasteFontSize: settings.quickPasteFontSize?.valueInt ?? 16,
-          quickPasteLatinFontFamily:
-            settings.quickPasteLatinFontFamily?.valueText ?? 'Segoe UI',
-          quickPasteCjkFontFamily:
-            settings.quickPasteCjkFontFamily?.valueText ?? 'Microsoft YaHei',
           quickPasteHighlightColor:
             settings.quickPasteHighlightColor?.valueText ?? '#2563eb',
           isSingleClickToCopyPaste: settings.isSingleClickToCopyPaste?.valueBool ?? false,
@@ -652,7 +651,7 @@ function App() {
 
       if (!tourCompleted && !tourSkipped) {
         welcomeTourToast = toast({
-          title: `${t('Welcome to PasteBar', { ns: 'help' })} 🎉`,
+          title: `${t('Welcome to FlowPaster', { ns: 'help' })} 🎉`,
           id: 'welcome-tour',
           duration: 0, // Stays until dismissed
           description: (

@@ -1,6 +1,6 @@
 ' No': ' No'
-' This permission ensures PasteBar can access the clipboard and perform copy and paste operations across applications.': ' Este permiso asegura que PasteBar pueda acceder al portapapeles y realizar operaciones de copiar y pegar entre aplicaciones.'
-About PasteBar: Acerca de PasteBar
+' This permission ensures FlowPaster can access the clipboard and perform copy and paste operations across applications.': ' Este permiso asegura que FlowPaster pueda acceder al portapapeles y realizar operaciones de copiar y pegar entre aplicaciones.'
+About FlowPaster: Acerca de FlowPaster
 Action Menu: Menú de Acciones
 Add <b>{{Clipboard}}</b> field to template. This allows you to copy text to the clipboard, and it will be inserted into the template: Añadir campo <b>{{Clipboard}}</b> a la plantilla. Esto te permite copiar texto al portapapeles, y se insertará en la plantilla
 Add Clip: Añadir Clip
@@ -8,7 +8,7 @@ Add First Option: Añadir Primera Opción
 Add Link Card: Añadir Tarjeta de Enlace
 Add Menu: Añadir Menú
 Add Option: Añadir Opción
-Add PasteBar to Accessibility: Añadir PasteBar a Accesibilidad
+Add FlowPaster to Accessibility: Añadir FlowPaster a Accesibilidad
 Add To Player: Añadir al Reproductor
 Add to: Añadir a
 Add to Clips: Añadir a Clips
@@ -18,7 +18,7 @@ Add to clip or menu: Añadir a clip o menú
 Add to template fields: Añadir a campos de plantilla
 Added: Añadido
 Adding this file to the player is not recommended unless you trust the source.: No se recomienda añadir este archivo al reproductor a menos que confíes en la fuente.
-Allow PasteBar to Copy and Paste from Clipboard: Permitir a PasteBar Copiar y Pegar desde el Portapapeles
+Allow FlowPaster to Copy and Paste from Clipboard: Permitir a FlowPaster Copiar y Pegar desde el Portapapeles
 Are you sure you want to delete?: ¿Estás seguro de que quieres eliminar?
 Are you sure?: ¿Estás seguro?
 Attach History Window: Adjuntar Ventana de Historial
@@ -89,7 +89,7 @@ Emoji: Emoji
 Empty: Vacío
 Empty Select: Selección Vacía
 Enable / Disable: Habilitar / Deshabilitar
-Enable PasteBar in Accessibility Settings: Habilitar PasteBar en Configuración de Accesibilidad
+Enable FlowPaster in Accessibility Settings: Habilitar FlowPaster en Configuración de Accesibilidad
 Enabled: Habilitado
 Enter Current Passcode: Introduce el Código de Acceso Actual
 Enter Digits Only Passcode: Introduce el Código de Acceso Solo con Dígitos
@@ -160,20 +160,20 @@ Password: Contraseña
 Paste Delay: Retraso Pegado
 Paste Menu: Menú Pegado
 Paste in {{pastingCountDown}}...: Pegar en {{pastingCountDown}}...
-PasteBar: PasteBar
-PasteBar Application Error: Error de Aplicación PasteBar
-PasteBar History: Historial de PasteBar
-PasteBar application now can access the clipboard and perform copy and paste operations across applications.: La aplicación PasteBar ahora puede acceder al portapapeles y realizar operaciones de copiar y pegar entre aplicaciones.
-PasteBar was successfuly added to Accessibility settings: PasteBar se añadió con éxito a la configuración de Accesibilidad
+FlowPaster: FlowPaster
+FlowPaster Application Error: Error de Aplicación FlowPaster
+FlowPaster History: Historial de FlowPaster
+FlowPaster application now can access the clipboard and perform copy and paste operations across applications.: La aplicación FlowPaster ahora puede acceder al portapapeles y realizar operaciones de copiar y pegar entre aplicaciones.
+FlowPaster was successfuly added to Accessibility settings: FlowPaster se añadió con éxito a la configuración de Accesibilidad
 Pasted: Pegado
 Path: Ruta
 Pause: Pausar
 Pause Playing: Pausar Reproducción
-'Permission Check Failed: PasteBar has not been successfully added to Accessibility settings. Please grant the required permissions and click Done again.': 'Verificación de Permisos Fallida: PasteBar no se ha añadido correctamente a la configuración de Accesibilidad. Por favor, concede los permisos necesarios y haz clic en Hecho de nuevo.'
+'Permission Check Failed: FlowPaster has not been successfully added to Accessibility settings. Please grant the required permissions and click Done again.': 'Verificación de Permisos Fallida: FlowPaster no se ha añadido correctamente a la configuración de Accesibilidad. Por favor, concede los permisos necesarios y haz clic en Hecho de nuevo.'
 Pin Selected: Fijar Seleccionados
 Pinned: Fijado
 Play: Reproducir
-Please add PasteBar to the list of apps in: Por favor, añade PasteBar a la lista de aplicaciones en
+Please add FlowPaster to the list of apps in: Por favor, añade FlowPaster a la lista de aplicaciones en
 Please confirm your action!: ¡Por favor, confirma tu acción!
 Press: Presionar
 Press ESC key to close: Presiona la tecla ESC para cerrar
@@ -244,7 +244,7 @@ System Settings -> Privacy & Security -> Accessibility: Configuración del Siste
 Thank you for reporting the error.: Gracias por informar del error.
 Thank you for using Pro: Gracias por usar Pro
 Thank you!: ¡Gracias!
-This permission ensures PasteBar can access the clipboard and perform copy and paste operations across applications.: Este permiso asegura que PasteBar pueda acceder al portapapeles y realizar operaciones de
+This permission ensures FlowPaster can access the clipboard and perform copy and paste operations across applications.: Este permiso asegura que FlowPaster pueda acceder al portapapeles y realizar operaciones de
 Too long: Muy largo
 Too short: Muy corto
 Toolbar:

@@ -1,6 +1,6 @@
 ' No': ' No'
-' This permission ensures PasteBar can access the clipboard and perform copy and paste operations across applications.': ' This permission ensures PasteBar can access the clipboard and perform copy and paste operations across applications.'
-About PasteBar: About PasteBar
+' This permission ensures FlowPaster can access the clipboard and perform copy and paste operations across applications.': ' This permission ensures FlowPaster can access the clipboard and perform copy and paste operations across applications.'
+About FlowPaster: About FlowPaster
 Action Menu: Action Menu
 ? Add <b>{{Clipboard}}</b> field to template. This allows you to copy text to the clipboard, and it will be inserted into the template
 : Add <b>{{Clipboard}}</b> field to template. This allows you to copy text to the clipboard, and it will be inserted into the template
@@ -9,7 +9,7 @@ Add First Option: Add First Option
 Add Link Card: Add Link Card
 Add Menu: Add Menu
 Add Option: Add Option
-Add PasteBar to Accessibility: Add PasteBar to Accessibility
+Add FlowPaster to Accessibility: Add FlowPaster to Accessibility
 Add To Player: Add To Player
 Add to: Add to
 Add to Clips: Add to Clip
@@ -19,7 +19,7 @@ Add to clip or menu: Add to clip or menu
 Add to template fields: Add to template fields
 Added: Added
 Adding this file to the player is not recommended unless you trust the source.: Adding this file to the player is not recommended unless you trust the source.
-Allow PasteBar to Copy and Paste from Clipboard: Allow PasteBar to Copy and Paste from Clipboard
+Allow FlowPaster to Copy and Paste from Clipboard: Allow FlowPaster to Copy and Paste from Clipboard
 Are you sure you want to delete?: Are you sure you want to delete?
 Are you sure?: Are you sure?
 Attach History Window: Attach History Window
@@ -92,7 +92,7 @@ Emoji: Emoji
 Empty: Empty
 Empty Select: Empty Select
 Enable / Disable: Enable / Disable
-Enable PasteBar in Accessibility Settings: Enable PasteBar in Accessibility Settings
+Enable FlowPaster in Accessibility Settings: Enable FlowPaster in Accessibility Settings
 Enabled: Enabled
 Enter Current Passcode: Enter Current Passcode
 Enter Digits Only Passcode: Enter Digits Only Passcode
@@ -166,21 +166,21 @@ Password: Password
 Paste Delay: Paste Delay
 Paste Menu: Paste Menu
 Paste in {{pastingCountDown}}...: Paste in {{pastingCountDown}}...
-PasteBar: PasteBar
-PasteBar Application Error: PasteBar Application Error
-PasteBar History: PasteBar History
-PasteBar application now can access the clipboard and perform copy and paste operations across applications.: PasteBar application now can access the clipboard and perform copy and paste operations across applications.
-PasteBar was successfuly added to Accessibility settings: PasteBar was successfuly added to Accessibility settings
+FlowPaster: FlowPaster
+FlowPaster Application Error: FlowPaster Application Error
+FlowPaster History: FlowPaster History
+FlowPaster application now can access the clipboard and perform copy and paste operations across applications.: FlowPaster application now can access the clipboard and perform copy and paste operations across applications.
+FlowPaster was successfuly added to Accessibility settings: FlowPaster was successfuly added to Accessibility settings
 Pasted: Pasted
 Path: Path
 Pause: Pause
 Pause Playing: Pause Playing
-? 'Permission Check Failed: PasteBar has not been successfully added to Accessibility settings. Please grant the required permissions and click Done again.'
-: 'Permission Check Failed: PasteBar has not been successfully added to Accessibility settings. Please grant the required permissions and click Done again.'
+? 'Permission Check Failed: FlowPaster has not been successfully added to Accessibility settings. Please grant the required permissions and click Done again.'
+: 'Permission Check Failed: FlowPaster has not been successfully added to Accessibility settings. Please grant the required permissions and click Done again.'
 Pin Selected: Pin Selected
 Pinned: Pinned
 Play: Play
-Please add PasteBar to the list of apps in: Please add PasteBar to the list of apps in
+Please add FlowPaster to the list of apps in: Please add FlowPaster to the list of apps in
 Please confirm your action!: Please confirm your action!
 Press: Press
 Press ESC key to close: Press ESC key to close
@@ -251,7 +251,7 @@ System Settings -> Privacy & Security -> Accessibility: System Settings -> Priva
 Thank you for reporting the error.: Thank you for reporting the error.
 Thank you for using Pro: Thank you for using Pro
 Thank you!: Thank you!
-This permission ensures PasteBar can access the clipboard and perform copy and paste operations across applications.: This permission ensures PasteBar can access the clipboard and perform copy and paste operations across applications.
+This permission ensures FlowPaster can access the clipboard and perform copy and paste operations across applications.: This permission ensures FlowPaster can access the clipboard and perform copy and paste operations across applications.
 Too long: Too long
 Too short: Too short
 Toolbar:

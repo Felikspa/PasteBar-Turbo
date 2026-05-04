@@ -91,7 +91,7 @@ Enter your <strong>{{screenLockPassCodeLength}} digits</strong> passcode: Ente
 Entered Passcode is invalid: Entered Passcode is invalid
 Excluded Apps List: Excluded Apps List
 Execute Web Requests: Execute Web Requests
-Execute terminal or shell commands directly from PasteBar clip and copy the results to the clipboard.: Execute terminal or shell commands directly from PasteBar clip and copy the results to the clipboard.
+Execute terminal or shell commands directly from FlowPaster clip and copy the results to the clipboard.: Execute terminal or shell commands directly from FlowPaster clip and copy the results to the clipboard.
 'Expires:': 'Expires:'
 Failed to revert to default database location.: Failed to revert to default database location.
 Failed to select directory: Failed to select directory
@@ -99,7 +99,7 @@ Forgot Passcode ? Enter your recovery password to reset the passcode.: Forgot Pa
 Forgot passcode ?: Forgot passcode ?
 Forgot?: Forgot?
 Forgot? Reset using Password: Forgot? Reset using Password
-Get priority email support from us to resolve any issues or questions you may have about PasteBar.: Get priority email support from us to resolve any issues or questions you may have about PasteBar.
+Get priority email support from us to resolve any issues or questions you may have about FlowPaster.: Get priority email support from us to resolve any issues or questions you may have about FlowPaster.
 'Hint: {{screenLockRecoveryPasswordMasked}}': 'Hint: {{screenLockRecoveryPasswordMasked}}'
 If a database file already exists at the default location, do you want to overwrite it? Choosing "Cancel" will skip moving the file if an existing file is found.: If a database file already exists at the default location, do you want to overwrite it? Choosing "Cancel" will skip moving the file if an existing file is found.
 Incorrect passcode.: Incorrect passcode.
@@ -141,7 +141,7 @@ Password is incorrect. <br/>{{screenLockRecoveryPasswordMasked}}: Password is in
 'Password is incorrect. Masked password is: {{screenLockRecoveryPasswordMasked}}': 'Password is incorrect. Masked password is: {{screenLockRecoveryPasswordMasked}}'
 Password is incorrect. {{screenLockRecoveryPasswordMasked}}: Password is incorrect. {{screenLockRecoveryPasswordMasked}}
 Passwords do not match: Passwords do not match
-PasteBar Settings: PasteBar Settings
+FlowPaster Settings: FlowPaster Settings
 Pin Window: Pin Window
 Pin on Top Window: Pin on Top Window
 Please set up a Passcode and recovery password in Security Settings to enable Screen Lock and ensure better security.: Please set up a Passcode and recovery password in Security Settings to enable Screen Lock and ensure better security.
@@ -190,11 +190,11 @@ Small: Small
 Stop Words List: Stop Words List
 Swap Panels Layout: Swap Panels Layout
 Switch the layout position of panels in Clipboard History and Paste Menu views: Switch the layout position of panels in Clipboard History and Paste Menu views
-Thank you again for using PasteBar.: Thank you again for using PasteBar.
+Thank you again for using FlowPaster.: Thank you again for using FlowPaster.
 Thank you for testing! 🙌: Thank you for testing! 🙌
-The selected folder is not empty and does not contain PasteBar data files. Do you want to create a "pastebar-data" subfolder to store the data?: The selected folder is not empty and does not contain PasteBar data files. Do you want to create a "pastebar-data" subfolder to store the data?
+The selected folder is not empty and does not contain FlowPaster data files. Do you want to create a "pastebar-data" subfolder to store the data?: The selected folder is not empty and does not contain FlowPaster data files. Do you want to create a "pastebar-data" subfolder to store the data?
 The selected folder is not empty. Do you want to create a "pastebar-data" subfolder to store the data?: The selected folder is not empty. Do you want to create a "pastebar-data" subfolder to store the data?
-This folder already contains PasteBar data. The application will use this existing data after restart.: This folder already contains PasteBar data. The application will use this existing data after restart.
+This folder already contains FlowPaster data. The application will use this existing data after restart.: This folder already contains FlowPaster data. The application will use this existing data after restart.
 This option lets you control the display and timing of hover notes on clips. You can choose to show notes instantly or with a delay to prevent unintended popups.: This option lets you control the display and timing of hover notes on clips. You can choose to show notes instantly or with a delay to prevent unintended popups.
 This option lets you customize the maximum width and height of the popup that displays clip notes, ensuring it fits comfortably within your desired size.: This option lets you customize the maximum width and height of the popup that displays clip notes, ensuring it fits comfortably within your desired size.
 This option lets you customize the minimum and maximum length of text that can be captured in the clipboard history. Setting either value to 0 makes that limit unlimited.: This option lets you customize the minimum and maximum length of text that can be captured in the clipboard history. Setting either value to 0 makes that limit unlimited.

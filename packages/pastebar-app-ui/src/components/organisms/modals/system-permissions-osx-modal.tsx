@@ -55,13 +55,13 @@ export default function ModalOSXSystemPermissions({ open, onClose }: Props) {
       <Modal.Body className="dark:bg-green-950/30 bg-green-50/30 relative">
         <Modal.Header handleClose={onClose}>
           <h1 className="font-semibold text-center w-full">
-            {t('Enable PasteBar in Accessibility Settings', { ns: 'common' })}
+            {t('Enable FlowPaster in Accessibility Settings', { ns: 'common' })}
           </h1>
         </Modal.Header>
         {isSuccessfulyAdded.value !== true ? (
           <Modal.Content className="!pt-2 w-full !pb-2 justify-start items-center flex flex-col gap-3">
             <Text>
-              {t('Please add PasteBar to the list of apps in', {
+              {t('Please add FlowPaster to the list of apps in', {
                 ns: 'common',
               })}
             </Text>
@@ -105,14 +105,14 @@ export default function ModalOSXSystemPermissions({ open, onClose }: Props) {
             {isSuccessfulyAdded.value === false ? (
               <Text className="text-sm w-[90%]" color="danger">
                 {t(
-                  'Permission Check Failed: PasteBar has not been successfully added to Accessibility settings. Please grant the required permissions and click Done again.',
+                  'Permission Check Failed: FlowPaster has not been successfully added to Accessibility settings. Please grant the required permissions and click Done again.',
                   { ns: 'common' }
                 )}
               </Text>
             ) : (
               <Text className="text-sm w-[90%]">
                 {t(
-                  'This permission ensures PasteBar can access the clipboard and perform copy and paste operations across applications.',
+                  'This permission ensures FlowPaster can access the clipboard and perform copy and paste operations across applications.',
                   { ns: 'common' }
                 )}
               </Text>
@@ -121,7 +121,7 @@ export default function ModalOSXSystemPermissions({ open, onClose }: Props) {
         ) : (
           <Modal.Content className="!pt-2 w-full !pb-2 justify-start items-center flex flex-col gap-3">
             <Text>
-              {t('PasteBar was successfuly added to Accessibility settings', {
+              {t('FlowPaster was successfuly added to Accessibility settings', {
                 ns: 'common',
               })}
             </Text>
@@ -154,7 +154,7 @@ export default function ModalOSXSystemPermissions({ open, onClose }: Props) {
 
             <Text className="text-sm w-[80%]">
               {t(
-                'PasteBar application now can access the clipboard and perform copy and paste operations across applications.',
+                'FlowPaster application now can access the clipboard and perform copy and paste operations across applications.',
                 { ns: 'common' }
               )}
             </Text>

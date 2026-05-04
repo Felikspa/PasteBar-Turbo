@@ -39,7 +39,7 @@ export default function AppSettingsPage() {
                 <Box className="flex flex-rowrounded-md p-0 items-center justify-end pr-5 h-[40px]">
                   <Text className="text-lg font-semibold text-center flex items-center">
                     <Settings className="mr-2" />
-                    {t('PasteBar Settings', { ns: 'settings' })}
+                    {t('FlowPaster Settings', { ns: 'settings' })}
                   </Text>
                 </Box>
                 <Spacer h={3} />

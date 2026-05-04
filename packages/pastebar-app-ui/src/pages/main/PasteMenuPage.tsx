@@ -503,7 +503,7 @@ export default function PasteMenuPage() {
                           if (name.length < 1) {
                             await message(
                               t('Menu label cannot be empty.', { ns: 'menus' }),
-                              'PasteBar'
+                              'FlowPaster'
                             )
                             return
                           }
@@ -512,7 +512,7 @@ export default function PasteMenuPage() {
                               `${t('Menu label is too long. Max length is', {
                                 ns: 'menus',
                               })} ${MAX_MENU_LABEL_LENGTH}.`,
-                              'PasteBar'
+                              'FlowPaster'
                             )
                             return
                           }
@@ -529,7 +529,7 @@ export default function PasteMenuPage() {
                                   ns: 'menus',
                                 }
                               ),
-                              'PasteBar'
+                              'FlowPaster'
                             )
                             return
                           }

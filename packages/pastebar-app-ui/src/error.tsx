@@ -97,7 +97,7 @@ export const AppErrorPage = ({ reset, error }: { reset: () => void; error: Error
       <div className="flex fixed top-0 left-0 w-full" data-tauri-drag-region>
         <div className="flex justify-center items-center mx-2">
           <Logo className="w-10 h-10 mr-1" />
-          <span className="text-lg font-bold text-[#25c8db] mt-2">PasteBar</span>
+          <span className="text-lg font-bold text-[#25c8db] mt-2">FlowPaster</span>
         </div>
         <X
           className="w-6 h-6 m-4 text-amber-500 cursor-pointer ml-auto"
@@ -116,7 +116,7 @@ export const AppErrorPage = ({ reset, error }: { reset: () => void; error: Error
           </svg>
         </div>
         <h1 className="text-2xl font-bold text-amber-800 dark:text-amber-600">
-          {t('PasteBar Application Error', { ns: 'common' })}
+          {t('FlowPaster Application Error', { ns: 'common' })}
         </h1>
         <p className="text-amber-800 dark:text-amber-200 text-center">
           {t(

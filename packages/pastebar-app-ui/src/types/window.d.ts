@@ -28,7 +28,7 @@ declare global {
         props: Record<string, unknown>
       }
     ) => void
-    PasteBar: {
+    FlowPaster: {
       APP_UI_VERSION: string
       APP_VERSION: string
       BUILD_DATE: string
